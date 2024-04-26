@@ -33,7 +33,7 @@ export default function LandingPage() {
         })}
       </div>
 
-      <div className="my-5 space-y-6">
+      <div className="my-10 space-y-6">
         <h1 className="text-2xl font-semibold text-center md:text-3xl lg:text-4xl">
           Made to match your craft
         </h1>
@@ -44,12 +44,16 @@ export default function LandingPage() {
         </p>
       </div>
 
-      <div className="w-[90vw] overflow-x-scroll my-10 mx-auto rounded-lg">
+      <div className="md:px-5 ml-8 w-[100vw] mx-auto overflow-x-scroll my-10  rounded-lg">
         <div className="flex gap-5">
           {imagedata.map((i, index) => {
             return (
               <React.Fragment key={index}>
-                <img src={i.img} alt="" className="" />
+                <img
+                  src={i.img}
+                  alt={i.img + index}
+                  className="w-[90vw] duration-300 ease-in-out cursor-pointer brightness-75 hover:brightness-90 max-w-md"
+                />
               </React.Fragment>
             );
           })}

@@ -59,8 +59,24 @@ export default function LandingPage() {
           })}
         </div>
       </div>
-
       <Subscription />
+
+      <div className="flex flex-col items-center justify-center my-8 space-y-5">
+        <h1 className="text-2xl font-semibold text-center md:text-3xl lg:text-4xl">
+          Stay up to date
+        </h1>
+        <p>Get tips on industry trends, tools and updated features.</p>
+        <div className="space-x-4">
+          <input
+            type="text"
+            placeholder="Email Address"
+            className="border-[1px] outline-none w-[55vw] md:w-[40vw] lg:w-[30vw] py-3 px-3"
+          />
+          <button className="p-3 text-white bg-blue-600 rounded-md">
+            Submit
+          </button>
+        </div>
+      </div>
     </body>
   );
 }

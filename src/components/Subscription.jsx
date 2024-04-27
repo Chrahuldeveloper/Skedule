@@ -3,7 +3,7 @@ import data from "../data/Plans";
 import { TiTickOutline } from "react-icons/ti";
 
 export default function Subscription() {
-  const [plan, setplan] = useState("");
+  const [plan, setplan] = useState("Free");
 
   return (
     <>
@@ -53,7 +53,7 @@ export default function Subscription() {
                 <React.Fragment key={i}>
                   {item.Tittle === plan ? (
                     <>
-                      <div className="space-y-4 text-center ">
+                      <div className="space-y-4 text-center">
                         <h1 className="text-lg font-semibold ">{plan}</h1>
                         <p className="max-w-md text-sm">{item.Para}</p>
                         <h2 className="text-3xl font-bold text-blue-500">

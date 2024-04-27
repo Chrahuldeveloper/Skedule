@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Subscription } from "../components";
+import { Footer, Navbar, Subscription } from "../components";
 import data from "../data/Features";
 import imagedata from "../data/Images";
 export default function LandingPage() {
@@ -61,11 +61,11 @@ export default function LandingPage() {
       </div>
       <Subscription />
 
-      <div className="flex flex-col items-center justify-center my-8 space-y-5">
-        <h1 className="text-2xl font-semibold text-center md:text-3xl lg:text-4xl">
+      <div className="flex flex-col items-center justify-center space-y-5 my-14">
+        <h1 className="text-2xl font-semibold text-center md:text-3xl lg:text-4xl ">
           Stay up to date
         </h1>
-        <p>Get tips on industry trends, tools and updated features.</p>
+        <p className="text-center">Get tips on industry trends, tools and updated features.</p>
         <div className="space-x-4">
           <input
             type="text"
@@ -77,6 +77,8 @@ export default function LandingPage() {
           </button>
         </div>
       </div>
+
+      <Footer />
     </body>
   );
 }

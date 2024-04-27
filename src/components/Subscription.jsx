@@ -39,7 +39,7 @@ export default function Subscription() {
               plan === "Preminum"
                 ? "border-b-[1px] text-blue-500 duration-300 ease-in-out"
                 : null
-            }  font-semibold border-blue-500 cursor-pointer`}
+            }  font-semibold border-blue-500 cursor-poi nter`}
           >
             Preminum
           </li>

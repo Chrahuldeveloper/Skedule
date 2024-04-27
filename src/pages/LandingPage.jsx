@@ -11,7 +11,7 @@ export default function LandingPage() {
       <div></div>
       {/* Slide show Banner  */}
 
-      <div className="space-y-6 mt-7">
+      <div className="mt-20 space-y-6">
         <h1 className="max-w-sm mx-auto text-2xl font-semibold leading-8 text-center md md:text-3xl lg:text-4xl md:max-w-lg">
           The all-in-one point of sale for booking, payments, and more.
         </h1>
@@ -33,7 +33,7 @@ export default function LandingPage() {
         })}
       </div>
 
-      <div className="my-10 space-y-6">
+      <div className="my-20 space-y-6">
         <h1 className="text-2xl font-semibold text-center md:text-3xl lg:text-4xl">
           Made to match your craft
         </h1>
@@ -44,7 +44,7 @@ export default function LandingPage() {
         </p>
       </div>
 
-      <div className="md:px-5 ml-8 w-[100vw] mx-auto overflow-x-scroll my-10  rounded-lg">
+      <div className="md:px-5 ml-8 w-[100vw] mx-auto overflow-x-scroll my-20  rounded-lg">
         <div className="flex gap-5">
           {imagedata.map((i, index) => {
             return (
@@ -61,11 +61,13 @@ export default function LandingPage() {
       </div>
       <Subscription />
 
-      <div className="flex flex-col items-center justify-center space-y-5 my-14">
+      <div className="flex flex-col items-center justify-center my-20 space-y-5">
         <h1 className="text-2xl font-semibold text-center md:text-3xl lg:text-4xl ">
           Stay up to date
         </h1>
-        <p className="text-center">Get tips on industry trends, tools and updated features.</p>
+        <p className="text-center">
+          Get tips on industry trends, tools and updated features.
+        </p>
         <div className="space-x-4">
           <input
             type="text"

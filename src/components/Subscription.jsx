@@ -59,7 +59,7 @@ export default function Subscription() {
                         <h2 className="text-3xl font-bold text-blue-500">
                           {item.price}
                         </h2>
-                        <button className="px-20 py-2 text-white duration-300 ease-in bg-blue-600 rounded-md hover:brightness-75">
+                        <button className="px-20 py-2 text-white duration-300 ease-in bg-blue-600 rounded-md hover:brightness-90">
                           Start the Plan
                         </button>
                         <p className="text-xs font-semibold">Features:</p>

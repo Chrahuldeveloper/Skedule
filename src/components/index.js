@@ -1,4 +1,5 @@
 import Navbar from './Navbar'
+import Subscription from './Subscription'
 
 
-export { Navbar }
+export { Navbar , Subscription }

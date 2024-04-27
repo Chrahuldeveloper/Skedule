@@ -1,10 +1,10 @@
 import React from "react";
-import { Navbar } from "../components";
+import { Navbar, Subscription } from "../components";
 import data from "../data/Features";
 import imagedata from "../data/Images";
 export default function LandingPage() {
   return (
-    <>
+    <body className="overflow-x-clip">
       <Navbar />
 
       {/* Slide show Banner  */}
@@ -52,13 +52,15 @@ export default function LandingPage() {
                 <img
                   src={i.img}
                   alt={i.img + index}
-                  className="w-[90vw] duration-300 ease-in-out cursor-pointer brightness-75 hover:brightness-90 max-w-md"
+                  className="w-[90vw] duration-300 ease-in-out cursor-pointer brightness-75 hover:brightness-90 max-w-md rounded-xl"
                 />
               </React.Fragment>
             );
           })}
         </div>
       </div>
-    </>
+
+      <Subscription />
+    </body>
   );
 }

@@ -10,7 +10,13 @@ export default function LandingPage() {
       <Navbar />
 
       {/*   Banner  */}
-      <div className="items-start px-5 mt-4 justify-evenly md:items-center md:flex">
+      <div
+        data-aos="fade-up"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+        data-aos-easing="ease-in-out"
+        className="items-start px-5 mt-4 justify-evenly md:items-center md:flex"
+      >
         <div className="space-y-5 md:space-y-10">
           <h1 className="text-3xl font-bold leading-10 lg:max-w-xl md:leading-10 lg:text-5xl text-slate-800">
             Get Peace of Mind with Workforce Analytics for Fully Remote Teams
@@ -49,7 +55,13 @@ export default function LandingPage() {
         </div>
       </div>
       {/*   Banner  */}
-      <div className="mt-20 space-y-6">
+      <div
+        className="mt-20 space-y-6"
+        data-aos="fade-up"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+        data-aos-easing="ease-in-out"
+      >
         <h1 className="max-w-sm mx-auto text-2xl font-semibold leading-8 text-center md md:text-3xl lg:text-4xl md:max-w-lg">
           The all-in-one point of sale for booking, payments, and more.
         </h1>
@@ -61,7 +73,12 @@ export default function LandingPage() {
         {data.map((i, index) => {
           return (
             <React.Fragment key={index}>
-              <div className="max-w-xs md:max-w-md space-y-4 p-5 border-[1px] cursor-pointer text-center rounded-lg hover:shadow-lg hover:shadow-slate-200 duration-300 ease-in-out">
+              <div
+                data-aos="fade-up"
+                data-aos-delay="50"
+                data-aos-easing="ease-in-out"
+                className="max-w-xs md:max-w-md space-y-4 p-5 border-[1px] cursor-pointer text-center rounded-lg hover:shadow-lg hover:shadow-slate-200 duration-300 ease-in-out"
+              >
                 <h1 className="text-lg font-semibold md:text-xl">{i.Tittle}</h1>
                 <p className="text-sm leading-6">{i.Para}</p>
               </div>
@@ -70,7 +87,12 @@ export default function LandingPage() {
         })}
       </div>
 
-      <div className="my-24 space-y-6">
+      <div
+        data-aos="fade-up"
+        data-aos-delay="50"
+        data-aos-easing="ease-in-out"
+        className="my-24 space-y-6"
+      >
         <h1 className="text-2xl font-semibold text-center md:text-3xl lg:text-4xl">
           Made to match your craft
         </h1>
@@ -87,6 +109,9 @@ export default function LandingPage() {
             return (
               <React.Fragment key={index}>
                 <img
+                  data-aos="fade-up"
+                  data-aos-delay="50"
+                  data-aos-easing="ease-in-out"
                   onClick={() => {
                     setismodel(true);
                   }}
@@ -104,7 +129,12 @@ export default function LandingPage() {
 
       <Subscription />
 
-      <div className="flex flex-col items-center justify-center my-24 space-y-5">
+      <div
+        data-aos="fade-up"
+        data-aos-delay="50"
+        data-aos-easing="ease-in-out"
+        className="flex flex-col items-center justify-center my-24 space-y-5"
+      >
         <h1 className="text-2xl font-semibold text-center md:text-3xl lg:text-4xl ">
           Stay up to date
         </h1>

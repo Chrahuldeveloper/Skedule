@@ -8,7 +8,12 @@ export default function Subscription() {
   return (
     <>
       <div className="bg-[#f2f2f2] w-screen p-5 my-24">
-        <div className="space-y-5 text-center">
+        <div
+          className="space-y-5 text-center"
+          data-aos="fade-up"
+          data-aos-delay="50"
+          data-aos-easing="ease-in-out"
+        >
           <h1 className="text-2xl font-semibold text-center md:text-3xl lg:text-4xl">
             Pick the plan for you.
           </h1>
@@ -20,6 +25,9 @@ export default function Subscription() {
 
         <ul className="flex items-center justify-center gap-8 my-5">
           <li
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-easing="ease-in-out"
             onClick={() => {
               setplan("Free");
             }}
@@ -32,6 +40,10 @@ export default function Subscription() {
             Free
           </li>
           <li
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
             onClick={() => {
               setplan("Preminum");
             }}
@@ -46,14 +58,24 @@ export default function Subscription() {
         </ul>
 
         {/* plans */}
-        <div className="max-w-md p-5 mx-auto bg-white rounded-lg">
+        <div
+          className="max-w-md p-5 mx-auto bg-white rounded-lg"
+          data-aos="fade-up"
+          data-aos-delay="50"
+          data-aos-easing="ease-in-out"
+        >
           <div className="flex flex-col gap-10">
             {data.map((item, i) => {
               return (
                 <React.Fragment key={i}>
                   {item.Tittle === plan ? (
                     <>
-                      <div className="space-y-4 text-center">
+                      <div
+                        data-aos="fade-up"
+                        data-aos-delay="50"
+                        data-aos-easing="ease-in-out"
+                        className="space-y-4 text-center"
+                      >
                         <h1 className="text-lg font-semibold ">{plan}</h1>
                         <p className="max-w-md text-sm">{item.Para}</p>
                         <h2 className="text-3xl font-bold text-blue-500">

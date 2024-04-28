@@ -10,7 +10,7 @@ export default function Subscription() {
       <div className="bg-[#f2f2f2] w-screen p-5 my-24">
         <div
           className="space-y-5 text-center"
-          data-aos="fade-up"
+          data-aos="fade-in"
           data-aos-delay="50"
           data-aos-easing="ease-in-out"
         >
@@ -25,7 +25,7 @@ export default function Subscription() {
 
         <ul className="flex items-center justify-center gap-8 my-5">
           <li
-            data-aos="fade-up"
+            data-aos="fade-in"
             data-aos-delay="50"
             data-aos-easing="ease-in-out"
             onClick={() => {
@@ -40,7 +40,7 @@ export default function Subscription() {
             Free
           </li>
           <li
-            data-aos="fade-up"
+            data-aos="fade-in"
             data-aos-delay="50"
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
@@ -60,9 +60,7 @@ export default function Subscription() {
         {/* plans */}
         <div
           className="max-w-md p-5 mx-auto bg-white rounded-lg"
-          data-aos="fade-up"
-          data-aos-delay="50"
-          data-aos-easing="ease-in-out"
+       
         >
           <div className="flex flex-col gap-10">
             {data.map((item, i) => {
@@ -71,7 +69,7 @@ export default function Subscription() {
                   {item.Tittle === plan ? (
                     <>
                       <div
-                        data-aos="fade-up"
+                        data-aos="fade-in"
                         data-aos-delay="50"
                         data-aos-easing="ease-in-out"
                         className="space-y-4 text-center"

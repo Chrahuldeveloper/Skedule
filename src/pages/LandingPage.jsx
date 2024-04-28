@@ -7,10 +7,46 @@ export default function LandingPage() {
     <body className="overflow-x-clip">
       <Navbar />
 
-      {/* Slide show Banner  */}
-      <div></div>
-      {/* Slide show Banner  */}
-
+      {/*   Banner  */}
+      <div className="items-start px-5 mt-4 justify-evenly md:items-center md:flex">
+        <div className="space-y-5 md:space-y-10">
+          <h1 className="text-2xl font-bold leading-8 lg:max-w-xl md:leading-10 lg:text-5xl text-slate-800">
+            Get Peace of Mind with Workforce Analytics for Fully Remote Teams
+          </h1>
+          <p className="text-sm leading-6 text-gray-700 lg:max-w-md md:text-xl md:leading-8">
+            Uncover insights in people, tech & operations to solve workforce &
+            performance gaps
+          </p>
+          <button className="text-sm text-white bg-blue-600 px-14 py-2.5 font-semibold rounded-md">
+            Get Started
+          </button>
+        </div>
+        <div className="lg:my-5">
+          <img
+            className="hidden max-w-md md:block"
+            src="https://www.timedoctor.com/_next/image?url=https%3A%2F%2Fa-us.storyblok.com%2Ff%2F1016472%2F510x531%2F5dbf35edfb%2Fwork-section-img.png%2Fm%2Ffilters%3Aquality(80)&w=640&q=100"
+            alt=""
+          />
+          <div className="flex flex-col items-center -mt-20 md:hidden">
+            <img
+              className="max-w-sm translate-y-32 -z-50"
+              src="https://www.timedoctor.com/_next/image?url=https%3A%2F%2Fa-us.storyblok.com%2Ff%2F1016472%2F382x155%2Fa271e3ce22%2Fhours-distribution.png%2Fm%2Ffilters%3Aquality(80)&w=384&q=100"
+              alt=""
+            />
+            <img
+              className="max-w-sm"
+              src="https://www.timedoctor.com/_next/image?url=https%3A%2F%2Fa-us.storyblok.com%2Ff%2F1016472%2F461x313%2Fc4b97daf1f%2Fline-graph.svg%2Fm%2Ffilters%3Aquality(80)&w=640&q=100"
+              alt=""
+            />
+            <img
+              className="max-w-sm mt-10 duration-300 ease-in-out hover:brightness-75"
+              src="https://www.timedoctor.com/_next/image?url=https%3A%2F%2Fa-us.storyblok.com%2Ff%2F1016472%2F510x531%2F5dbf35edfb%2Fwork-section-img.png%2Fm%2Ffilters%3Aquality(80)&w=640&q=100"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      {/*   Banner  */}
       <div className="mt-20 space-y-6">
         <h1 className="max-w-sm mx-auto text-2xl font-semibold leading-8 text-center md md:text-3xl lg:text-4xl md:max-w-lg">
           The all-in-one point of sale for booking, payments, and more.
@@ -19,8 +55,7 @@ export default function LandingPage() {
           We handle the admin while you do more of what you love.
         </p>
       </div>
-
-      <div className="flex flex-col items-center justify-center gap-6 my-10 md:px-10 md:grid md:grid-cols-3 place-items-center ">
+      <div className="flex flex-col items-center justify-center gap-6 my-20 md:px-10 md:grid md:grid-cols-3 place-items-center ">
         {data.map((i, index) => {
           return (
             <React.Fragment key={index}>
@@ -33,7 +68,7 @@ export default function LandingPage() {
         })}
       </div>
 
-      <div className="my-20 space-y-6">
+      <div className="my-24 space-y-6">
         <h1 className="text-2xl font-semibold text-center md:text-3xl lg:text-4xl">
           Made to match your craft
         </h1>
@@ -44,8 +79,8 @@ export default function LandingPage() {
         </p>
       </div>
 
-      <div className="md:px-5 ml-8 w-[100vw] mx-auto overflow-x-scroll my-20  rounded-lg">
-        <div className="flex gap-5">
+      <div className="md:px-7 ml-8 w-[100vw] mx-auto my-24 rounded-lg">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-5">
           {imagedata.map((i, index) => {
             return (
               <React.Fragment key={index}>
@@ -61,7 +96,7 @@ export default function LandingPage() {
       </div>
       <Subscription />
 
-      <div className="flex flex-col items-center justify-center my-20 space-y-5">
+      <div className="flex flex-col items-center justify-center my-24 space-y-5">
         <h1 className="text-2xl font-semibold text-center md:text-3xl lg:text-4xl ">
           Stay up to date
         </h1>

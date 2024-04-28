@@ -7,7 +7,7 @@ export default function Subscription() {
 
   return (
     <>
-      <div className="bg-[#f2f2f2] w-screen p-5 my-7">
+      <div className="bg-[#f2f2f2] w-screen p-5 my-24">
         <div className="space-y-5 text-center">
           <h1 className="text-2xl font-semibold text-center md:text-3xl lg:text-4xl">
             Pick the plan for you.
@@ -39,7 +39,7 @@ export default function Subscription() {
               plan === "Preminum"
                 ? "border-b-[1px] text-blue-500 duration-300 ease-in-out"
                 : null
-            }  font-semibold border-blue-500 cursor-poi nter`}
+            }  font-semibold border-blue-500 cursor-pointer`}
           >
             Preminum
           </li>

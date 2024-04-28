@@ -26,7 +26,7 @@ export default function Navbar() {
           <li className="duration-500 ease-in-out cursor-pointer text-slate-500 hover:text-black">
             Home
           </li>
-          <li className="px-7 text-white duration-500 ease-in-out bg-blue-600 cursor-pointer py-1.5 rounded-lg">
+          <li className="px-7 text-white duration-500 ease-in-out bg-blue-600 cursor-pointer py-1.5 rounded-lg hover:brightness-75">
             Home
           </li>
         </ul>
@@ -69,7 +69,7 @@ export default function Navbar() {
         <li className="duration-500 ease-in-out cursor-pointer text-slate-500 hover:text-black">
           Home
         </li>
-        <li className="text-center text-white duration-500 ease-in-out bg-blue-600 cursor-pointer py-1.5 rounded-md w-20 ">
+        <li className="text-center text-white duration-500 ease-in-out bg-blue-600 cursor-pointer py-1.5 rounded-md w-20 hover:brightness-75">
           Home
         </li>
       </ul>

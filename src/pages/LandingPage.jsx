@@ -1,8 +1,10 @@
-import React from "react";
-import { Footer, Navbar, Subscription } from "../components";
+import React, { useState } from "react";
+import { Footer, Model, Navbar, Subscription } from "../components";
 import data from "../data/Features";
 import imagedata from "../data/Images";
 export default function LandingPage() {
+  const [ismodel, setismodel] = useState(false);
+
   return (
     <body className="overflow-x-clip">
       <Navbar />
@@ -10,14 +12,14 @@ export default function LandingPage() {
       {/*   Banner  */}
       <div className="items-start px-5 mt-4 justify-evenly md:items-center md:flex">
         <div className="space-y-5 md:space-y-10">
-          <h1 className="text-2xl font-bold leading-8 lg:max-w-xl md:leading-10 lg:text-5xl text-slate-800">
+          <h1 className="text-3xl font-bold leading-10 lg:max-w-xl md:leading-10 lg:text-5xl text-slate-800">
             Get Peace of Mind with Workforce Analytics for Fully Remote Teams
           </h1>
           <p className="text-sm leading-6 text-gray-700 lg:max-w-md md:text-xl md:leading-8">
             Uncover insights in people, tech & operations to solve workforce &
             performance gaps
           </p>
-          <button className="text-sm text-white bg-blue-600 px-14 py-2.5 font-semibold rounded-md">
+          <button className="text-sm text-white  px-14 py-2.5 font-semibold duration-300 ease-in bg-blue-600 rounded-md hover:brightness-90">
             Get Started
           </button>
         </div>
@@ -85,6 +87,9 @@ export default function LandingPage() {
             return (
               <React.Fragment key={index}>
                 <img
+                  onClick={() => {
+                    setismodel(true);
+                  }}
                   src={i.img}
                   alt={i.img + index}
                   className="w-[90vw] duration-300 ease-in-out cursor-pointer brightness-75 hover:brightness-90 max-w-md rounded-xl"
@@ -94,6 +99,9 @@ export default function LandingPage() {
           })}
         </div>
       </div>
+
+      {ismodel && <Model setismodel={setismodel} />}
+
       <Subscription />
 
       <div className="flex flex-col items-center justify-center my-24 space-y-5">

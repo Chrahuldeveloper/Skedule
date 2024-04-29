@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [istoggle, setistoggle] = useState(false);
@@ -26,9 +27,12 @@ export default function Navbar() {
           <li className="duration-500 ease-in-out cursor-pointer text-slate-500 hover:text-black">
             Home
           </li>
-          <li className="px-7 text-white duration-500 ease-in-out bg-blue-600 cursor-pointer py-1.5 rounded-lg hover:brightness-75">
-            Signup
-          </li>
+
+          <Link to="/signup">
+            <li className="px-7 text-white duration-500 ease-in-out bg-blue-600 cursor-pointer py-1.5 rounded-lg hover:brightness-75">
+              Signup
+            </li>
+          </Link>
         </ul>
 
         <div className="md:hidden">

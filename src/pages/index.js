@@ -1,4 +1,5 @@
 import LandingPage from './LandingPage'
+import Signup from './Signup'
 
 
-export { LandingPage }
+export { LandingPage , Signup }

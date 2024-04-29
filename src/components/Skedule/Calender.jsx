@@ -18,8 +18,19 @@ export default function Calender() {
         </div>
       </div>
       <div className="border-b-[1px] mt-5 border-blue-200"></div>
-      <div className="grid justify-center grid-cols-6 my-6 place-items-center ">
-        <p className="px-5 py-3 rounded-xl bg-slate-100">1</p>
+      <div>
+        <ul className="flex items-center gap-5 mx-3 mt-5">
+          <li className="font-semibold">Sun</li>
+          <li className="font-semibold">Mon</li>
+          <li className="font-semibold">Tue</li>
+          <li className="font-semibold">Wed</li>
+          <li className="font-semibold">Thru</li>
+          <li className="font-semibold">Fri</li>
+          <li className="font-semibold">Sat</li>
+        </ul>
+      </div>
+      <div className="grid justify-center grid-cols-6 my-4 place-items-center ">
+        <p className="px-5 py-3 rounded-full bg-slate-100">1</p>
         <p className="font-semibold cursor-pointer">1</p>
         <p className="font-semibold cursor-pointer">1</p>
         <p className="font-semibold cursor-pointer">1</p>
@@ -28,20 +39,22 @@ export default function Calender() {
         <p className="font-semibold cursor-pointer">1</p>
         <p className="font-semibold cursor-pointer">1</p>
         <p className="font-semibold cursor-pointer">1</p>
-        <p className="px-5 py-3 rounded-xl bg-slate-100">1</p>
+        <p className="px-5 py-3 rounded-full bg-slate-100">1</p>
         <p className="font-semibold cursor-pointer">1</p>
         <p className="font-semibold cursor-pointer">1</p>
         <p className="font-semibold cursor-pointer">1</p>
-        <p className="px-5 py-3 rounded-xl bg-slate-100">1</p>
+        <p className="px-5 py-3 rounded-full bg-slate-100">1</p>
+        <p className="px-5 py-3 font-semibold rounded-full cursor-pointer">1</p>
+        <p className="px-5 py-3 font-semibold rounded-full cursor-pointer">1</p>
+        <p className="px-5 py-3 font-semibold rounded-full cursor-pointe">1</p>
+        <p className="px-5 py-3 rounded-full bg-slate-100">1</p>
+        <p className="px-5 py-3 font-semibold rounded-full cursor-pointer">1</p>
         <p className="font-semibold cursor-pointer">1</p>
+        <p className="px-5 py-3 font-semibold text-white bg-blue-600 rounded-full cursor-pointer">
+          1
+        </p>
         <p className="font-semibold cursor-pointer">1</p>
-        <p className="font-semibold cursor-pointer">1</p>
-        <p className="px-5 py-3 rounded-xl bg-slate-100">1</p>
-        <p className="font-semibold cursor-pointer">1</p>
-        <p className="font-semibold cursor-pointer">1</p>
-        <p className="font-semibold cursor-pointer">1</p>
-        <p className="font-semibold cursor-pointer">1</p>
-        <p className="px-5 py-3 rounded-xl bg-slate-100">1</p>
+        <p className="px-5 py-3 rounded-full bg-slate-100">1</p>
         <p className="font-semibold cursor-pointer">1</p>
         <p className="font-semibold cursor-pointer">1</p>
         <p className="font-semibold cursor-pointer">1</p>

@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
+  const navigate = useNavigate();
+
   return (
     <div className="w-screen h-screen bg-gradient-to-r from-green-300 via-blue-500 -z-50 to-purple-600">
       <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 ">
@@ -12,7 +15,12 @@ export default function Signup() {
             </p>
           </div>
           <div className="border-b-[1px] w-full  border-slate-300 "></div>
-          <button className="bg-blue-500 text-white font-semibold px-24 py-3.5 text-sm rounded-md">
+          <button
+            onClick={() => {
+              navigate("/schedule");
+            }}
+            className="bg-blue-500 text-white font-semibold px-24 py-3.5 text-sm rounded-md"
+          >
             Sign in with Google
           </button>
         </div>

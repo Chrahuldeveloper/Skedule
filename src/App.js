@@ -1,5 +1,5 @@
 import React from "react";
-import { LandingPage, Signup } from "./pages/index";
+import { LandingPage, Schedule, Signup } from "./pages/index";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import AOS from "aos";
@@ -11,6 +11,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/schedule" element={<Schedule />} />
     </Routes>
   );
 }

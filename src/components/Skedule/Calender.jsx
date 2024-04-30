@@ -57,7 +57,7 @@ const Calendar = () => {
   };
 
   return (
-    <div className="bg-white p-6 border-[1px] border-gray+-200 max-w-sm shadow-md shadow-slate-50 mx-auto rounded-md mt-7">
+    <div className="bg-white px-6 border-[1px] border-gray+-200 max-w-sm shadow-md shadow-slate-50 mx-auto rounded-md my-16 py-6">
       <div className="flex items-center justify-between px-2">
         <h1 className="text-xl font-bold text-slate-800">
           {currentDate.toLocaleString("default", {

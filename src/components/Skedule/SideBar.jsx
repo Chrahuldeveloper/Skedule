@@ -4,13 +4,13 @@ import { RxCross2 } from "react-icons/rx";
 
 export default function SideBar() {
   return (
-    <aside className="bg-white w-[50vw] hidden lg:block lg:w-[17vw]  border-[1px] px-10 py-5 h-screen">
+    <aside className="bg-white w-[50vw] hidden lg:block lg:w-[17vw]  border-[1px] px-10 py-5 h-screen z-50 fixed left-0 top-0 bottom-0">
       <nav>
         <div className="flex justify-end lg:hidden">
           <RxCross2 size={25} className="cursor-pointer" />
         </div>
         <div>
-          <div className="flex flex-col items-center justify-center gap-3 mt-3">
+          <div className="flex flex-col items-center justify-center gap-3 mt-12">
             <img
               src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=300"
               className="object-cover w-32 h-32 duration-300 ease-in-out rounded-full cursor-pointer hover:brightness-75"

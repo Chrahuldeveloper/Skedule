@@ -2,69 +2,34 @@ import React from "react";
 
 export default function AppotimentsBoard() {
   return (
-    <div className="bg-white p-7 border-[1px] mx-3 my-7 rounded-md shadow-md shadow-slate-200 border-gray-100 lg:w-[70vw] w-[95vw] ">
+    <div className="bg-white p-5 my-6 border-[1px]  rounded-md shadow-md shadow-slate-200 border-gray-100 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-x-scroll h-[90vh] ">
       <div>
         <h1 className="text-2xl font-semibold text-slate-800">
           Your Appotiments
         </h1>
       </div>
-      <div className="my-7">
-        <div className="flex items-center gap-6 mt-5 border-b-[1px]  py-2">
-          <img
-            src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=300"
-            className="object-cover rounded-full h-14 w-14"
-            alt=""
-          />
-          <h1>Rahul</h1>
-          <p>20</p>
-          <p>5:30</p>
-          <p className="text-sm font-semibold cursor-pointer">Google Meet</p>
-        </div>
-        <div className="flex items-center gap-6 mt-5 border-b-[1px]  py-2">
-          <img
-            src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=300"
-            className="object-cover rounded-full h-14 w-14"
-            alt=""
-          />
-          <h1>Rahul</h1>
-          <p>20</p>
-          <p>5:30</p>
-          <p className="text-sm font-semibold cursor-pointer">Call</p>
-        </div>
-        <div className="flex items-center gap-6 mt-5 border-b-[1px] py-2">
-          <img
-            src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=300"
-            className="object-cover rounded-full h-14 w-14"
-            alt=""
-          />
-          <h1>Rahul</h1>
-          <p>20</p>
-          <p>5:30</p>
-          <p className="text-sm font-semibold cursor-pointer">Google Meet</p>
-        </div>
-        <div className="flex items-center gap-6 mt-5 border-b-[1px]  py-2">
-          <img
-            src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=300"
-            className="object-cover rounded-full h-14 w-14"
-            alt=""
-          />
-          <h1>Rahul</h1>
-          <p>20</p>
-          <p>5:30</p>
-          <p className="text-sm font-semibold cursor-pointer">Call</p>
-        </div>
-        <div className="flex items-center gap-6 mt-5 border-b-[1px] py-2">
-          <img
-            src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=300"
-            className="object-cover rounded-full h-14 w-14"
-            alt=""
-          />
-          <h1>Rahul</h1>
-          <p>20</p>
-          <p>5:30</p>
-          <p className="text-sm font-semibold cursor-pointer">Google Meet</p>
-        </div>
-      </div>
+
+      <table className="">
+        <thead className="">
+          <tr className="">
+          <th className="pt-10 pl-2 lg:pl-10">Pic</th>
+          <th className="pt-10 pl-10 lg:pl-32">User</th>
+          <th className="pt-10 pl-8 lg:pl-32">Date</th>
+          <th className="pt-10 pl-10 lg:pl-32">Time</th>
+          <th className="pt-10 pl-10 lg:pl-32">Day</th>
+          <th className="pt-10 pl-10 lg:pl-32">Day</th>
+          </tr>
+        </thead>
+
+        <tbody className="border-b-[1px] ">
+          <th className="pt-10 pl-2 lg:pl-10">Pic</th>
+          <th className="pt-10 pl-10 lg:pl-32">User</th>
+          <th className="pt-10 pl-8 lg:pl-32">Date</th>
+          <th className="pt-10 pl-10 lg:pl-32">Time</th>
+          <th className="pt-10 pl-10 lg:pl-32">Day</th>
+          <th className="pt-10 pl-10 lg:pl-32">Day</th>
+        </tbody>
+      </table>
     </div>
   );
 }

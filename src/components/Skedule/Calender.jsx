@@ -3,29 +3,11 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(null);
 
   const daysInMonth = (date) => {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
   };
-
-  const monthStart = new Date(
-    currentDate.getFullYear(),
-    currentDate.getMonth(),
-    1
-  );
-  const monthEnd = new Date(
-    currentDate.getFullYear(),
-    currentDate.getMonth(),
-    daysInMonth(currentDate)
-  );
-
-  console.log(monthStart);
-  console.log(monthEnd);
-  const startDate = new Date(monthStart);
-  const endDate = new Date(monthEnd);
-  const data = [];
-
-  console.log(startDate, endDate);
 
   const getMonthData = () => {
     const monthStart = new Date(
@@ -60,12 +42,18 @@ const Calendar = () => {
     setCurrentDate(
       new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1)
     );
+    setSelectedDate(null);
   };
 
   const goToNextMonth = () => {
     setCurrentDate(
       new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)
     );
+    setSelectedDate(null);
+  };
+
+  const handleDateClick = (date) => {
+    setSelectedDate(date);
   };
 
   return (
@@ -102,13 +90,20 @@ const Calendar = () => {
           <li className="font-semibold">Sat</li>
         </ul>
       </div>
-      <div className="grid justify-center grid-cols-7 my-4 place-items-center ">
+      <div className="grid justify-center grid-cols-7 my-4 place-items-center">
         {getMonthData().map((date, index) => (
           <p
             key={index}
             className={`px-5 py-3 rounded-full cursor-pointer ${
-              date ? "" : "opacity-0"
+              date && date.getMonth() === currentDate.getMonth()
+                ? date.getDate() === selectedDate?.getDate() &&
+                  date.getMonth() === selectedDate?.getMonth() &&
+                  date.getFullYear() === selectedDate?.getFullYear()
+                  ? "bg-blue-500 text-white"
+                  : ""
+                : "opacity-0"
             }`}
+            onClick={() => handleDateClick(date)}
           >
             {date ? date.getDate() : ""}
           </p>

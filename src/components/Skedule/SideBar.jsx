@@ -4,9 +4,9 @@ import { RxCross2 } from "react-icons/rx";
 
 export default function SideBar() {
   return (
-    <aside className="bg-white w-[50vw] border-[1px] px-10 py-5 h-screen">
+    <aside className="bg-white w-[50vw] hidden lg:block lg:w-[17vw]  border-[1px] px-10 py-5 h-screen">
       <nav>
-        <div className="flex justify-end">
+        <div className="flex justify-end lg:hidden">
           <RxCross2 size={25} className="cursor-pointer" />
         </div>
         <div>

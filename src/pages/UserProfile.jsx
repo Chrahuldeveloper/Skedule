@@ -23,6 +23,9 @@ export default function UserProfile() {
       </div>
       <div className="items-start md:flex">
         {isshow ? <SideBar setisshow={setisshow} /> : null}
+        <div className="hidden lg:block">
+        <SideBar setisshow={setisshow} />
+        </div>
         <AppotimentsBoard />
       </div>
     </div>

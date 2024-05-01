@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { AppotimentsBoard, SideBar } from "../components";
 import { CiMenuFries } from "react-icons/ci";
-
+import { Editimage } from "../components/index";
 export default function UserProfile() {
   const [isshow, setisshow] = useState(false);
+  const [isedit, setisedit] = useState(false);
+
   return (
     <div>
       <div className="-z-50  px-10 py-5 flex items-center justify-between lg:flex-none  border-b-[1px] border-gray-200 ">
@@ -22,12 +24,13 @@ export default function UserProfile() {
         </div>
       </div>
       <div className="items-start md:flex">
-        {isshow ? <SideBar setisshow={setisshow} /> : null}
+        {isshow ? <SideBar setisshow={setisshow} setisedit={setisedit}/> : null}
         <div className="hidden lg:block">
-          <SideBar setisshow={setisshow} />
+          <SideBar setisshow={setisshow} setisedit={setisedit} />
         </div>
         <AppotimentsBoard />
       </div>
+      {isedit && <Editimage setisedit={setisedit} />}
     </div>
   );
 }

@@ -23,7 +23,7 @@ export default function SideBar() {
           </div>
           <div className="border-b-[1px] border-blue-200 my-4"></div>
           <ul className="space-y-5 text-center mt-7">
-            <li className="px-8 py-2.5 font-semibold text-white bg-blue-500 rounded-full cursor-pointer gap-2  flex items-center justify-center fill-white">
+            <li className="px-8 py-2.5 font-semibold text-white bg-blue-600 rounded-lg cursor-pointer gap-2  flex items-center justify-center fill-white">
               <CiHome size={23} />
               <h1 className="text-sm">Dashboard</h1>
             </li>

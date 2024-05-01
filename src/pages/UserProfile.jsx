@@ -16,7 +16,7 @@ export default function UserProfile() {
             size={28}
             className="cursor-pointer lg:hidden"
           />
-          <button className="hidden py-2 text-sm font-semibold text-white duration-300 ease-in bg-blue-600 rounded-md md:block px-9 hover:brightness-90">
+          <button className="hidden py-2 text-sm font-semibold text-white duration-300 ease-in bg-blue-600 rounded-md cursor-pointer md:block px-9 hover:brightness-90">
             Logout
           </button>
         </div>
@@ -24,7 +24,7 @@ export default function UserProfile() {
       <div className="items-start md:flex">
         {isshow ? <SideBar setisshow={setisshow} /> : null}
         <div className="hidden lg:block">
-        <SideBar setisshow={setisshow} />
+          <SideBar setisshow={setisshow} />
         </div>
         <AppotimentsBoard />
       </div>

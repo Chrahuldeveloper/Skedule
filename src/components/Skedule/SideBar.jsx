@@ -16,7 +16,9 @@ export default function SideBar({ setisshow, setisedit }) {
                 size={25}
                 className="cursor-pointer lg:hidden"
               />
-              <h1 className="hidden mt-3 text-xl font-semibold lg:block">Skedule</h1>
+              <h1 className="hidden mt-3 text-xl font-semibold lg:block">
+                Skedule
+              </h1>
             </div>
             <div>
               <div className="flex flex-col items-center justify-center gap-3 mt-5 lg:mt-16">

@@ -1,8 +1,24 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import { auth } from "../Firebase";
 
 export default function Signup() {
   const navigate = useNavigate();
+
+  const provider = new GoogleAuthProvider();
+  
+  const GoogleSignIn = async () => {
+    try {
+      const res = await signInWithPopup(auth, provider);
+      navigate("/schedule");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="w-screen h-screen bg-gradient-to-r from-green-300 via-blue-500 -z-50 to-purple-600">
@@ -16,9 +32,7 @@ export default function Signup() {
           </div>
           <div className="border-b-[1px] w-full  border-slate-300 "></div>
           <button
-            onClick={() => {
-              navigate("/schedule");
-            }}
+            onClick={GoogleSignIn}
             className="bg-blue-500 text-white font-semibold px-24 py-3.5 text-sm rounded-md"
           >
             Sign in with Google

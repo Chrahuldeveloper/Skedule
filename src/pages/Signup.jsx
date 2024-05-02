@@ -1,8 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../Firebase";
+import { auth, db } from "../Firebase";
 import logo from "../images/logo1.png";
+import { doc, setDoc } from "firebase/firestore";
+
 export default function Signup() {
   const navigate = useNavigate();
 
@@ -11,7 +13,12 @@ export default function Signup() {
   const GoogleSignIn = async () => {
     try {
       const res = await signInWithPopup(auth, provider);
-      console.log(res.user);
+      await setDoc(doc(db, "USERS", res.user.uid), {
+        Name: res.user.displayName,
+        Email: res.user.email,
+        photo: res.user.photoURL,
+      });
+      sessionStorage.setItem("jwt", res.user.uid);
       navigate("/schedule");
     } catch (error) {
       console.log(error);

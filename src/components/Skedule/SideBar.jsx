@@ -2,10 +2,10 @@ import React from "react";
 import { CiHome } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
 
-export default function SideBar({ setisshow, setisedit }) {
+export default function SideBar({ setisshow, setisedit, user }) {
   return (
     <>
-      <div className="fixed inset-0 z-50 flex items-center justify-center h-full bg-black bg-opacity-75 backdrop-blur-md lg:bg-opacity-0 lg:backdrop-blur-0">
+      <div className="fixed inset-0 -z-50 flex items-center justify-center h-full bg-black bg-opacity-75 backdrop-blur-md lg:bg-opacity-0 lg:backdrop-blur-0">
         <aside className="bg-white w-[60vw] lg:w-[17vw] border-[1px] px-10 py-5 h-screen z-50 fixed left-0 top-0 bottom-0">
           <nav>
             <div className="flex justify-end lg:justify-center">
@@ -27,15 +27,19 @@ export default function SideBar({ setisshow, setisedit }) {
                     setisedit(true);
                     setisshow(false);
                   }}
-                  src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=300"
+                  src={user?.photo}
                   className="object-cover w-32 h-32 duration-300 ease-in-out rounded-full cursor-pointer hover:brightness-75"
                   alt=""
                 />
                 <div className="space-y-1.5 text-center">
                   <h1 className="text-2xl font-semibold text-slate-800">
-                    Rahul
+                    {user?.Name}
                   </h1>
-                  <p className="text-sm">Coder</p>
+                  {user?.work ? (
+                    <p className="text-sm">{user?.work}</p>
+                  ) : (
+                    <p className="text-sm text-gray-500 ">Your Profession</p>
+                  )}
                 </div>
               </div>
               <div className="border-b-[1px] border-blue-200 my-4"></div>

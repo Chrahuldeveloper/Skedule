@@ -6,8 +6,10 @@ import Calender from "./Skedule/Calender";
 import SideBar from "./Skedule/SideBar";
 import AppotimentsBoard from "./Skedule/AppotimentsBoard";
 import Editimage from "./Skedule/Editimage";
+import Loader from "./Loader";
 
 export {
+  Loader,
   Editimage,
   Navbar,
   Subscription,

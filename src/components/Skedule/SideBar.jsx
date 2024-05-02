@@ -8,14 +8,15 @@ export default function SideBar({ setisshow, setisedit }) {
       <div className="fixed inset-0 z-50 flex items-center justify-center h-full bg-black bg-opacity-75 backdrop-blur-md lg:bg-opacity-0 lg:backdrop-blur-0">
         <aside className="bg-white w-[60vw] lg:w-[17vw] border-[1px] px-10 py-5 h-screen z-50 fixed left-0 top-0 bottom-0">
           <nav>
-            <div className="flex justify-end lg:hidden">
+            <div className="flex justify-end lg:justify-center">
               <RxCross2
                 onClick={() => {
                   setisshow(false);
                 }}
                 size={25}
-                className="cursor-pointer"
+                className="cursor-pointer lg:hidden"
               />
+              <h1 className="hidden mt-3 text-xl font-semibold lg:block">Skedule</h1>
             </div>
             <div>
               <div className="flex flex-col items-center justify-center gap-3 mt-5 lg:mt-16">

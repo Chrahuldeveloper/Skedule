@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { AppotimentsBoard, SideBar } from "../components";
 import { CiMenuFries } from "react-icons/ci";
 import { Editimage } from "../components/index";
+import { IoNotificationsOutline } from "react-icons/io5";
+
 export default function UserProfile() {
   const [isshow, setisshow] = useState(false);
   const [isedit, setisedit] = useState(false);
@@ -10,7 +12,8 @@ export default function UserProfile() {
     <div>
       <div className="-z-50  px-10 py-5 flex items-center justify-between lg:flex-none  border-b-[1px] border-gray-200 ">
         <h1 className="text-xl font-semibold">Skedule</h1>
-        <div className="flex justify-end gap-6">
+        <div className="flex items-center justify-end gap-6">
+          <IoNotificationsOutline size={25} cursor={"pointer"} />
           <CiMenuFries
             onClick={() => {
               setisshow(true);
@@ -24,7 +27,9 @@ export default function UserProfile() {
         </div>
       </div>
       <div className="items-start md:flex">
-        {isshow ? <SideBar setisshow={setisshow} setisedit={setisedit}/> : null}
+        {isshow ? (
+          <SideBar setisshow={setisshow} setisedit={setisedit} />
+        ) : null}
         <div className="hidden lg:block">
           <SideBar setisshow={setisshow} setisedit={setisedit} />
         </div>

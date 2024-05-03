@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+
 const firebaseConfig = {
   apiKey: "AIzaSyDmUpbp_KlNpzOPFXMSl-VDI5ulu3ZpkM0",
   authDomain: "skedule-ad781.firebaseapp.com",
@@ -14,4 +16,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
-export { auth, db };
+const storage = getStorage(app);
+
+export { auth, db, storage };

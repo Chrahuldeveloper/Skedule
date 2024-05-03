@@ -1,11 +1,63 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
+import { db, storage } from "../../Firebase";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { doc, updateDoc } from "firebase/firestore";
 
-export default function Editimage({ setisedit, user }) {
+export default function Editimage({ setisedit, user, setisloading, setuser }) {
+  const jwt = sessionStorage.getItem("jwt");
+
   const [editdata, seteditdata] = useState({
+    photo: user.photo,
     Name: user.Name,
-    work: "",
+    work: user.work ? user.work : "",
   });
+
+  const [selectedImage, setSelectedImage] = useState(null);
+  const imageref = useRef(null);
+  const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const updateDetails = async () => {
+    try {
+      setisedit(false);
+      setisloading(true);
+      const docRef = doc(db, "USERS", jwt);
+      setuser(editdata);
+      await updateDoc(docRef, editdata);
+      setisloading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handlechange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedImage(URL.createObjectURL(file));
+      setUploading(true);
+      const imageRef = ref(storage, `profileimage/${file.name}`);
+      const uploadTask = uploadBytesResumable(imageRef, file);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {},
+        (error) => {
+          setError(error.message);
+          setUploading(false);
+        },
+        async () => {
+          try {
+            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+            seteditdata({ ...editdata, photo: downloadURL });
+            setUploading(false);
+          } catch (error) {
+            setError(error.message);
+            setUploading(false);
+          }
+        }
+      );
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center h-full bg-black bg-opacity-75 backdrop-blur-md">
@@ -20,11 +72,34 @@ export default function Editimage({ setisedit, user }) {
           />
         </div>
         <div className="flex flex-col space-y-5">
-          <img
-            src={user.photo}
-            className="object-cover w-32 h-32 mx-auto rounded-full cursor-pointer "
-            alt=""
+          <input
+            type="file"
+            ref={imageref}
+            accept="image/*"
+            className="hidden"
+            onChange={handlechange}
           />
+
+          {selectedImage && (
+            <img
+              src={selectedImage}
+              className="object-cover w-32 h-32 mx-auto rounded-full cursor-pointer"
+              alt=""
+              onClick={() => {
+                imageref.current.click();
+              }}
+            />
+          )}
+          {!selectedImage && (
+            <img
+              src={editdata.photo}
+              className="object-cover w-32 h-32 mx-auto rounded-full cursor-pointer"
+              alt=""
+              onClick={() => {
+                imageref.current.click();
+              }}
+            />
+          )}
           <input
             type="text"
             placeholder="Name"
@@ -43,8 +118,16 @@ export default function Editimage({ setisedit, user }) {
             }}
             className="border-[1px] border-gray-300 px-3 py-2 outline-none"
           />
-          <button className="py-3 text-sm font-semibold text-white duration-300 ease-in bg-blue-600 rounded-md cursor-pointer px-9 hover:brightness-90">
-            Save
+          {error && (
+            <p className="text-sm font-semibold text-center text-red-500">
+              {error}
+            </p>
+          )}
+          <button
+            onClick={updateDetails}
+            className="py-3 text-sm font-semibold text-white duration-300 ease-in bg-blue-600 rounded-md cursor-pointer px-9 hover:brightness-90"
+          >
+            {uploading ? <p>Uploading...</p> : "Save"}
           </button>
         </div>
       </div>

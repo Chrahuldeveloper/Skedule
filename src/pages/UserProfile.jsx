@@ -35,7 +35,7 @@ export default function UserProfile() {
       ) : (
         <>
           <div className="-z-50  px-10 py-5 flex items-center justify-between lg:flex-none  border-b-[1px] border-gray-200 ">
-            <h1 className="text-xl lg:opacity-0 font-semibold">Skedule</h1>
+            <h1 className="text-xl font-semibold lg:opacity-0">Skedule</h1>
             <div className="flex items-center justify-end gap-6">
               <IoNotificationsOutline size={25} cursor={"pointer"} />
               <CiMenuFries
@@ -70,7 +70,14 @@ export default function UserProfile() {
         </>
       )}
 
-      {isedit && <Editimage setisedit={setisedit} user={user} />}
+      {isedit && (
+        <Editimage
+          setisedit={setisedit}
+          user={user}
+          setisloading={setisloading}
+          setuser={setuser}
+        />
+      )}
     </div>
   );
 }

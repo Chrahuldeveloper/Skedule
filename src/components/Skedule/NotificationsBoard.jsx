@@ -1,0 +1,29 @@
+import React from "react";
+import { AiOutlineDelete } from "react-icons/ai";
+
+export default function NotificationsBoard() {
+  return (
+    <>
+      <div className="bg-white p-5 my-6 border-[1px] rounded-md shadow-md shadow-slate-200 border-gray-100 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh]  ">
+        <div>
+          <h1 className="text-2xl font-semibold text-slate-800">
+            Your Notifications
+          </h1>
+        </div>
+
+        <div className="px-5 space-y-5 my-7">
+          <div className=" border-[1px] p-6 max-w-3xl cursor-pointer rounded-lg flex items-center justify-between">
+            <div className="space-y-2">
+              <h1 className="text-lg font-semibold text-slate-600">Welcome</h1>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ex
+                sequi consequatur ut, amet et!
+              </p>
+            </div>
+            <AiOutlineDelete color="red" size="26" />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}

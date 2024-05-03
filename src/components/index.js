@@ -7,8 +7,10 @@ import SideBar from "./Skedule/SideBar";
 import AppotimentsBoard from "./Skedule/AppotimentsBoard";
 import Editimage from "./Skedule/Editimage";
 import Loader from "./Loader";
+import NotificationsBoard from "./Skedule/NotificationsBoard";
 
 export {
+  NotificationsBoard,
   Loader,
   Editimage,
   Navbar,

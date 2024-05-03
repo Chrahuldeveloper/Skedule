@@ -5,8 +5,8 @@ import { RxCross2 } from "react-icons/rx";
 export default function SideBar({ setisshow, setisedit, user }) {
   return (
     <>
-      <div className="fixed inset-0 flex items-center justify-center h-full bg-black bg-opacity-75 backdrop-blur-md lg:bg-opacity-0 lg:backdrop-blur-0 -z-50">
-        <aside className="bg-white w-[60vw] lg:w-[17vw] border-[1px] px-10 py-5 h-screen  fixed left-0 top-0 bottom-0">
+      <div className="fixed inset-0 flex items-center justify-center h-full bg-black bg-opacity-75 backdrop-blur-md lg:bg-opacity-0 lg:backdrop-blur-0 ">
+        <aside className="bg-white w-[60vw] lg:w-[17vw] border-[1px] px-10 py-5 h-screen  fixed left-0 top-0 bottom-0 -z-40">
           <nav>
             <div className="flex justify-end lg:justify-center">
               <RxCross2
@@ -16,7 +16,7 @@ export default function SideBar({ setisshow, setisedit, user }) {
                 size={25}
                 className="cursor-pointer lg:hidden"
               />
-              <h1 className="hidden mt-3 text-xl font-semibold lg:block">
+              <h1 className="hidden mt-3 text-2xl font-semibold lg:block">
                 Skedule
               </h1>
             </div>
@@ -32,13 +32,13 @@ export default function SideBar({ setisshow, setisedit, user }) {
                   alt=""
                 />
                 <div className="space-y-1.5 text-center">
-                  <h1 className="text-2xl font-semibold text-slate-800">
+                  <h1 className="text-2xl font-semibold lg:hidden text-slate-800">
                     {user?.Name}
                   </h1>
                   {user?.work ? (
-                    <p className="text-sm">{user?.work}</p>
+                    <p className="text-sm font-bold">{user?.work}</p>
                   ) : (
-                    <p className="text-sm text-gray-500 ">Your Profession</p>
+                    <p className="font-bold text-gray-500">Your Profession</p>
                   )}
                 </div>
               </div>

@@ -1,8 +1,16 @@
 import React from "react";
 import { CiHome } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
+import { useNavigate } from "react-router-dom";
 
 export default function SideBar({ setisshow, setisedit, user }) {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    sessionStorage.setItem("logout", true);
+    navigate("/signup");
+  };
+
   return (
     <>
       <div className="fixed inset-0 flex items-center justify-center h-full bg-black bg-opacity-75 backdrop-blur-md lg:bg-opacity-0 lg:backdrop-blur-0 ">
@@ -44,25 +52,29 @@ export default function SideBar({ setisshow, setisedit, user }) {
               </div>
               <div className="border-b-[1px] border-blue-200 my-4"></div>
               <ul className="space-y-5 text-center mt-7">
-                <li className="px-8 py-2.5 font-semibold text-white bg-blue-600 rounded-lg cursor-pointer gap-2  flex items-center justify-center fill-white">
+                <li className="px-6 py-2.5 font-semibold text-white bg-blue-600 rounded-lg cursor-pointer gap-4  flex items-center  fill-white">
                   <CiHome size={23} />
                   <h1 className="text-sm">Dashboard</h1>
                 </li>
-                <li className="px-8 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center justify-center gap-2">
+                <li className="px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg">
                   <CiHome size={23} />
-                  <h1 className="text-sm">Dashboard</h1>
+                  <h1 className="text-sm">Schedule</h1>
                 </li>
-                <li className="px-8 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center justify-center gap-2">
+
+                <li className="px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg">
                   <CiHome size={23} />
-                  <h1 className="text-sm">Dashboard</h1>
+                  <h1 className="text-sm">Subscription</h1>
                 </li>
-                <li className="px-8 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center justify-center gap-2">
+                <li className="px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg">
                   <CiHome size={23} />
-                  <h1 className="text-sm">Dashboard</h1>
+                  <h1 className="text-sm">Help</h1>
                 </li>
-                <li className="px-8 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center justify-center gap-2">
+                <li
+                  onClick={handleLogout}
+                  className="px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg"
+                >
                   <CiHome size={23} />
-                  <h1 className="text-sm">Dashboard</h1>
+                  <h1 className="text-sm">Logout</h1>
                 </li>
               </ul>
             </div>

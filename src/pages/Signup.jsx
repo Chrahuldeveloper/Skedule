@@ -12,14 +12,19 @@ export default function Signup() {
 
   const GoogleSignIn = async () => {
     try {
-      const res = await signInWithPopup(auth, provider);
-      await setDoc(doc(db, "USERS", res.user.uid), {
-        Name: res.user.displayName,
-        Email: res.user.email,
-        photo: res.user.photoURL,
-      });
-      sessionStorage.setItem("jwt", res.user.uid);
-      navigate("/schedule");
+      if (sessionStorage.getItem("logout")) {
+        sessionStorage.setItem("logout", false);
+        navigate("/schedule");
+      } else {
+        const res = await signInWithPopup(auth, provider);
+        await setDoc(doc(db, "USERS", res.user.uid), {
+          Name: res.user.displayName,
+          Email: res.user.email,
+          photo: res.user.photoURL,
+        });
+        sessionStorage.setItem("jwt", res.user.uid);
+        navigate("/schedule");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +46,7 @@ export default function Signup() {
             className=" text-black font-semibold px-20 gap-3.5 py-3.5 bg-gray-200 text-sm rounded-md flex items-center "
           >
             <img src={logo} className="w-7 h-7" alt="" />
-            <h1 className="font-semibold text-xs">Sign in with Google</h1>
+            <h1 className="text-xs font-semibold">Sign in with Google</h1>
           </button>
         </div>
       </div>

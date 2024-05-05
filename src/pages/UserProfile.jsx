@@ -18,9 +18,8 @@ export default function UserProfile() {
   const [isedit, setisedit] = useState(false);
   const [isloading, setisloading] = useState(false);
   const jwt = sessionStorage.getItem("jwt");
-  const [notifications, setnotifications] = useState(false);
   const [user, setuser] = useState();
-  const [isschedule, setisschedule] = useState(false);
+  const [cat, setcat] = useState("Dashboard");
 
   const fetchUser = useCallback(async () => {
     try {
@@ -55,7 +54,7 @@ export default function UserProfile() {
                 </div>
                 <IoNotificationsOutline
                   onClick={() => {
-                    setnotifications(true);
+                    setcat("Notifications");
                   }}
                   size={25}
                   cursor={"pointer"}
@@ -76,19 +75,20 @@ export default function UserProfile() {
             <div className="items-start md:flex">
               {isshow ? (
                 <SideBar
+                  setcat={setcat}
                   setisshow={setisshow}
                   setisedit={setisedit}
                   user={user}
-                  setisschedule={setisschedule}
+                  cat={cat}
                 />
               ) : null}
-              {isschedule ? (
+              {cat === "Schedule" ? (
                 <CalenderBoard />
-              ) : notifications ? (
+              ) : cat === "Notifications" ? (
                 <NotificationsBoard user={user} />
-              ) : (
+              ) : cat === "Dashboard" ? (
                 <AppotimentsBoard user={user} />
-              )}
+              ) : null}
             </div>
           </>
         )}
@@ -105,11 +105,11 @@ export default function UserProfile() {
 
       <div className="hidden lg:block">
         <SideBar
+          setcat={setcat}
           setisshow={setisshow}
           setisedit={setisedit}
           user={user}
-          setnotifications={setnotifications}
-          setisschedule={setisschedule}
+          cat={cat}
         />
       </div>
     </>

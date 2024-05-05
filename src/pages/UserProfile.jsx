@@ -98,7 +98,12 @@ export default function UserProfile() {
       </div>
 
       <div className="hidden lg:block">
-        <SideBar setisshow={setisshow} setisedit={setisedit} user={user} />
+        <SideBar
+          setisshow={setisshow}
+          setisedit={setisedit}
+          user={user}
+          setnotifications={setnotifications}
+        />
       </div>
     </>
   );

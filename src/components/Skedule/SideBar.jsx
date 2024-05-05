@@ -1,10 +1,18 @@
 import React from "react";
+import { useState } from "react";
 import { CiHome } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 
-export default function SideBar({ setisshow, setisedit, user }) {
+export default function SideBar({
+  setisshow,
+  setisedit,
+  user,
+  setnotifications,
+}) {
   const navigate = useNavigate();
+
+  const [cat, setcat] = useState("Dashboard");
 
   const handleLogout = () => {
     sessionStorage.setItem("logout", true);
@@ -52,26 +60,68 @@ export default function SideBar({ setisshow, setisedit, user }) {
               </div>
               <div className="border-b-[1px] border-blue-200 my-4"></div>
               <ul className="space-y-5 text-center mt-7">
-                <li className="px-6 py-2.5 font-semibold text-white bg-blue-600 rounded-lg cursor-pointer gap-4  flex items-center  fill-white">
+                <li
+                  onClick={() => {
+                    setcat("Dashboard");
+                    setnotifications(false);
+                  }}
+                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg  ${
+                    cat === "Dashboard"
+                      ? "bg-blue-600 text-white rounded-lg"
+                      : null
+                  }`}
+                >
                   <CiHome size={23} />
                   <h1 className="text-sm">Dashboard</h1>
                 </li>
-                <li className="px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg">
+                <li
+                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg  ${
+                    cat === "Schedule"
+                      ? "bg-blue-600 text-white rounded-lg"
+                      : null
+                  }`}
+                >
                   <CiHome size={23} />
                   <h1 className="text-sm">Schedule</h1>
                 </li>
 
-                <li className="px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg">
+                <li
+                  onClick={() => {
+                    setcat("Subscription");
+                  }}
+                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg  ${
+                    cat === "Subscription"
+                      ? "bg-blue-600 text-white rounded-lg"
+                      : null
+                  }`}
+                >
                   <CiHome size={23} />
                   <h1 className="text-sm">Subscription</h1>
                 </li>
-                <li className="px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg">
+                <li
+                  onClick={() => {
+                    setcat("Notifications");
+                    setnotifications(true);
+                  }}
+                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg  ${
+                    cat === "Notifications"
+                      ? "bg-blue-600 text-white rounded-lg"
+                      : null
+                  }`}
+                >
                   <CiHome size={23} />
-                  <h1 className="text-sm">Help</h1>
+                  <h1 className="text-sm">Notifications</h1>
                 </li>
                 <li
-                  onClick={handleLogout}
-                  className="px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg"
+                  onClick={() => {
+                    setcat("Logout");
+                    handleLogout();
+                  }}
+                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg  ${
+                    cat === "Logout"
+                      ? "bg-blue-600 text-white rounded-lg"
+                      : null
+                  }`}
                 >
                   <CiHome size={23} />
                   <h1 className="text-sm">Logout</h1>

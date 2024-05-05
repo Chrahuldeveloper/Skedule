@@ -8,8 +8,12 @@ import AppotimentsBoard from "./Skedule/AppotimentsBoard";
 import Editimage from "./Skedule/Editimage";
 import Loader from "./Loader";
 import NotificationsBoard from "./Skedule/NotificationsBoard";
+import CalenderBoard from "./Skedule/CalenderBoard";
+import ScheduleModel from "./Skedule/ScheduleModel";
 
 export {
+  ScheduleModel,
+  CalenderBoard,
   NotificationsBoard,
   Loader,
   Editimage,

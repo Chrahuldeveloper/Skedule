@@ -11,6 +11,7 @@ import { IoNotificationsOutline } from "react-icons/io5";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../Firebase";
 import { CgProfile } from "react-icons/cg";
+import { CalenderBoard } from "../components/index";
 
 export default function UserProfile() {
   const [isshow, setisshow] = useState(false);
@@ -19,6 +20,7 @@ export default function UserProfile() {
   const jwt = sessionStorage.getItem("jwt");
   const [notifications, setnotifications] = useState(false);
   const [user, setuser] = useState();
+  const [isschedule, setisschedule] = useState(false);
 
   const fetchUser = useCallback(async () => {
     try {
@@ -34,6 +36,7 @@ export default function UserProfile() {
   useEffect(() => {
     fetchUser();
   }, [fetchUser]);
+
   return (
     <>
       <div>
@@ -76,9 +79,12 @@ export default function UserProfile() {
                   setisshow={setisshow}
                   setisedit={setisedit}
                   user={user}
+                  setisschedule={setisschedule}
                 />
               ) : null}
-              {notifications ? (
+              {isschedule ? (
+                <CalenderBoard />
+              ) : notifications ? (
                 <NotificationsBoard user={user} />
               ) : (
                 <AppotimentsBoard user={user} />
@@ -103,6 +109,7 @@ export default function UserProfile() {
           setisedit={setisedit}
           user={user}
           setnotifications={setnotifications}
+          setisschedule={setisschedule}
         />
       </div>
     </>

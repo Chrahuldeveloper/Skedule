@@ -9,6 +9,8 @@ export default function SideBar({
   setisedit,
   user,
   setnotifications,
+  setisschedule
+
 }) {
   const navigate = useNavigate();
 
@@ -75,6 +77,9 @@ export default function SideBar({
                   <h1 className="text-sm">Dashboard</h1>
                 </li>
                 <li
+                onClick={()=>{
+                  setisschedule(true)
+                }}
                   className={`px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg  ${
                     cat === "Schedule"
                       ? "bg-blue-600 text-white rounded-lg"

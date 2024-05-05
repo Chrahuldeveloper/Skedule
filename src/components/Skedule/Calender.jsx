@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
-const Calendar = () => {
+const Calendar = ({ user, setispopup }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
+  const jwt = sessionStorage.getItem("jwt");
+
+  const appointmentURL = (jwt, user) => {
+    const userURL = new URL(
+      `https://${window.location.hostname}/${jwt}/${user}`
+    );
+    console.log(userURL.href);
+  };
 
   const daysInMonth = (date) => {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
@@ -57,7 +65,7 @@ const Calendar = () => {
   };
 
   return (
-    <div className="bg-white px-6 border-[1px] border-gray+-200 max-w-sm shadow-md shadow-slate-50 mx-auto rounded-md my-16 py-6">
+    <div className="bg-white px-6 border-[1px] border-gray+-200 max-w-sm shadow-md shadow-slate-50 mx-auto rounded-md my-16 py-6 z-50">
       <div className="flex items-center justify-between px-2">
         <h1 className="text-xl font-bold text-slate-800">
           {currentDate.toLocaleString("default", {
@@ -103,7 +111,11 @@ const Calendar = () => {
                   : ""
                 : "opacity-0"
             }`}
-            onClick={() => handleDateClick(date)}
+            onClick={() => {
+              handleDateClick(date);
+              appointmentURL(jwt, user.Name);
+              setispopup(true);
+            }}
           >
             {date ? date.getDate() : ""}
           </p>

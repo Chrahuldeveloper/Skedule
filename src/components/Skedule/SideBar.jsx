@@ -3,7 +3,7 @@ import { CiHome } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 
-export default function SideBar({ setcat,setisshow, setisedit, user, cat }) {
+export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -51,7 +51,7 @@ export default function SideBar({ setcat,setisshow, setisedit, user, cat }) {
                 </div>
               </div>
               <div className="border-b-[1px] border-blue-200 my-4"></div>
-              <ul className="space-y-5 text-center mt-7">
+              <ul className="space-y-2.5 text-center mt-7">
                 <li
                   onClick={() => {
                     setcat("Dashboard");
@@ -90,6 +90,19 @@ export default function SideBar({ setcat,setisshow, setisedit, user, cat }) {
                 >
                   <CiHome size={23} />
                   <h1 className="text-sm">Subscription</h1>
+                </li>
+                <li
+                  onClick={() => {
+                    setcat("Appotiments");
+                  }}
+                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg  ${
+                    cat === "Appotiments"
+                      ? "bg-blue-600 text-white rounded-lg"
+                      : null
+                  }`}
+                >
+                <CiHome size={23} />
+                  <h1 className="text-sm">Appotiments</h1>
                 </li>
                 <li
                   onClick={() => {

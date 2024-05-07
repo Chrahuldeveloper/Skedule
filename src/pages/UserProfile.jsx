@@ -12,6 +12,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../Firebase";
 import { CgProfile } from "react-icons/cg";
 import { CalenderBoard } from "../components/index";
+import Analytics from "../components/Skedule/Analytics";
 
 export default function UserProfile() {
   const [isshow, setisshow] = useState(false);
@@ -72,6 +73,7 @@ export default function UserProfile() {
                 </button>
               </div>
             </div>
+            <Analytics />
             <div className="items-start md:flex">
               {isshow ? (
                 <SideBar

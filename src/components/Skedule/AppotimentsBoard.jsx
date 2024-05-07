@@ -3,7 +3,7 @@ import React from "react";
 export default function AppotimentsBoard() {
   return (
     <>
-      <div className="bg-white p-5 my-6 border-[1px] rounded-md shadow-md shadow-slate-200 border-gray-100 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh]  z-50">
+      <div className="bg-white p-5 my-6 border-[1.2px] rounded-md   border-gray-200 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh]  z-50">
         <div>
           <h1 className="text-2xl font-semibold text-slate-800">
             Your Appotiments

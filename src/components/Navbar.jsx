@@ -29,7 +29,7 @@ export default function Navbar() {
           </li>
 
           <Link to="/signup">
-            <li className="px-7 text-white duration-500 ease-in-out bg-blue-600 cursor-pointer py-1.5 rounded-lg hover:brightness-75">
+            <li className="px-7 text-white duration-500 ease-in-out bg-violet-600 rounded-full cursor-pointer py-1.5  hover:brightness-75">
               Signup
             </li>
           </Link>

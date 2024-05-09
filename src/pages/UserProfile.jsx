@@ -38,7 +38,7 @@ export default function UserProfile() {
   }, [fetchUser]);
 
   return (
-    <>
+    <div className="w-screen h-screen bg-[#06070b]">
       <div>
         {isloading ? (
           <Loader />
@@ -48,10 +48,10 @@ export default function UserProfile() {
               <h1 className="text-xl font-semibold lg:opacity-0">Skedule</h1>
               <div className="flex items-center justify-end gap-6 ">
                 <div className="flex items-center gap-4">
-                  <h1 className="hidden font-semibold lg:block text-slate-800">
+                  <h1 className="hidden font-semibold lg:block text-slate-300">
                     {user?.Name}
                   </h1>
-                  <CgProfile className="hidden lg:block" size={30} />
+                  <CgProfile className="hidden lg:block" color="#cbd5e1" size={30} />
                 </div>
                 <IoNotificationsOutline
                   onClick={() => {
@@ -60,6 +60,7 @@ export default function UserProfile() {
                   size={25}
                   cursor={"pointer"}
                   className="lg:hidden"
+                  color="#cbd5e1"
                 />
                 <CiMenuFries
                   onClick={() => {
@@ -67,13 +68,13 @@ export default function UserProfile() {
                   }}
                   size={28}
                   className="cursor-pointer lg:hidden"
+                  color="#cbd5e1"
                 />
                 <button className="hidden py-2 text-sm font-semibold text-white duration-300 ease-in bg-blue-600 rounded-md cursor-pointer px-9 hover:brightness-90">
                   Logout
                 </button>
               </div>
             </div>
-            <Analytics />
             <div className="items-start md:flex">
               {isshow ? (
                 <SideBar
@@ -114,6 +115,6 @@ export default function UserProfile() {
           cat={cat}
         />
       </div>
-    </>
+    </div>
   );
 }

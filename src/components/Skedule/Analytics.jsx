@@ -18,7 +18,7 @@ export default function Analytics() {
         {data.map((item, i) => {
           return (
             <React.Fragment key={i}>
-              <div className="lg:w-[25vw]  p-5 space-y-3 border-[1px] border-gray-300 text-center rounded-md shadow-sm shadow-gray-200">
+              <div className="lg:w-[25vw]  p-5 space-y-3 border-[1px] border-gray-300 text-center rounded-md shadow-sm shadow-gray-200">   
                 <h1 className="text-lg font-semibold text-slate-700">
                   {item.Tittle}
                 </h1>

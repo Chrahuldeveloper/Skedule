@@ -14,7 +14,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
   return (
     <>
       <div className="fixed inset-0 flex items-center justify-center h-full bg-black bg-opacity-75 backdrop-blur-md lg:bg-opacity-0 lg:backdrop-blur-0 ">
-        <aside className="bg-white w-[60vw] lg:w-[17vw] border-[1px] px-10 py-5 h-screen  fixed left-0 top-0 bottom-0 -z-40">
+        <aside className="bg-zinc-900 w-[60vw] lg:w-[17vw] border-r-[1px] border-zinc-800 px-10 py-5 h-screen  fixed left-0 top-0 bottom-0 -z-40">
           <nav>
             <div className="flex justify-end lg:justify-center">
               <RxCross2
@@ -22,9 +22,10 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                   setisshow(false);
                 }}
                 size={25}
+                color="#cbd5e1"
                 className="cursor-pointer lg:hidden"
               />
-              <h1 className="hidden mt-3 text-2xl font-semibold lg:block">
+              <h1 className="hidden mt-3 text-2xl font-semibold lg:block text-slate-300">
                 Skedule
               </h1>
             </div>
@@ -36,7 +37,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                     setisshow(false);
                   }}
                   src={user?.photo}
-                  className="object-cover w-32 h-32 duration-300 ease-in-out rounded-full cursor-pointer hover:brightness-75"
+                  className="object-cover w-32 h-32 duration-300 ease-in-out rounded-full cursor-pointer hover:brightness-75 border-zinc-800 border-[1px]"
                   alt=""
                 />
                 <div className="space-y-1.5 text-center">
@@ -46,7 +47,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                   {user?.work ? (
                     <p className="text-sm font-bold">{user?.work}</p>
                   ) : (
-                    <p className="font-bold text-gray-500">Your Profession</p>
+                    <p className="font-bold text-gray-300">Your Profession</p>
                   )}
                 </div>
               </div>
@@ -56,9 +57,9 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                   onClick={() => {
                     setcat("Dashboard");
                   }}
-                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg  ${
+                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-lg  ${
                     cat === "Dashboard"
-                      ? "bg-blue-600 text-white rounded-lg"
+                      ? "bg-violet-600 text-white rounded-full"
                       : null
                   }`}
                 >
@@ -69,9 +70,9 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                   onClick={() => {
                     setcat("Schedule");
                   }}
-                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg  ${
+                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-full  ${
                     cat === "Schedule"
-                      ? "bg-blue-600 text-white rounded-lg"
+                      ? "bg-violet-600 text-white rounded-full"
                       : null
                   }`}
                 >
@@ -82,9 +83,9 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                   onClick={() => {
                     setcat("Subscription");
                   }}
-                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg  ${
+                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-full  ${
                     cat === "Subscription"
-                      ? "bg-blue-600 text-white rounded-lg"
+                      ? "bg-violet-600 text-white rounded-full"
                       : null
                   }`}
                 >
@@ -95,22 +96,22 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                   onClick={() => {
                     setcat("Appotiments");
                   }}
-                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg  ${
+                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-full  ${
                     cat === "Appotiments"
-                      ? "bg-blue-600 text-white rounded-lg"
+                      ? "bg-violet-600 text-white rounded-full"
                       : null
                   }`}
                 >
-                <CiHome size={23} />
+                  <CiHome size={23} />
                   <h1 className="text-sm">Appotiments</h1>
                 </li>
                 <li
                   onClick={() => {
                     setcat("Notifications");
                   }}
-                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg  ${
+                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-full  ${
                     cat === "Notifications"
-                      ? "bg-blue-600 text-white rounded-lg"
+                      ? "bg-violet-600 text-white rounded-full"
                       : null
                   }`}
                 >
@@ -122,9 +123,9 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                     setcat("Logout");
                     handleLogout();
                   }}
-                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-500 font-semibold flex items-center  gap-4 hover:text-white hover:bg-blue-600 duration-300 ease-in-out hover:rounded-lg  ${
+                  className={`px-6 py-2.5 cursor-pointer text-sm text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-full  ${
                     cat === "Logout"
-                      ? "bg-blue-600 text-white rounded-lg"
+                      ? "bg-blue-600 text-white rounded-full"
                       : null
                   }`}
                 >

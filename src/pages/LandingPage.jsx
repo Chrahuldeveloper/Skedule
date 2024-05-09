@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Footer, Model, Navbar, Subscription } from "../components";
+import { Footer, Model, Navbar } from "../components";
 import data from "../data/Features";
 import imagedata from "../data/Images";
 export default function LandingPage() {
@@ -25,7 +25,7 @@ export default function LandingPage() {
             Uncover insights in people, tech & operations to solve workforce &
             performance gaps
           </p>
-          <button className="text-sm text-white  px-14 py-2.5 font-semibold duration-300 ease-in bg-blue-600 rounded-md hover:brightness-90">
+          <button className="text-sm text-white  px-14 py-2.5 font-semibold duration-300 ease-in bg-violet-600 rounded-full hover:brightness-90">
             Get Started
           </button>
         </div>
@@ -127,7 +127,7 @@ export default function LandingPage() {
 
       {ismodel && <Model setismodel={setismodel} />}
 
-      <Subscription />
+      {/* <Subscription /> */}
 
       <div
         data-aos="fade-up"

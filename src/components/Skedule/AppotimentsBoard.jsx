@@ -3,16 +3,16 @@ import React from "react";
 export default function AppotimentsBoard() {
   return (
     <>
-      <div className="bg-white p-5 my-6 border-[1.2px] rounded-md   border-gray-200 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh]  z-50">
+      <div className="bg-zinc-900 p-5 my-6 border-[1.2px] rounded-md  border-zinc-800 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh]  z-50">
         <div>
-          <h1 className="text-2xl font-semibold text-slate-800">
+          <h1 className="text-2xl font-semibold text-slate-300">
             Your Appotiments
           </h1>
         </div>
 
         <table className="">
           <thead className="">
-            <tr className="">
+            <tr className="text-slate-300">
               <th className="pt-10 pl-2 lg:pl-4">Pic</th>
               <th className="pt-10 pl-5 lg:pl-24">User</th>
               <th className="pt-10 pl-5 lg:pl-24">Date</th>
@@ -28,7 +28,7 @@ export default function AppotimentsBoard() {
           ].map((i, index) => {
             return (
               <React.Fragment key={index}>
-                <tbody className="border-b-[1px] ">
+                <tbody className="border-b-[1px] border-zinc-700 text-slate-300">
                   <th className="pt-10 pl-2 lg:pl-4">
                     <img
                       className="w-10 h-10 rounded-full cursor-pointer"

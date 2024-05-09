@@ -61,13 +61,14 @@ export default function Editimage({ setisedit, user, setisloading, setuser }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center h-full bg-black bg-opacity-75 backdrop-blur-md">
-      <div className="bg-white w-[80vw] md:w-[60vw] lg:w-[40vw] xl:w-[30vw] p-5 rounded-md">
+      <div className="bg-zinc-900 w-[80vw] md:w-[60vw] lg:w-[40vw] xl:w-[30vw] p-5 rounded-md">
         <div className="flex justify-end ">
           <RxCross2
             onClick={() => {
               setisedit(false);
             }}
             size={25}
+            color="#cbd5e1"
             className="cursor-pointer"
           />
         </div>
@@ -76,14 +77,14 @@ export default function Editimage({ setisedit, user, setisloading, setuser }) {
             type="file"
             ref={imageref}
             accept="image/*"
-            className="hidden"
+            className="hidden "
             onChange={handlechange}
           />
 
           {selectedImage && (
             <img
               src={selectedImage}
-              className="object-cover w-32 h-32 mx-auto rounded-full cursor-pointer"
+              className="object-cover w-32 h-32 mx-auto rounded-full cursor-pointer border-[1px] border-zinc-800 bgtr"
               alt=""
               onClick={() => {
                 imageref.current.click();
@@ -107,7 +108,7 @@ export default function Editimage({ setisedit, user, setisloading, setuser }) {
             onChange={(e) => {
               seteditdata({ ...editdata, Name: e.target.value });
             }}
-            className="border-[1px] border-gray-300 px-3 py-2 outline-none"
+            className="border-[1px] border-zinc-800 px-3 py-2.5 outline-none bg-transparent text-slate-300"
           />
           <input
             type="text"
@@ -116,7 +117,7 @@ export default function Editimage({ setisedit, user, setisloading, setuser }) {
             onChange={(e) => {
               seteditdata({ ...editdata, work: e.target.value });
             }}
-            className="border-[1px] border-gray-300 px-3 py-2 outline-none"
+            className="border-[1px] border-zinc-800 px-3 py-2.5 outline-none bg-transparent text-slate-300"
           />
           {error && (
             <p className="text-sm font-semibold text-center text-red-500">
@@ -125,7 +126,7 @@ export default function Editimage({ setisedit, user, setisloading, setuser }) {
           )}
           <button
             onClick={updateDetails}
-            className="py-3 text-sm font-semibold text-white duration-300 ease-in bg-blue-600 rounded-md cursor-pointer px-9 hover:brightness-90"
+            className="py-3 text-sm font-semibold duration-300 ease-in rounded-full cursor-pointer text-slate-300 bg-violet-600 px-9 hover:brightness-90"
           >
             {uploading ? <p>Uploading...</p> : "Save"}
           </button>

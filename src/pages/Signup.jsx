@@ -31,19 +31,29 @@ export default function Signup() {
   };
 
   return (
-    <div className="w-screen h-screen bg-gradient-to-r from-green-300 via-blue-500 -z-50 to-purple-600">
+    <div className="w-screen h-screen bg-[#06070b]">
       <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 ">
-        <div className="z-50 bg-white rounded-md w-[80vw] sm:w-[60vw] md:w-[50vw] lg:w-[40vw] xl:w-[30vw] py-10 flex flex-col justify-center items-center gap-6 px-10 shadow-sm shadow-slate-200">
+        <div className="z-50 bg-zinc-900 rounded-md w-[80vw] sm:w-[60vw] md:w-[50vw] lg:w-[40vw] xl:w-[30vw] py-10 flex flex-col justify-center items-center gap-6 px-10 ">
           <div className="space-y-3 lg:text-center">
-            <h1 className="text-2xl font-semibold text-slate-800">Sign up </h1>
-            <p className="text-sm">
-              Lorem ipsum, dolor sit amet consectetur amet consectetur
-            </p>
+            <h1 className="text-2xl font-semibold text-slate-300">Sign up </h1>
           </div>
-          <div className="border-b-[1px] w-full  border-slate-300 "></div>
+          <input
+            type="text"
+            placeholder="Email"
+            className="border-[1px] border-zinc-800 px-3 py-2.5 outline-none bg-transparent text-slate-300 w-full"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="border-[1px] border-zinc-800 px-3 py-2.5 outline-none bg-transparent text-slate-300 w-full"
+          />
+          <div className="w-full mt-2 text-center text-slate-300">
+            ------------------------ OR -------------------------
+          </div>
+
           <button
             onClick={GoogleSignIn}
-            className=" text-black font-semibold px-20 gap-3.5 py-3.5 bg-gray-200 text-sm rounded-md flex items-center "
+            className="  font-semibold w-full justify-center gap-3.5 py-3.5 bg-violet-600 text-sm rounded-full flex items-center text-slate-300"
           >
             <img src={logo} className="w-7 h-7" alt="" />
             <h1 className="text-xs font-semibold">Sign in with Google</h1>

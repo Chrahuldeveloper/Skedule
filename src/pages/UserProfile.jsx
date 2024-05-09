@@ -51,7 +51,11 @@ export default function UserProfile() {
                   <h1 className="hidden font-semibold lg:block text-slate-300">
                     {user?.Name}
                   </h1>
-                  <CgProfile className="hidden lg:block" color="#cbd5e1" size={30} />
+                  <CgProfile
+                    className="hidden lg:block"
+                    color="#cbd5e1"
+                    size={30}
+                  />
                 </div>
                 <IoNotificationsOutline
                   onClick={() => {

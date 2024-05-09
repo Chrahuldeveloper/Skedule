@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
   const navigate = useNavigate();
 
+  const jwt = sessionStorage.getItem("jwt");
+
   const handleLogout = () => {
     sessionStorage.setItem("logout", true);
     navigate("/signup");
@@ -95,6 +97,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                 <li
                   onClick={() => {
                     setcat("Appotiments");
+                    navigate(`/user/${jwt}`);
                   }}
                   className={`px-6 py-2.5 cursor-pointer text-sm text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-full  ${
                     cat === "Appotiments"

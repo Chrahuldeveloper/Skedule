@@ -41,18 +41,18 @@ export default function Appoitments() {
           {data.map((i, idx) => {
             return (
               <React.Fragment key={idx}>
-                <div className="flex items-center justify-center gap-12 my-5 ">
+                <div className="flex items-center justify-center gap-12 my-6 border-b-[1px] border-zinc-700">
                   <div className="flex flex-col items-center justify-center gap-2.5 text-slate-300">
                     <h1 className="text-sm">{i.date}</h1>
                     <p>{i.day}</p>
                   </div>
-                  <div className="rounded-full bg-violet-300">
-                    <h1 className=" px-10 py-2.5 text-violet-800 text-sm font-semibold  cursor-pointer">
+                  <div className="duration-300 ease-in-out rounded-full bg-violet-300 hover:brightness-75">
+                    <h1 className=" px-10 py-2.5 text-violet-800 text-xs font-semibold  cursor-pointer">
                       {i.Time}
                     </h1>
                   </div>
-                  <div className="bg-red-400 rounded-full">
-                    <h1 className=" px-10 py-2.5 text-white font-semibold text-sm cursor-pointer">
+                  <div className="duration-300 ease-in-out bg-red-500 rounded-full hover:brightness-75">
+                    <h1 className=" px-10 py-2.5 text-white font-semibold text-xs cursor-pointer">
                       Delete
                     </h1>
                   </div>

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="items-center justify-between w-screen p-10 border-t-[1px] border-zinc-800 lg:flex">
+    <div className="items-center justify-between w-screen p-10 border-t-[1px] border-zinc-800 lg:flex bg-[#090a0e]">
       <div className="space-y-3 lg:pl-20 text-slate-300">
         <h1 className="text-2xl font-semibold lg:text-3xl">Skedule</h1>
         <p className="max-w-md">

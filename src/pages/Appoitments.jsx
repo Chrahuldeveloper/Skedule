@@ -20,13 +20,13 @@ export default function Appoitments() {
   ];
 
   return (
-    <div className="w-screen h-screen bg-[#06070b] overflow-y-scroll">
+    <div className="w-screen h-screen bg-[#08090d] overflow-y-scroll">
       <div className="px-3 py-8">
         <div className="p-6  border-[1px] border-zinc-800 bg-zinc-900  mx-auto rounded-md max-w-xl">
-          <div className="text-slate-300 space-y-1.5 flex flex-col items-center">
+          <div className="flex flex-col items-center space-y-1.5 text-slate-300">
             <img
               src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600"
-              className="object-cover rounded-full h-28 w-28"
+              className="object-cover duration-300 ease-in-out rounded-full cursor-pointer h-32 w-32 hover:brightness-75 border-[1px] border-zinc-800"
               alt=""
             />
             <h1 className="text-lg font-bold">Rahul</h1>
@@ -40,8 +40,8 @@ export default function Appoitments() {
               <React.Fragment key={idx}>
                 <div className="flex items-center justify-center gap-12 my-9 border-b-[1px] border-zinc-700">
                   <div className="flex flex-col items-center justify-center gap-2.5 text-slate-300">
-                    <h1 className="text-sm">{i.date}</h1>
-                    <p>{i.day}</p>
+                    <h1 className="text-xs">{i.date}</h1>
+                    <p className="text-sm">{i.day}</p>
                   </div>
                   <div className="duration-300 ease-in-out rounded-full bg-violet-300 hover:brightness-75">
                     <h1 className="px-4 py-2 text-xs font-semibold cursor-pointer text-violet-800">

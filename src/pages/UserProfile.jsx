@@ -38,7 +38,7 @@ export default function UserProfile() {
   }, [fetchUser]);
 
   return (
-    <div className="w-screen h-screen bg-[#06070b]">
+    <div className="w-screen h-screen bg-[#08090d]">
       <div>
         {isloading ? (
           <Loader />

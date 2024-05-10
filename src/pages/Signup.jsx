@@ -31,7 +31,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="w-screen h-screen bg-[#06070b]">
+    <div className="w-screen h-screen bg-[#08090d]">
       <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 ">
         <div className="z-50 bg-zinc-900 rounded-md w-[80vw] sm:w-[60vw] md:w-[50vw] lg:w-[40vw] xl:w-[30vw] py-10 flex flex-col justify-center items-center gap-6 px-10 ">
           <div className="space-y-3 lg:text-center">

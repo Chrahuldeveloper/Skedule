@@ -36,8 +36,8 @@ export default function Appoitments() {
 
   return (
     <div className="w-screen h-screen bg-[#06070b]">
-      <div className="py-8">
-        <div className="p-6  border-[1px] border-zinc-800 bg-zinc-900  mx-auto  rounded-md max-w-md ">
+      <div className="px-3 py-8">
+        <div className="p-6  border-[1px] border-zinc-800 bg-zinc-900  mx-auto  rounded-md  max-w-xl">
           {data.map((i, idx) => {
             return (
               <React.Fragment key={idx}>
@@ -51,9 +51,19 @@ export default function Appoitments() {
                       {i.Time}
                     </h1>
                   </div>
-                  <div className="duration-300 ease-in-out bg-red-500 rounded-full hover:brightness-75">
+                  {/* <div className="duration-300 ease-in-out bg-red-500 rounded-full hover:brightness-75">
                     <h1 className=" px-10 py-2.5 text-white font-semibold text-xs cursor-pointer">
                       Delete
+                    </h1>
+                  </div> */}
+                  <div>
+                    <h1 className="text-xs font-semibold cursor-pointer text-amber-500">
+                      Paid
+                    </h1>
+                  </div>
+                  <div className="duration-300 ease-in-out bg-purple-500 rounded-full hover:brightness-75">
+                    <h1 className=" px-10 py-2.5 text-white font-semibold text-xs cursor-pointer">
+                      Book
                     </h1>
                   </div>
                 </div>

@@ -8,7 +8,7 @@ import {
 import { auth, db } from "../Firebase";
 import logo from "../images/logo1.png";
 import { doc, setDoc } from "firebase/firestore";
-
+import sendNotification from "../features/Notification";
 export default function Signup() {
   const navigate = useNavigate();
 
@@ -18,6 +18,11 @@ export default function Signup() {
   });
 
   const provider = new GoogleAuthProvider();
+
+  const notification = {
+    Name: "Welcome to Skedule",
+    Para: "Schedule your Appointments and Manage them at one Place",
+  };
 
   const GoogleSignIn = async () => {
     try {
@@ -32,6 +37,7 @@ export default function Signup() {
           photo: res.user.photoURL,
         });
         sessionStorage.setItem("jwt", res.user.uid);
+        await sendNotification(sessionStorage.getItem("jwt"), notification);
         navigate("/schedule");
       }
     } catch (error) {
@@ -53,7 +59,6 @@ export default function Signup() {
         Email: createdUser.user.email,
         photo: createdUser.user.photoURL,
       });
-      console.log(createdUser.user);
       navigate("/schedule");
     } catch (error) {
       console.log(error);

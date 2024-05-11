@@ -1,7 +1,26 @@
-import React from "react";
+import { doc, getDoc } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
+import { db } from "../../Firebase";
 
-export default function NotificationsBoard({ user }) {
+export default function NotificationsBoard({ jwt }) {
+  const [userNotifications, setuserNotifications] = useState([]);
+
+  const getNotifications = async () => {
+    const docref = doc(db, "USERS", jwt);
+    const UserData = await getDoc(docref);
+    console.log(UserData.data().Notification || []);
+    setuserNotifications(UserData.data().Notification || []);
+    try {
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getNotifications();
+  }, []);
+
   return (
     <>
       <div className="bg-zinc-900 p-5 my-6 border-[1px] rounded-md  border-zinc-800 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh] z-50 ">
@@ -10,38 +29,25 @@ export default function NotificationsBoard({ user }) {
             Your Notifications
           </h1>
         </div>
-
-        <div className="px-5 space-y-5 my-7">
-          <div className=" border-[1px] border-zinc-800 p-6 max-w-3xl  cursor-pointer rounded-lg flex items-center justify-between">
-            <div className="space-y-2">
-              <h1 className="text-lg font-semibold text-slate-300">Welcome</h1>
-              <p className="max-w-xs text-sm text-slate-300">
-                {" "}
-                Lorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit
-                amet, consectetur
-              </p>
-            </div>
-            <AiOutlineDelete color="red" size="26" />
-          </div>
-        </div>
-        {/* {
-        user.Notifications.map((item,i)=>{
+        {userNotifications?.map((item, i) => {
           return (
             <>
-            <div className="px-5 space-y-5 my-7">
-          <div className=" border-[1px] p-6 max-w-3xl  cursor-pointer rounded-lg flex items-center justify-between">
-            <div className="space-y-2">
-              <h1 className="text-lg font-semibold text-slate-600">Welcome</h1>
-              <p className="max-w-xs text-sm"> Lorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consectetur</p>
-            </div>
-            <AiOutlineDelete color="red" size="26" />
-          </div>
-        </div>
+              <div className="px-5 space-y-5 my-7">
+                <div className=" border-[0.9px] p-6 max-w-3xl  cursor-pointer rounded-lg flex items-center justify-between border-zinc-800">
+                  <div className="space-y-2">
+                    <h1 className="text-lg font-semibold text-slate-300">
+                      {item.Name}
+                    </h1>
+                    <p className="max-w-xs text-sm text-slate-300">
+                      {item.Para}
+                    </p>
+                  </div>
+                  <AiOutlineDelete color="red" size="26" />
+                </div>
+              </div>
             </>
-          )
-        })
-       }
-         */}
+          );
+        })}
       </div>
     </>
   );

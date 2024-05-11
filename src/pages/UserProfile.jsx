@@ -92,7 +92,7 @@ export default function UserProfile() {
               {cat === "Schedule" ? (
                 <CalenderBoard />
               ) : cat === "Notifications" ? (
-                <NotificationsBoard user={user} />
+                <NotificationsBoard jwt={jwt} />
               ) : cat === "Dashboard" ? (
                 <AppotimentsBoard user={user} />
               ) : null}

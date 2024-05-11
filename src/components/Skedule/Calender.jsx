@@ -65,7 +65,7 @@ const Calendar = ({ user, setispopup }) => {
   };
 
   return (
-    <div className="bg-zinc-900 px-6 border-[1px] border-zinc-800 max-w-sm shadow-md  mx-auto rounded-md my-16 py-6 z-50">
+    <div className="bg-zinc-900 px-6 border-[1px] border-zinc-800 max-w-sm shadow-md mx-auto rounded-md my-16 py-6 z-50">
       <div className="flex items-center justify-between px-2">
         <h1 className="text-xl font-bold text-slate-300">
           {currentDate.toLocaleString("default", {
@@ -88,7 +88,6 @@ const Calendar = ({ user, setispopup }) => {
           />
         </div>
       </div>
-      {/* <div className="border-b-[1px] mt-5 "></div> */}
       <div>
         <ul className="flex items-center gap-5 mx-3 mt-5 text-slate-300">
           <li className="font-semibold">Sun</li>
@@ -104,12 +103,16 @@ const Calendar = ({ user, setispopup }) => {
         {getMonthData().map((date, index) => (
           <p
             key={index}
-            className={`px-5 py-3 rounded-full cursor-pointer text-slate-300 ${
+            className={`px-3 py-2 rounded-full cursor-pointer text-slate-300 ${
               date && date.getMonth() === currentDate.getMonth()
                 ? date.getDate() === selectedDate?.getDate() &&
                   date.getMonth() === selectedDate?.getMonth() &&
                   date.getFullYear() === selectedDate?.getFullYear()
-                  ? "bg-blue-500 text-white"
+                  ? ""
+                  : date.getDate() === new Date().getDate() &&
+                    date.getMonth() === new Date().getMonth() &&
+                    date.getFullYear() === new Date().getFullYear()
+                  ? "bg-violet-500 text-white"
                   : ""
                 : "opacity-0"
             }`}

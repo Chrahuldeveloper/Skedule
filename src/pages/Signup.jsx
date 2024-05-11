@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 import { auth, db } from "../Firebase";
 import logo from "../images/logo1.png";
 import { doc, setDoc } from "firebase/firestore";
 
 export default function Signup() {
   const navigate = useNavigate();
+
+  const [user, setuser] = useState({
+    email: "",
+    Pass: "",
+  });
 
   const provider = new GoogleAuthProvider();
 
@@ -30,6 +39,27 @@ export default function Signup() {
     }
   };
 
+  const emailPassSignIn = async () => {
+    try {
+      console.log(user.email);
+      console.log(user.Pass);
+      const createdUser = await createUserWithEmailAndPassword(
+        auth,
+        user.email,
+        user.Pass
+      );
+      await setDoc(doc(db, "USERS", createdUser.user.uid), {
+        Name: createdUser.user.displayName,
+        Email: createdUser.user.email,
+        photo: createdUser.user.photoURL,
+      });
+      console.log(createdUser.user);
+      navigate("/schedule");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="w-screen h-screen bg-[#08090d]">
       <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 ">
@@ -40,13 +70,27 @@ export default function Signup() {
           <input
             type="text"
             placeholder="Email"
+            value={user.email}
+            onChange={(e) => {
+              setuser({ ...user, email: e.target.value });
+            }}
             className="border-[1px] border-zinc-800 px-3 py-2.5 outline-none bg-transparent text-slate-300 w-full"
           />
           <input
             type="password"
             placeholder="Password"
+            value={user.Pass}
+            onChange={(e) => {
+              setuser({ ...user, Pass: e.target.value });
+            }}
             className="border-[1px] border-zinc-800 px-3 py-2.5 outline-none bg-transparent text-slate-300 w-full"
           />
+          <button
+            onClick={emailPassSignIn}
+            className="  font-semibold w-full justify-center gap-3.5 py-3.5 bg-violet-600 text-sm rounded-full flex items-center text-slate-300"
+          >
+            <h1 className="text-xs font-semibold">Sign in</h1>
+          </button>
           <div className="w-full mt-2 text-center text-slate-300">
             ------------------------ OR -------------------------
           </div>

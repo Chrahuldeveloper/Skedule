@@ -3,12 +3,14 @@ import { RxCross2 } from "react-icons/rx";
 import { db } from "../../Firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import Loader from "../Loader";
-export default function Schedule({ setispopup }) {
+export default function Schedule({ setispopup, day }) {
   const [schedule, setschedule] = useState({
     StartTime: "",
     EndTime: "",
     Slots: "",
     Link: "",
+    day: day.Day,
+    date: day.date,
   });
 
   const [isloading, setisloading] = useState(false);

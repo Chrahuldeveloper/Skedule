@@ -8,11 +8,11 @@ export default function NotificationsBoard({ jwt }) {
   const [userNotifications, setuserNotifications] = useState([]);
 
   const getNotifications = useCallback(async () => {
-    const docref = doc(db, "USERS", jwt);
-    const UserData = await getDoc(docref);
-    console.log(UserData.data().Notification || []);
-    setuserNotifications(UserData.data().Notification || []);
     try {
+      const docref = doc(db, "USERS", jwt);
+      const UserData = await getDoc(docref);
+      console.log(UserData.data().Notification || []);
+      setuserNotifications(UserData.data().Notification || []);
     } catch (error) {
       console.log(error);
     }

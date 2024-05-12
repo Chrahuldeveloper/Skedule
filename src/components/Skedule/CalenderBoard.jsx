@@ -37,7 +37,7 @@ export default function CalenderBoard() {
     <>
       {isloading ? <Loader /> : null}
       {ispopup ? (
-        <ScheduleModel setispopup={setispopup} setday={setday} />
+        <ScheduleModel setispopup={setispopup} day={day} />
       ) : (
         <Calendar
           user={user}

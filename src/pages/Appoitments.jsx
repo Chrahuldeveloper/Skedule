@@ -1,23 +1,24 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { db } from "../Firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 export default function Appoitments() {
-  const data = [
-    {
-      day: "Mon",
-      Time: "4:20-5:30",
-      date: "22/9/2024",
-    },
-    {
-      day: "Mon",
-      Time: "4:20-5:30",
-      date: "22/9/2024",
-    },
-    {
-      day: "Mon",
-      Time: "4:20-5:30",
-      date: "22/9/2024",
-    },
-  ];
+  const [userAppointements, setuserAppointements] = useState([]);
+
+  const jwt = sessionStorage.getItem("jwt");
+  const getuserAppointements = useCallback(async () => {
+    try {
+      const docref = doc(db, "USERS", jwt);
+      const UserData = await getDoc(docref);
+      setuserAppointements(UserData.data().Appointments || []);
+    } catch (error) {
+      console.log(error);
+    }
+  }, [jwt]);
+
+  useEffect(() => {
+    getuserAppointements();
+  }, [getuserAppointements]);
 
   return (
     <div className="w-screen h-screen bg-[#08090d] overflow-y-scroll">
@@ -35,7 +36,7 @@ export default function Appoitments() {
               fugit dolores deserunt animi. Odit, sapiente!
             </p>
           </div>
-          {data.map((i, idx) => {
+          {userAppointements.map((i, idx) => {
             return (
               <React.Fragment key={idx}>
                 <div className="flex items-center justify-center gap-12 my-9 border-b-[1px] border-zinc-700">
@@ -45,17 +46,7 @@ export default function Appoitments() {
                   </div>
                   <div className="duration-300 ease-in-out rounded-full bg-violet-300 hover:brightness-75">
                     <h1 className="px-4 py-2 text-xs font-semibold cursor-pointer text-violet-800">
-                      {i.Time}
-                    </h1>
-                  </div>
-                  {/* <div className="duration-300 ease-in-out bg-red-500 rounded-full hover:brightness-75">
-                    <h1 className=" px-10 py-2.5 text-white font-semibold text-xs cursor-pointer">
-                      Delete
-                    </h1>
-                  </div> */}
-                  <div>
-                    <h1 className="text-sm font-semibold cursor-pointer text-amber-500">
-                      $
+                      {i.StartTime} - {i.EndTime}
                     </h1>
                   </div>
                   <div className="duration-300 ease-in-out bg-purple-500 rounded-full hover:brightness-75">

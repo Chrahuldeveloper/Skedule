@@ -49,7 +49,9 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                   {user?.work ? (
                     <p className="text-sm font-bold">{user?.work}</p>
                   ) : (
-                    <p className="font-bold text-sm text-gray-300">Your Profession</p>
+                    <p className="font-bold text-sm text-gray-300">
+                      Your Profession
+                    </p>
                   )}
                 </div>
               </div>
@@ -81,7 +83,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                   <CiHome size={23} />
                   <h1 className="text-sm">Schedule</h1>
                 </li>
-                <li
+                {/* <li
                   onClick={() => {
                     setcat("Subscription");
                   }}
@@ -93,7 +95,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                 >
                   <CiHome size={23} />
                   <h1 className="text-sm">Subscription</h1>
-                </li>
+                </li> */}
                 <li
                   onClick={() => {
                     setcat("Appotiments");

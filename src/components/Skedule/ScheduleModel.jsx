@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { db } from "../../Firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-
+import Loader from "../Loader";
 export default function Schedule({ setispopup }) {
   const [schedule, setschedule] = useState({
     StartTime: "",
@@ -11,14 +11,19 @@ export default function Schedule({ setispopup }) {
     Link: "",
   });
 
+  const [isloading, setisloading] = useState(false);
+
   const jwt = sessionStorage.getItem("jwt");
 
   const saveScheduleAppointment = async () => {
+    setisloading(true);
     const userRef = doc(db, "USERS", jwt);
     const userdata = await getDoc(userRef);
     const currentAppointments = userdata.data().Appointments || [];
     const updatedAppointments = [...currentAppointments, schedule];
     await updateDoc(userRef, { Appointment: updatedAppointments });
+    console.log("Saved");
+    setisloading(false);
   };
 
   return (
@@ -104,11 +109,15 @@ export default function Schedule({ setispopup }) {
         </div>
 
         <div className="my-2">
-          <button className="w-full py-2 text-sm font-semibold rounded-full text-slate-300 bg-violet-600">
+          <button
+            onClick={saveScheduleAppointment}
+            className="w-full py-2 text-sm font-semibold rounded-full text-slate-300 bg-violet-600"
+          >
             Share URL
           </button>
         </div>
       </div>
+      {isloading ? <Loader /> : null}
     </div>
   );
 }

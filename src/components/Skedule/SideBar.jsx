@@ -42,14 +42,14 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                   className="object-cover w-32 h-32 duration-300 ease-in-out rounded-full cursor-pointer hover:brightness-75 border-zinc-800 border-[1px]"
                   alt=""
                 />
-                <div className="space-y-1.5 text-center">
-                  <h1 className="text-2xl font-semibold lg:hidden text-slate-800">
+                <div className="space-y-2.5 text-center">
+                  <h1 className="text-2xl font-semibold lg:hidden text-slate-300">
                     {user?.Name}
                   </h1>
                   {user?.work ? (
                     <p className="text-sm font-bold">{user?.work}</p>
                   ) : (
-                    <p className="font-bold text-gray-300">Your Profession</p>
+                    <p className="font-bold text-sm text-gray-300">Your Profession</p>
                   )}
                 </div>
               </div>

@@ -1,8 +1,25 @@
 import React, { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
+import { db } from "../../Firebase";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 export default function Schedule({ setispopup }) {
-  const [ispaid, setispaid] = useState("NO");
+  const [schedule, setschedule] = useState({
+    StartTime: "",
+    EndTime: "",
+    Slots: "",
+    Link: "",
+  });
+
+  const jwt = sessionStorage.getItem("jwt");
+
+  const saveScheduleAppointment = async () => {
+    const userRef = doc(db, "USERS", jwt);
+    const userdata = await getDoc(userRef);
+    const currentAppointments = userdata.data().Appointments || [];
+    const updatedAppointments = [...currentAppointments, schedule];
+    await updateDoc(userRef, { Appointment: updatedAppointments });
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center h-full bg-black bg-opacity-75 backdrop-blur-md">
@@ -26,6 +43,10 @@ export default function Schedule({ setispopup }) {
           <div>
             <input
               type="time"
+              value={schedule.StartTime}
+              onChange={(e) => {
+                setschedule({ ...schedule, StartTime: e.target.value });
+              }}
               className="cursor-pointer outline-none border-[1px] px-3 py-2 bg-transparent border-zinc-800 text-white"
             />
           </div>
@@ -33,17 +54,25 @@ export default function Schedule({ setispopup }) {
           <div>
             <input
               type="time"
+              value={schedule.EndTime}
+              onChange={(e) => {
+                setschedule({ ...schedule, EndTime: e.target.value });
+              }}
               className="cursor-pointer outline-none border-[1px] px-3 py-2 bg-transparent border-zinc-800 text-white"
             />
           </div>
         </div>
 
-        <div className="flex flex-col justify-center mt-5 space-y-3.5">
+        <div className="flex flex-col justify-center my-5 space-y-3.5">
           <h1 className="text-sm font-semibold text-slate-300">
             Number of Slots
           </h1>
           <select
             name="schedule"
+            value={schedule.Slots}
+            onChange={(e) => {
+              setschedule({ ...schedule, Slots: e.target.value });
+            }}
             id="schedule"
             className="w-full px-2 border-[1px] py-2.5 text-slate-300 outline-none border-zinc-800 rounded-md bg-transparent"
           >
@@ -60,51 +89,24 @@ export default function Schedule({ setispopup }) {
             )}
           </select>
         </div>
-        <div className="flex flex-col justify-center mt-3 space-y-3.5">
-          <h1 className="text-sm font-semibold text-slate-300">Paid</h1>
-          <select
+
+        <div className="space-y-3.5 my-5">
+          <h1 className="text-sm font-semibold text-slate-300">Link</h1>
+          <input
+            type="text"
+            placeholder="Link"
+            value={schedule.Link}
             onChange={(e) => {
-              setispaid(e.target.value);
+              setschedule({ ...schedule, Link: e.target.value });
             }}
-            name="schedule"
-            id="schedule"
-            className="w-full px-2 border-[1px] py-2.5 text-slate-300 outline-none border-zinc-800 rounded-md bg-transparent"
-          >
-            <option value="NO" className="text-slate-300  bg-zinc-900">
-              NO
-            </option>
-            <option value="YES" className="text-slate-300 bg-zinc-900">
-              YES
-            </option>
-          </select>
+            className="w-full px-2 border-[1px] py-2.5 outline-none border-zinc-800 rounded-md bg-transparent text-slate-300"
+          />
+        </div>
 
-          {ispaid === "YES" ? (
-            <>
-              <div className="space-y-3.5">
-                <h1 className="text-sm font-semibold text-slate-300">Price</h1>
-                <input
-                  type="text"
-                  placeholder="Price"
-                  className="w-full px-2 border-[1px] py-2.5 outline-none border-zinc-800 rounded-md bg-transparent"
-                />
-              </div>
-            </>
-          ) : null}
-
-          <div className="space-y-3.5">
-            <h1 className="text-sm font-semibold text-slate-300">Link</h1>
-            <input
-              type="text"
-              placeholder="Link"
-              className="w-full px-2 border-[1px] py-2.5 outline-none border-zinc-800 rounded-md bg-transparent"
-            />
-          </div>
-
-          <div className="my-2">
-            <button className="w-full py-2 text-sm font-semibold rounded-full text-slate-300 bg-violet-600">
-              Share URL
-            </button>
-          </div>
+        <div className="my-2">
+          <button className="w-full py-2 text-sm font-semibold rounded-full text-slate-300 bg-violet-600">
+            Share URL
+          </button>
         </div>
       </div>
     </div>

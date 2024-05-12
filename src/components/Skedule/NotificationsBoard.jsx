@@ -2,11 +2,12 @@ import { doc, getDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { db } from "../../Firebase";
+import { useCallback } from "react";
 
 export default function NotificationsBoard({ jwt }) {
   const [userNotifications, setuserNotifications] = useState([]);
 
-  const getNotifications = async () => {
+  const getNotifications = useCallback(async () => {
     const docref = doc(db, "USERS", jwt);
     const UserData = await getDoc(docref);
     console.log(UserData.data().Notification || []);
@@ -15,11 +16,11 @@ export default function NotificationsBoard({ jwt }) {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [jwt]);
 
   useEffect(() => {
     getNotifications();
-  }, []);
+  }, [getNotifications]);
 
   return (
     <>

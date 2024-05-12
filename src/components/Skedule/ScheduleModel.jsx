@@ -18,10 +18,14 @@ export default function Schedule({ setispopup }) {
   const saveScheduleAppointment = async () => {
     setisloading(true);
     const userRef = doc(db, "USERS", jwt);
+
     const userdata = await getDoc(userRef);
     const currentAppointments = userdata.data().Appointments || [];
+
     const updatedAppointments = [...currentAppointments, schedule];
-    await updateDoc(userRef, { Appointment: updatedAppointments });
+
+    await updateDoc(userRef, { Appointments: updatedAppointments });
+
     console.log("Saved");
     setisloading(false);
   };

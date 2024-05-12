@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import Calendar from "./Calender";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../Firebase";
-import { ScheduleModel } from "..";
+import { Loader, ScheduleModel } from "..";
 
 export default function CalenderBoard() {
   const [isloading, setisloading] = useState(false);
@@ -26,12 +26,25 @@ export default function CalenderBoard() {
 
   const [ispopup, setispopup] = useState();
 
+  const [day, setday] = useState({
+    Day: "",
+    date: "",
+  });
+
+  console.log(day);
+
   return (
     <>
+      {isloading ? <Loader /> : null}
       {ispopup ? (
-        <ScheduleModel setispopup={setispopup} />
+        <ScheduleModel setispopup={setispopup} setday={setday} />
       ) : (
-        <Calendar user={user} setispopup={setispopup} />
+        <Calendar
+          user={user}
+          setispopup={setispopup}
+          day={day}
+          setday={setday}
+        />
       )}
     </>
   );

@@ -6,11 +6,11 @@ const sendNotification = async (jwt, notification) => {
     const userRef = doc(db, "USERS", jwt);
     const userdata = await getDoc(userRef);
 
-    const currentNotifications = userdata.data().Notification || [];
+    const currentNotifications = userdata.data().Notifications || [];
 
     const updatedNotifications = [...currentNotifications, notification];
 
-    await updateDoc(userRef, { Notification: updatedNotifications });
+    await updateDoc(userRef, { Notifications: updatedNotifications });
 
     console.log("Notification sent successfully!");
   } catch (error) {

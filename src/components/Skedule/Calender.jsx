@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
-const Calendar = ({ user, setispopup }) => {
+const Calendar = ({ user, setispopup, day, setday }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
   const jwt = sessionStorage.getItem("jwt");
@@ -120,6 +120,11 @@ const Calendar = ({ user, setispopup }) => {
               handleDateClick(date);
               appointmentURL(jwt, user.Name);
               setispopup(true);
+              setday({
+                ...day,
+                Day: date.toLocaleDateString("en-US", { weekday: "short" }),
+                date: date.getDate(),
+              });
             }}
           >
             {date ? date.getDate() : ""}

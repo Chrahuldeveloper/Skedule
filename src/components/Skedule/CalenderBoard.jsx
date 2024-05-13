@@ -4,7 +4,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../Firebase";
 import { Loader, ScheduleModel } from "..";
 
-export default function CalenderBoard() {
+export default function CalenderBoard({setuserAppointements}) {
   const [isloading, setisloading] = useState(false);
   const [user, setuser] = useState();
   const jwt = sessionStorage.getItem("jwt");
@@ -37,7 +37,7 @@ export default function CalenderBoard() {
     <>
       {isloading ? <Loader /> : null}
       {ispopup ? (
-        <ScheduleModel setispopup={setispopup} day={day} />
+        <ScheduleModel setispopup={setispopup} day={day} setuserAppointements={setuserAppointements}/>
       ) : (
         <Calendar
           user={user}

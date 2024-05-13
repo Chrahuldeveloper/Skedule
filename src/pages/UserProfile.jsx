@@ -12,7 +12,6 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../Firebase";
 import { CgProfile } from "react-icons/cg";
 import { CalenderBoard } from "../components/index";
-import Analytics from "../components/Skedule/Analytics";
 
 export default function UserProfile() {
   const [isshow, setisshow] = useState(false);
@@ -21,6 +20,22 @@ export default function UserProfile() {
   const jwt = sessionStorage.getItem("jwt");
   const [user, setuser] = useState();
   const [cat, setcat] = useState("Dashboard");
+
+  const [userAppointements, setuserAppointements] = useState([]);
+
+  const getuserAppointements = useCallback(async () => {
+    try {
+      const docref = doc(db, "USERS", jwt);
+      const UserData = await getDoc(docref);
+      setuserAppointements(UserData.data().Appointments || []);
+    } catch (error) {
+      console.log(error);
+    }
+  }, [jwt]);
+
+  useEffect(() => {
+    getuserAppointements();
+  }, [getuserAppointements]);
 
   const fetchUser = useCallback(async () => {
     try {
@@ -90,11 +105,17 @@ export default function UserProfile() {
                 />
               ) : null}
               {cat === "Schedule" ? (
-                <CalenderBoard />
+                <CalenderBoard
+                  userAppointements={userAppointements}
+                  setuserAppointements={setuserAppointements}
+                />
               ) : cat === "Notifications" ? (
                 <NotificationsBoard jwt={jwt} />
               ) : cat === "Dashboard" ? (
-                <AppotimentsBoard user={user} />
+                <AppotimentsBoard
+                  user={user}
+                  userAppointements={userAppointements}
+                />
               ) : null}
             </div>
           </>

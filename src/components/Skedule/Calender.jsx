@@ -120,10 +120,16 @@ const Calendar = ({ user, setispopup, day, setday }) => {
               handleDateClick(date);
               appointmentURL(jwt, user.Name);
               setispopup(true);
+              const fullDate = `${date.getFullYear()}-${(date.getMonth() + 1)
+                .toString()
+                .padStart(2, "0")}-${date
+                .getDate()
+                .toString()
+                .padStart(2, "0")}`;
               setday({
                 ...day,
                 Day: date.toLocaleDateString("en-US", { weekday: "short" }),
-                date: date.getDate(),
+                date: fullDate,
               });
             }}
           >

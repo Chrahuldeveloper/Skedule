@@ -47,9 +47,11 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                     {user?.Name}
                   </h1>
                   {user?.work ? (
-                    <p className="text-sm font-bold">{user?.work}</p>
+                    <p className="text-sm font-bold text-slate-300">
+                      {user?.work}
+                    </p>
                   ) : (
-                    <p className="font-bold text-sm text-gray-300">
+                    <p className="text-sm font-bold text-gray-300">
                       Your Profession
                     </p>
                   )}

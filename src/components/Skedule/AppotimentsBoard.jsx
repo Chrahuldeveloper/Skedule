@@ -1,6 +1,25 @@
-import React from "react";
+import { doc, getDoc } from "firebase/firestore";
+import React, { useCallback, useEffect, useState } from "react";
+import { db } from "../../Firebase";
 
 export default function AppotimentsBoard() {
+  const [userAppointements, setuserAppointements] = useState([]);
+
+  const jwt = sessionStorage.getItem("jwt");
+  const getuserAppointements = useCallback(async () => {
+    try {
+      const docref = doc(db, "USERS", jwt);
+      const UserData = await getDoc(docref);
+      setuserAppointements(UserData.data().Appointments || []);
+    } catch (error) {
+      console.log(error);
+    }
+  }, [jwt]);
+
+  useEffect(() => {
+    getuserAppointements();
+  }, [getuserAppointements]);
+
   return (
     <>
       <div className="bg-zinc-900 p-5 my-6 border-[1.2px] rounded-md  border-zinc-800 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh]  z-50">
@@ -11,46 +30,38 @@ export default function AppotimentsBoard() {
         </div>
 
         <table className="">
-          <thead className="">
+          <thead className="divide-y-2">
             <tr className="text-slate-300">
-              <th className="pt-10 pl-2 lg:pl-4">Pic</th>
-              <th className="pt-10 pl-5 lg:pl-24">User</th>
-              <th className="pt-10 pl-5 lg:pl-24">Date</th>
-              <th className="pt-10 pl-5 lg:pl-24">Time</th>
-              <th className="pt-10 pl-5 lg:pl-24">Day</th>
-              <th className="pt-10 pl-5 lg:pl-24">Delete</th>
+              <th className="pt-10 lg:pl-4">Slots</th>
+              <th className="pt-10 pl-8 lg:pl-28 lg:text-sm">StartTime</th>
+              <th className="pt-10 pl-8 lg:pl-24 lg:text-sm">EndTime</th>
+              <th className="pt-10 pl-8 lg:pl-28 lg:text-sm">date</th>
+              <th className="pt-10 pl-8 lg:pl-28 lg:text-sm">Link</th>
+              <th className="pt-10 pl-8 lg:pl-28 lg:text-sm">Delete</th>
             </tr>
           </thead>
-
-          {[
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-            20,
-          ].map((i, index) => {
+          {userAppointements.map((i, index) => {
             return (
               <React.Fragment key={index}>
-                <tbody className="border-b-[1px] border-zinc-700 text-slate-300">
-                  <th className="pt-10 pl-2 lg:pl-4">
-                    <img
-                      className="w-10 h-10 rounded-full cursor-pointer"
-                      src="https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg"
-                      alt=""
-                    />
+                <tbody className=" text-slate-300">
+                  <th className="pt-10 lg:pl-4">
+                    <h1 className="text-xs cursor-pointer">{i.Slots}</h1>
                   </th>
-                  <th className="pt-10 pl-5 lg:pl-24">
-                    <h1 className="text-sm cursor-pointer">Rahul</h1>
+                  <th className="pt-10 pl-8 lg:pl-28 lg:text-sm">
+                    <p className="text-xs cursor-pointer">{i.StartTime}</p>
                   </th>
-                  <th className="pt-10 pl-5 lg:pl-24">
-                    <p className="text-sm cursor-pointer">20/5/2024</p>
+                  <th className="pt-10 pl-8 lg:pl-28 lg:text-sm">
+                    <p className="text-xs cursor-pointer">{i.EndTime}</p>
                   </th>
-                  <th className="pt-10 pl-5 lg:pl-24">
-                    <p className="text-sm cursor-pointer">8:30</p>
+                  <th className="pt-10 pl-8 lg:pl-28 lg:text-sm">
+                    <p className="text-xs cursor-pointer">{i.date}</p>
                   </th>
-                  <th className="pt-10 pl-5 lg:pl-24">
-                    <p className="text-sm cursor-pointer">Monday</p>
+                  <th className="pt-10 pl-8 lg:pl-28 lg:text-sm">
+                    <p className="text-xs cursor-pointer">{"Link"}</p>
                   </th>
-                  <th className="pt-10 pl-5 lg:pl-24">
+                  <th className="pt-10 pl-8 lg:pl-28 lg:text-sm">
                     <p
-                      className="text-sm text-red-500 cursor-pointer"
+                      className="text-xs text-red-500 cursor-pointer"
                       onClick={() => {
                         alert("Please enter");
                       }}

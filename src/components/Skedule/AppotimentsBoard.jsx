@@ -32,7 +32,7 @@ export default function AppotimentsBoard({
         <table className="">
           <thead className="divide-y-2">
             <tr className="text-slate-300">
-              <th className="pt-10 text-xs lg:pl-4">Slots</th>
+              <th className="pt-10 text-xs lg:pl-3">Slotes</th>
               <th className="pt-10 pl-8 text-xs lg:pl-28 lg:text-sm">
                 StartTime
               </th>
@@ -48,8 +48,10 @@ export default function AppotimentsBoard({
             return (
               <React.Fragment key={index}>
                 <tbody className=" text-slate-300">
-                  <th className="pt-10 lg:pl-4">
-                    <h1 className="text-xs cursor-pointer">{i.Slots}</h1>
+                  <th className="pt-10 lg:pl-3">
+                    <h1 className="text-xs cursor-pointer">
+                      {i.emails?.length}
+                    </h1>
                   </th>
                   <th className="pt-10 pl-8 lg:pl-28 lg:text-sm">
                     <p className="text-xs cursor-pointer">{i.StartTime}</p>

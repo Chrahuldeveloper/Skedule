@@ -62,14 +62,19 @@ export default function Appoitments() {
           {userAppointements.map((i, idx) => {
             return (
               <React.Fragment key={idx}>
-                <div className="flex items-center justify-center gap-12 my-9 border-b-[1px] border-zinc-700">
+                <div className="flex items-center justify-center gap-10 my-9 border-b-[1px] border-zinc-700">
                   <div className="flex flex-col items-center justify-center gap-2.5 text-slate-300">
                     <h1 className="text-xs">{i.date}</h1>
                     <p className="text-sm">{i.day}</p>
                   </div>
                   <div className="duration-300 ease-in-out rounded-full bg-violet-300 hover:brightness-75">
-                    <h1 className="px-4 py-2 text-xs font-semibold cursor-pointer text-violet-800">
+                    <h1 className="px-2 py-2 text-xs font-semibold cursor-pointer text-violet-800">
                       {i.StartTime} - {i.EndTime}
+                    </h1>
+                  </div>
+                  <div>
+                    <h1 className=" text-xs font-semibold cursor-pointer text-violet-200">
+                      {i.Slots === i.emails ? "Not Available" : "Available"}
                     </h1>
                   </div>
                   <div
@@ -78,7 +83,7 @@ export default function Appoitments() {
                     }}
                     className="duration-300 ease-in-out bg-purple-500 rounded-full hover:brightness-75"
                   >
-                    <p className="py-2 text-xs font-semibold text-white cursor-pointer px-7">
+                    <p className="py-2 text-xs font-semibold text-white cursor-pointer px-5">
                       Book
                     </p>
                   </div>

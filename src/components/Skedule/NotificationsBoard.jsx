@@ -1,4 +1,4 @@
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { db } from "../../Firebase";
@@ -6,21 +6,38 @@ import { useCallback } from "react";
 
 export default function NotificationsBoard({ jwt }) {
   const [userNotifications, setuserNotifications] = useState([]);
+  const docref = doc(db, "USERS", jwt);
 
   const getNotifications = useCallback(async () => {
     try {
-      const docref = doc(db, "USERS", jwt);
       const UserData = await getDoc(docref);
-      console.log(UserData.data().Notification || []);
-      setuserNotifications(UserData.data().Notification || []);
+      console.log(UserData.data().Notifications || []);
+      setuserNotifications(UserData.data().Notifications || []);
     } catch (error) {
       console.log(error);
     }
-  }, [jwt]);
+  }, [docref]);
 
   useEffect(() => {
     getNotifications();
   }, [getNotifications]);
+
+  const deleteitem = async (id) => {
+    try {
+      const updateUserNotifications = userNotifications.filter(
+        (i, idx) => idx !== id
+      );
+      
+
+      await updateDoc(docref, { Notifications: updateUserNotifications });
+
+      setuserNotifications(updateUserNotifications);
+
+      console.log(updateUserNotifications);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -34,16 +51,20 @@ export default function NotificationsBoard({ jwt }) {
           return (
             <>
               <div className="px-5 space-y-5 my-7">
-                <div className=" border-[0.9px] p-6 max-w-3xl  cursor-pointer rounded-lg flex items-center justify-between border-zinc-800">
+                <div className=" border-[0.9px] p-6 cursor-pointer rounded-lg flex items-center justify-between border-zinc-800">
                   <div className="space-y-2">
                     <h1 className="text-lg font-semibold text-slate-300">
                       {item.Name}
                     </h1>
-                    <p className="max-w-xs text-sm text-slate-300">
-                      {item.Para}
-                    </p>
+                    <p className="text-sm w-72 text-slate-300">{item.Para}</p>
                   </div>
-                  <AiOutlineDelete color="red" size="26" />
+                  <AiOutlineDelete
+                    onClick={() => {
+                      deleteitem(i);
+                    }}
+                    color="red"
+                    size="25"
+                  />
                 </div>
               </div>
             </>

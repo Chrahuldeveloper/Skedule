@@ -30,7 +30,9 @@ export default function Appoitments() {
       const docSnap = await getDoc(docRef);
       const userData = docSnap.data();
       const appointments = userData.Appointments || [];
-      const filteredAppointment = appointments.find((itm, i) => i === index);
+      const filteredAppointment = await appointments.find(
+        (itm, i) => i === index
+      );
       filteredAppointment.emails = [
         ...(filteredAppointment.emails || []),
         user.email,

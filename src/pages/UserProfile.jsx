@@ -115,6 +115,7 @@ export default function UserProfile() {
                 <AppotimentsBoard
                   user={user}
                   userAppointements={userAppointements}
+                  setuserAppointements={setuserAppointements}
                 />
               ) : null}
             </div>

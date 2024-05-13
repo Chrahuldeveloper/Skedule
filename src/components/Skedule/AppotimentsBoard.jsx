@@ -1,6 +1,25 @@
+import { doc, updateDoc } from "firebase/firestore";
 import React from "react";
+import { db } from "../../Firebase";
 
-export default function AppotimentsBoard({ userAppointements }) {
+export default function AppotimentsBoard({
+  userAppointements,
+  setuserAppointements,
+}) {
+  const jwt = sessionStorage.getItem("jwt");
+
+  const deleteAppointment = async (idx) => {
+    const docref = doc(db, "USERS", jwt);
+
+    const updateUserAppointments = userAppointements.filter(
+      (i, id) => id !== idx
+    );
+
+    await updateDoc(docref, { Appointments: updateUserAppointments });
+
+    setuserAppointements(updateUserAppointments);
+  };
+
   return (
     <>
       <div className="bg-zinc-900 p-5 my-6 border-[1.2px] rounded-md  border-zinc-800 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh]  z-50">
@@ -48,7 +67,7 @@ export default function AppotimentsBoard({ userAppointements }) {
                     <p
                       className="text-xs text-red-500 cursor-pointer"
                       onClick={() => {
-                        alert("Please enter");
+                        deleteAppointment(index);
                       }}
                     >
                       Delete

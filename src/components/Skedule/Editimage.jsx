@@ -10,6 +10,7 @@ export default function Editimage({ setisedit, user, setisloading, setuser }) {
   const [editdata, seteditdata] = useState({
     photo: user.photo,
     Name: user.Name,
+    Bio: "",
     work: user.work ? user.work : "",
   });
 
@@ -116,6 +117,15 @@ export default function Editimage({ setisedit, user, setisloading, setuser }) {
             value={editdata.work}
             onChange={(e) => {
               seteditdata({ ...editdata, work: e.target.value });
+            }}
+            className="border-[1px] border-zinc-800 px-3 py-2.5 outline-none bg-transparent text-slate-300"
+          />
+          <input
+            type="text"
+            placeholder="Bio"
+            value={editdata.Bio}
+            onChange={(e) => {
+              seteditdata({ ...editdata, Bio: e.target.value });
             }}
             className="border-[1px] border-zinc-800 px-3 py-2.5 outline-none bg-transparent text-slate-300"
           />

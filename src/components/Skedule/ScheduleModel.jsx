@@ -8,7 +8,7 @@ export default function Schedule({ setispopup, day, setuserAppointements }) {
   const [schedule, setschedule] = useState({
     StartTime: "",
     EndTime: "",
-    Slots: "",
+    Slots: "0",
     Link: "",
     day: day.Day,
     date: day.date,

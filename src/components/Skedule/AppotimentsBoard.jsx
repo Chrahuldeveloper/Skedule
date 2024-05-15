@@ -1,35 +1,39 @@
 import { doc, updateDoc } from "firebase/firestore";
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { db } from "../../Firebase";
+import Loader from "../Loader";
 
 export default function AppotimentsBoard({
   userAppointements,
   setuserAppointements,
 }) {
   const jwt = sessionStorage.getItem("jwt");
+  const docref = useMemo(() => doc(db, "USERS", jwt), [jwt]);
+  const [isloading, setisloading] = useState(false);
 
   const deleteAppointment = async (idx) => {
-    const docref = doc(db, "USERS", jwt);
+    setisloading(true);
 
     const updateUserAppointments = userAppointements.filter(
       (i, id) => id !== idx
     );
 
     await updateDoc(docref, { Appointments: updateUserAppointments });
-
     setuserAppointements(updateUserAppointments);
+    setisloading(false);
   };
 
   return (
     <>
       <div className="bg-zinc-900 p-5 my-6 border-[1.2px] rounded-md  border-zinc-800 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh]  z-50">
+        {isloading ? <Loader /> : null}
         <div>
           <h1 className="text-2xl font-semibold text-slate-300">
             Your Appotiments
           </h1>
         </div>
 
-        <table className="">
+        <table>
           <thead className="divide-y-2">
             <tr className="text-slate-300">
               <th className="pt-10 text-xs lg:pl-3">Slotes</th>

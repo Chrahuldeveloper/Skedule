@@ -2,10 +2,11 @@ import React, { useCallback, useEffect, useState } from "react";
 import { db, auth } from "../Firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-
+import { Circle, Bar } from "../components/index";
 export default function Appoitments() {
   const [userAppointements, setuserAppointements] = useState([]);
   const jwt = sessionStorage.getItem("jwt");
+  const [isloading, setisloading] = useState(false);
   const [user, setuser] = useState({
     Pic: "",
     Name: "",
@@ -13,25 +14,29 @@ export default function Appoitments() {
   });
   const provider = new GoogleAuthProvider();
 
-  const getuserAppointements = useCallback(async () => {
+  const getUserAppointments = useCallback(async () => {
+    if (!jwt) return;
     try {
-      const docref = doc(db, "USERS", jwt);
-      const UserData = await getDoc(docref);
-      setuserAppointements(UserData.data()?.Appointments || []);
+      setisloading(true);
+      const docRef = doc(db, "USERS", jwt);
+      const userData = await getDoc(docRef);
+      const data = userData.data();
+      setuserAppointements(data?.Appointments || []);
       setuser({
-        ...user,
-        Pic: UserData.data()?.photo,
-        Name: UserData.data()?.Name,
-        Bio: UserData.data()?.Bio,
+        Pic: data?.photo,
+        Name: data?.Name,
+        Bio: data?.Bio,
       });
     } catch (error) {
       console.log(error);
+    } finally {
+      setisloading(false);
     }
-  }, [jwt,user]);
+  }, [jwt]);
 
   useEffect(() => {
-    getuserAppointements();
-  }, [getuserAppointements]);
+    getUserAppointments();
+  }, [getUserAppointments]);
 
   const GoogleRegister = async (index) => {
     try {
@@ -60,15 +65,38 @@ export default function Appoitments() {
     <div className="w-screen h-screen bg-[#08090d] overflow-y-scroll">
       <div className="px-3 py-8">
         <div className="p-6  border-[1px] border-zinc-800 bg-zinc-900  mx-auto rounded-md max-w-xl">
-          <div className="flex flex-col items-center space-y-1.5 text-slate-300">
-            <img
-              src={user?.Pic}
-              className="object-cover duration-300 ease-in-out rounded-full cursor-pointer h-32 w-32 hover:brightness-75 border-[1px] border-zinc-800"
-              alt=""
-            />
-            <h1 className="text-lg font-bold">{user?.Name}</h1>
-            <p className="max-w-xs text-xs text-center">{user?.Bio}</p>
+          <div className="flex flex-col items-center space-y-2.5 text-slate-300">
+            {isloading ? (
+              <Circle />
+            ) : (
+              <img
+                src={user?.Pic}
+                className="object-cover duration-300 ease-in-out rounded-full cursor-pointer h-32 w-32 hover:brightness-75 border-[1px] border-zinc-800"
+                alt=""
+              />
+            )}
+            {isloading ? (
+              <Bar width={28} />
+            ) : (
+              <h1 className="text-lg font-bold">{user?.Name}</h1>
+            )}
+            {isloading ? (
+              <Bar width={36} />
+            ) : (
+              <p className="max-w-xs text-xs text-center">{user?.Bio}</p>
+            )}
           </div>
+
+              {
+                [1,2,3,4,5].map((i)=>{
+                  return (
+                    <>
+                      
+                    </>
+                  )
+                })
+              }       
+         
           {userAppointements.map((i, idx) => {
             return (
               <React.Fragment key={idx}>

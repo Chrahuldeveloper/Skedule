@@ -10,8 +10,11 @@ import Loader from "./Loader";
 import NotificationsBoard from "./Skedule/NotificationsBoard";
 import CalenderBoard from "./Skedule/CalenderBoard";
 import ScheduleModel from "./Skedule/ScheduleModel";
+import Circle from "./loaders/Circle";
+import Bar from "./loaders/Bar";
 
 export {
+  Bar,
   ScheduleModel,
   CalenderBoard,
   NotificationsBoard,
@@ -24,4 +27,5 @@ export {
   Calender,
   SideBar,
   AppotimentsBoard,
+  Circle,
 };

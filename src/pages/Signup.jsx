@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 import { auth, db } from "../Firebase";
 import logo from "../images/logo1.png";
-import { doc, setDoc } from "firebase/firestore";
+import { addDoc, doc, setDoc } from "firebase/firestore";
 import sendNotification from "../features/Notification";
 export default function Signup() {
   const navigate = useNavigate();
@@ -25,6 +25,9 @@ export default function Signup() {
   };
 
   const GoogleSignIn = async () => {
+    if (sessionStorage.getItem("jwt")) {
+      navigate("/userProfile");
+    }
     try {
       if (sessionStorage.getItem("logout")) {
         sessionStorage.setItem("logout", false);
@@ -54,7 +57,7 @@ export default function Signup() {
         user.email,
         user.Pass
       );
-      await setDoc(doc(db, "USERS", createdUser.user.uid), {
+      await addDoc(doc(db, "USERS", createdUser.user.uid), {
         Name: createdUser.user.displayName,
         Email: createdUser.user.email,
         photo: createdUser.user.photoURL,

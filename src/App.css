@@ -7,3 +7,20 @@
     background-position: 100% 100%;
     background-size: cover;
 }
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+input[type="time"]::-webkit-inner-spin-button {
+    color: white;
+}
+
+input[type="time"] {
+    -moz-appearance: none;
+}
+
+input[type="time"]::drop-down {
+    -moz-appearance: none;
+}
+

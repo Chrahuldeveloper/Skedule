@@ -57,11 +57,11 @@ export default function Schedule({ setispopup, day, setuserAppointements }) {
           <div>
             <input
               type="time"
-              value={schedule.StartTime}
+              value={schedule.EndTime}
               onChange={(e) => {
-                setschedule({ ...schedule, StartTime: e.target.value });
+                setschedule({ ...schedule, EndTime: e.target.value });
               }}
-              className="cursor-pointer outline-none border-[1px] px-3 py-2 bg-transparent border-zinc-800 text-white"
+              className="cursor-pointer outline-none border-[1px] px-3 py-2 bg-transparent border-zinc-800 text-white time-input"
             />
           </div>
           <p className="font-semibold text-slate-300">To</p>
@@ -72,7 +72,7 @@ export default function Schedule({ setispopup, day, setuserAppointements }) {
               onChange={(e) => {
                 setschedule({ ...schedule, EndTime: e.target.value });
               }}
-              className="cursor-pointer outline-none border-[1px] px-3 py-2 bg-transparent border-zinc-800 text-white"
+              className="cursor-pointer outline-none border-[1px] px-3 py-2 bg-transparent border-zinc-800 text-white time-input"
             />
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function Schedule({ setispopup, day, setuserAppointements }) {
             id="schedule"
             className="w-full px-2 border-[1px] py-2.5 text-slate-300 outline-none border-zinc-800 rounded-md bg-transparent"
           >
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(
+            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(
               (item, index) => {
                 return (
                   <React.Fragment key={index}>

@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { db, auth } from "../Firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Circle, Bar } from "../components/index";
+// import emailjs from "@emailjs/browser";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+
 export default function Appoitments() {
   const [userAppointements, setuserAppointements] = useState([]);
   const jwt = sessionStorage.getItem("jwt");
@@ -12,6 +14,7 @@ export default function Appoitments() {
     Name: "",
     Bio: "",
   });
+
   const provider = new GoogleAuthProvider();
 
   const getUserAppointments = useCallback(async () => {
@@ -38,18 +41,11 @@ export default function Appoitments() {
     getUserAppointments();
   }, [getUserAppointments]);
 
-  const sendEmail = async (user) => {
-    try {
-      console.log(user);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const GoogleRegister = async (index) => {
+    const res = await signInWithPopup(auth, provider);
+    const user = res.user.email;
+
     try {
-      const res = await signInWithPopup(auth, provider);
-      const user = res.user.email;
       const docRef = doc(db, "USERS", jwt);
       const docSnap = await getDoc(docRef);
       const userData = docSnap.data();
@@ -57,7 +53,6 @@ export default function Appoitments() {
       const filteredAppointment = await appointments.find(
         (itm, i) => i === index
       );
-
       if (filteredAppointment.emails.includes(user)) {
         return alert("Already Registered");
       } else {
@@ -66,7 +61,6 @@ export default function Appoitments() {
           user,
         ];
         await updateDoc(docRef, { Appointments: appointments });
-        await sendEmail(user);
       }
     } catch (error) {
       console.log(error);

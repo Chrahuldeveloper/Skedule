@@ -38,28 +38,40 @@ export default function Appoitments() {
     getUserAppointments();
   }, [getUserAppointments]);
 
-  const GoogleRegister = async (index) => {
+  const sendEmail = async (user) => {
     try {
-      const res = await signInWithPopup(auth, provider);
-      const user = res.user;
-      const docRef = doc(db, "USERS", jwt);
-      const docSnap = await getDoc(docRef);
-      const userData = docSnap.data();
-      const appointments = userData.Appointments || [];
-      const filteredAppointment = await appointments.find(
-        (itm, i) => i === index
-      );
-      filteredAppointment.emails = [
-        ...(filteredAppointment.emails || []),
-        user.email,
-      ];
-      await updateDoc(docRef, { Appointments: appointments });
+      console.log(user);
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(user);
+  const GoogleRegister = async (index) => {
+    try {
+      const res = await signInWithPopup(auth, provider);
+      const user = res.user.email;
+      const docRef = doc(db, "USERS", jwt);
+      const docSnap = await getDoc(docRef);
+      const userData = docSnap.data();
+      const appointments = (await userData.Appointments) || [];
+      const filteredAppointment = await appointments.find(
+        (itm, i) => i === index
+      );
+
+      if (filteredAppointment.emails.includes(user)) {
+        return alert("Already Registered");
+      } else {
+        filteredAppointment.emails = [
+          ...(filteredAppointment.emails || []),
+          user,
+        ];
+        await updateDoc(docRef, { Appointments: appointments });
+        await sendEmail(user);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="w-screen h-screen bg-[#08090d] overflow-y-scroll">
@@ -87,16 +99,10 @@ export default function Appoitments() {
             )}
           </div>
 
-              {
-                [1,2,3,4,5].map((i)=>{
-                  return (
-                    <>
-                      
-                    </>
-                  )
-                })
-              }       
-         
+          {[1, 2, 3, 4, 5].map((i) => {
+            return <></>;
+          })}
+
           {userAppointements.map((i, idx) => {
             return (
               <React.Fragment key={idx}>

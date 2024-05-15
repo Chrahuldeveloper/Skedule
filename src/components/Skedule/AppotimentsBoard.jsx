@@ -11,6 +11,8 @@ export default function AppotimentsBoard({
   const docref = useMemo(() => doc(db, "USERS", jwt), [jwt]);
   const [isloading, setisloading] = useState(false);
 
+  const [copy, setcopy] = useState("ShareURL");
+
   const deleteAppointment = async (idx) => {
     setisloading(true);
 
@@ -23,6 +25,22 @@ export default function AppotimentsBoard({
     setisloading(false);
   };
 
+  const copyAppointmentURL = async () => {
+    try {
+      console.log("clicked");
+      const port = window.location.port ? `:${window.location.port}` : "";
+      const userURL = new URL(
+        `http://${window.location.hostname}${port}/user/${jwt}`
+      );
+      console.log(userURL.href);
+      await navigator.clipboard.writeText(userURL.href);
+      console.log("textCopied");
+      setcopy("Copied");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="bg-zinc-900 p-5 my-6 border-[1.2px] rounded-md  border-zinc-800 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh]  z-50">
@@ -31,8 +49,13 @@ export default function AppotimentsBoard({
           <h1 className="text-2xl font-semibold text-slate-300">
             Your Appotiments
           </h1>
-          <button className=" px-8 text-white  border-[1px] text-xs rounded-full border-violet-600 font-semibold py-2.5 hover:bg-violet-600 ease-in-out duration-300">
-            Share URL
+          <button
+            onClick={() => {
+              copyAppointmentURL();
+            }}
+            className=" px-8 text-white  border-[1px] text-xs rounded-full border-violet-600 font-semibold py-2.5 hover:bg-violet-600 ease-in-out duration-300"
+          >
+            {copy}
           </button>
         </div>
 

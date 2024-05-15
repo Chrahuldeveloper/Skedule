@@ -4,15 +4,8 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 const Calendar = ({ user, setispopup, day, setday }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
-  const jwt = sessionStorage.getItem("jwt");
 
-  const appointmentURL = (jwt, user) => {
-    const userURL = new URL(
-      `https://${window.location.hostname}/${jwt}/${user}`
-    );
-    console.log(userURL.href);
-  };
-
+  
   const daysInMonth = (date) => {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
   };
@@ -118,7 +111,6 @@ const Calendar = ({ user, setispopup, day, setday }) => {
             }`}
             onClick={() => {
               handleDateClick(date);
-              appointmentURL(jwt, user.Name);
               setispopup(true);
               const fullDate = `${date.getFullYear()}-${(date.getMonth() + 1)
                 .toString()

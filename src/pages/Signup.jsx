@@ -27,44 +27,47 @@ export default function Signup() {
   const GoogleSignIn = async () => {
     if (sessionStorage.getItem("jwt")) {
       navigate("/userProfile");
-    }
-    try {
-      if (sessionStorage.getItem("logout")) {
-        sessionStorage.setItem("logout", false);
-        navigate("/schedule");
-      } else {
-        const res = await signInWithPopup(auth, provider);
-        await setDoc(doc(db, "USERS", res.user.uid), {
-          Name: res.user.displayName,
-          Email: res.user.email,
-          photo: res.user.photoURL,
-        });
-        sessionStorage.setItem("jwt", res.user.uid);
-        await sendNotification(sessionStorage.getItem("jwt"), notification);
-        navigate("/schedule");
+    } else {
+      try {
+        if (sessionStorage.getItem("logout")) {
+          sessionStorage.setItem("logout", false);
+          navigate("/userProfile");
+        } else {
+          const res = await signInWithPopup(auth, provider);
+          await setDoc(doc(db, "USERS", res.user.uid), {
+            Name: res.user.displayName,
+            Email: res.user.email,
+            photo: res.user.photoURL,
+          });
+          sessionStorage.setItem("jwt", res.user.uid);
+          await sendNotification(sessionStorage.getItem("jwt"), notification);
+          navigate("/userProfile");
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
   const emailPassSignIn = async () => {
-    try {
-      console.log(user.email);
-      console.log(user.Pass);
-      const createdUser = await createUserWithEmailAndPassword(
-        auth,
-        user.email,
-        user.Pass
-      );
-      await addDoc(doc(db, "USERS", createdUser.user.uid), {
-        Name: createdUser.user.displayName,
-        Email: createdUser.user.email,
-        photo: createdUser.user.photoURL,
-      });
-      navigate("/schedule");
-    } catch (error) {
-      console.log(error);
+    if (sessionStorage.getItem("jwt")) {
+      navigate("/userProfile");
+    } else {
+      try {
+        const createdUser = await createUserWithEmailAndPassword(
+          auth,
+          user.email,
+          user.Pass
+        );
+        await addDoc(doc(db, "USERS", createdUser.user.uid), {
+          Name: createdUser.user.displayName,
+          Email: createdUser.user.email,
+          photo: createdUser.user.photoURL,
+        });
+        navigate("/userProfile");
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { db, auth } from "../Firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { Circle, Bar, Sucess } from "../components/index";
-// import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useParams } from "react-router-dom";
 export default function Appoitments() {
@@ -47,10 +47,30 @@ export default function Appoitments() {
     getUserAppointments();
   }, [getUserAppointments]);
 
+  const sendEmail = async (userEmail, userName) => {
+    console.log(userEmail, userName)
+    try {
+      const res = await emailjs.send(
+        "service_v85ekfn",
+        "template_q8bxqkv",
+        {
+          from_name: "Skedule",
+          to_name: userName,
+          from_email: "saasstudiosindia@gmail.com",
+          to_email: userEmail,
+        },
+        "3mxv1JKPFdt7xkk3a"
+      );
+      const msg = res.text;
+      console.log(msg);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const GoogleRegister = async (index) => {
     const res = await signInWithPopup(auth, provider);
     const user = res.user.email;
-
     try {
       const docRef = doc(db, "USERS", id);
       const docSnap = await getDoc(docRef);
@@ -67,6 +87,7 @@ export default function Appoitments() {
           user,
         ];
         await updateDoc(docRef, { Appointments: appointments });
+        await sendEmail(user, res.user.displayName);
         setsucessmsg(true);
       }
     } catch (error) {
@@ -106,11 +127,11 @@ export default function Appoitments() {
 
           {isloading ? (
             <div className="flex flex-col items-center justify-center mt-5 space-y-4">
-              <Bar width={"full"} height={8}/>
-              <Bar width={"full"} height={8}/>
-              <Bar width={"full"} height={8}/>
-              <Bar width={"full"} height={8}/>
-              <Bar width={"full"} height={8}/>
+              <Bar width={"full"} height={8} />
+              <Bar width={"full"} height={8} />
+              <Bar width={"full"} height={8} />
+              <Bar width={"full"} height={8} />
+              <Bar width={"full"} height={8} />
             </div>
           ) : (
             userAppointements.map((i, idx) => {

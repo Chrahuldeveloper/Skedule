@@ -10,7 +10,7 @@ export default function Editimage({ setisedit, user, setisloading, setuser }) {
   const [editdata, seteditdata] = useState({
     photo: user.photo,
     Name: user.Name,
-    Bio: "",
+    Bio: user.Bio ? user.Bio : "",
     work: user.work ? user.work : "",
   });
 

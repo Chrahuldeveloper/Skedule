@@ -45,7 +45,7 @@ export default function AppotimentsBoard({
     <>
       <div className="bg-zinc-900 p-5 my-6 border-[1.2px] rounded-md  border-zinc-800 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh]  z-50">
         {isloading ? <Loader /> : null}
-        <div className="flex justify-between px-5 items-center">
+        <div className="flex items-center justify-between px-5">
           <h1 className="text-2xl font-semibold text-slate-300">
             Your Appotiments
           </h1>
@@ -80,7 +80,7 @@ export default function AppotimentsBoard({
                 <tbody className=" text-slate-300">
                   <th className="pt-10 lg:pl-3">
                     <h1 className="text-xs cursor-pointer">
-                      {i.emails?.length}
+                      {i.emails?.length || i.Slots}
                     </h1>
                   </th>
                   <th className="pt-10 pl-8 lg:pl-28 lg:text-sm">

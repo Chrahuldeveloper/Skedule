@@ -17,6 +17,7 @@ export default function Appoitments() {
   const provider = new GoogleAuthProvider();
 
   const [sucessmsg, setsucessmsg] = useState(false);
+  const [errormsg, seterrormsg] = useState(false);
 
   const { id } = useParams();
 
@@ -59,7 +60,7 @@ export default function Appoitments() {
         (itm, i) => i === index
       );
       if (filteredAppointment.emails?.includes(user)) {
-        return setsucessmsg(true);
+        return seterrormsg(true);
       } else {
         filteredAppointment.emails = [
           ...(filteredAppointment.emails || []),
@@ -138,7 +139,10 @@ export default function Appoitments() {
         </div>
       </div>
       {sucessmsg && toggle ? (
-        <Sucess msg={"Already Registerd"} settoggle={settoggle} />
+        <Sucess msg={"Registration Done"} settoggle={settoggle} />
+      ) : null}
+      {errormsg && toggle ? (
+        <Sucess msg={"Already Registrated"} settoggle={settoggle} />
       ) : null}
     </div>
   );

@@ -1,11 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { db, auth } from "../Firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { Circle, Bar } from "../components/index";
+import { Circle, Bar, Sucess } from "../components/index";
 // import emailjs from "@emailjs/browser";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useParams } from "react-router-dom";
-
 export default function Appoitments() {
   const [userAppointements, setuserAppointements] = useState([]);
   const [isloading, setisloading] = useState(false);
@@ -17,8 +16,11 @@ export default function Appoitments() {
 
   const provider = new GoogleAuthProvider();
 
+  const [sucessmsg, setsucessmsg] = useState(false);
 
-  const {id} = useParams()
+  const { id } = useParams();
+
+  const [toggle, settoggle] = useState(true);
 
   const getUserAppointments = useCallback(async () => {
     if (!id) return;
@@ -56,14 +58,15 @@ export default function Appoitments() {
       const filteredAppointment = await appointments.find(
         (itm, i) => i === index
       );
-      if (filteredAppointment.emails.includes(user)) {
-        return alert("Already Registered");
+      if (filteredAppointment.emails?.includes(user)) {
+        return setsucessmsg(true);
       } else {
         filteredAppointment.emails = [
           ...(filteredAppointment.emails || []),
           user,
         ];
         await updateDoc(docRef, { Appointments: appointments });
+        setsucessmsg(true);
       }
     } catch (error) {
       console.log(error);
@@ -105,16 +108,16 @@ export default function Appoitments() {
               <React.Fragment key={idx}>
                 <div className="flex items-center justify-center gap-10 my-9 border-b-[1px] border-zinc-700">
                   <div className="flex flex-col items-center justify-center gap-2.5 text-slate-300">
-                    <h1 className="text-xs">{i.date}</h1>
-                    <p className="text-sm">{i.day}</p>
+                    <h1 className="text-[10px]">{i.date}</h1>
+                    <p className="text-[10px]">{i.day}</p>
                   </div>
                   <div className="duration-300 ease-in-out rounded-full bg-violet-300 hover:brightness-75">
-                    <h1 className="px-2 py-2 text-xs font-semibold cursor-pointer text-violet-800">
+                    <h1 className="px-2 py-2 text-[10px] font-semibold cursor-pointer text-violet-800">
                       {i.StartTime} - {i.EndTime}
                     </h1>
                   </div>
                   <div>
-                    <h1 className="text-xs font-semibold cursor-pointer text-violet-200">
+                    <h1 className="text-[10px] font-semibold cursor-pointer text-violet-200">
                       {i.Slots === i.emails ? "Not Available" : "Available"}
                     </h1>
                   </div>
@@ -124,7 +127,7 @@ export default function Appoitments() {
                     }}
                     className="duration-300 ease-in-out bg-purple-500 rounded-full hover:brightness-75"
                   >
-                    <p className="px-5 py-2 text-xs font-semibold text-white cursor-pointer">
+                    <p className="px-5 py-2 text-[10px] font-semibold text-white cursor-pointer">
                       Book
                     </p>
                   </div>
@@ -134,6 +137,9 @@ export default function Appoitments() {
           })}
         </div>
       </div>
+      {sucessmsg && toggle ? (
+        <Sucess msg={"Already Registerd"} settoggle={settoggle} />
+      ) : null}
     </div>
   );
 }

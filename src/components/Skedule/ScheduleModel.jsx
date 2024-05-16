@@ -3,7 +3,6 @@ import { RxCross2 } from "react-icons/rx";
 import { db } from "../../Firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import Loader from "../Loader";
-
 export default function Schedule({ setispopup, day, setuserAppointements }) {
   const [schedule, setschedule] = useState({
     StartTime: "",

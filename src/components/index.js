@@ -12,8 +12,10 @@ import CalenderBoard from "./Skedule/CalenderBoard";
 import ScheduleModel from "./Skedule/ScheduleModel";
 import Circle from "./loaders/Circle";
 import Bar from "./loaders/Bar";
+import Sucess from "./Notifcations/Sucess";
 
 export {
+  Sucess,
   Bar,
   ScheduleModel,
   CalenderBoard,

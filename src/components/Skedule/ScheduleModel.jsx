@@ -57,9 +57,9 @@ export default function Schedule({ setispopup, day, setuserAppointements }) {
           <div>
             <input
               type="time"
-              value={schedule.EndTime}
+              value={schedule.StartTime}
               onChange={(e) => {
-                setschedule({ ...schedule, EndTime: e.target.value });
+                setschedule({ ...schedule, StartTime: e.target.value });
               }}
               className="cursor-pointer outline-none border-[1px] px-3 py-2 bg-transparent border-zinc-800 text-white time-input"
             />

@@ -4,10 +4,10 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { Circle, Bar } from "../components/index";
 // import emailjs from "@emailjs/browser";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useParams } from "react-router-dom";
 
 export default function Appoitments() {
   const [userAppointements, setuserAppointements] = useState([]);
-  const jwt = sessionStorage.getItem("jwt");
   const [isloading, setisloading] = useState(false);
   const [user, setuser] = useState({
     Pic: "",
@@ -17,11 +17,14 @@ export default function Appoitments() {
 
   const provider = new GoogleAuthProvider();
 
+
+  const {id} = useParams()
+
   const getUserAppointments = useCallback(async () => {
-    if (!jwt) return;
+    if (!id) return;
     try {
       setisloading(true);
-      const docRef = doc(db, "USERS", jwt);
+      const docRef = doc(db, "USERS", id);
       const userData = await getDoc(docRef);
       const data = userData.data();
       setuserAppointements(data?.Appointments || []);
@@ -35,7 +38,7 @@ export default function Appoitments() {
     } finally {
       setisloading(false);
     }
-  }, [jwt]);
+  }, [id]);
 
   useEffect(() => {
     getUserAppointments();
@@ -46,7 +49,7 @@ export default function Appoitments() {
     const user = res.user.email;
 
     try {
-      const docRef = doc(db, "USERS", jwt);
+      const docRef = doc(db, "USERS", id);
       const docSnap = await getDoc(docRef);
       const userData = docSnap.data();
       const appointments = (await userData.Appointments) || [];
@@ -111,7 +114,7 @@ export default function Appoitments() {
                     </h1>
                   </div>
                   <div>
-                    <h1 className=" text-xs font-semibold cursor-pointer text-violet-200">
+                    <h1 className="text-xs font-semibold cursor-pointer text-violet-200">
                       {i.Slots === i.emails ? "Not Available" : "Available"}
                     </h1>
                   </div>
@@ -121,7 +124,7 @@ export default function Appoitments() {
                     }}
                     className="duration-300 ease-in-out bg-purple-500 rounded-full hover:brightness-75"
                   >
-                    <p className="py-2 text-xs font-semibold text-white cursor-pointer px-5">
+                    <p className="px-5 py-2 text-xs font-semibold text-white cursor-pointer">
                       Book
                     </p>
                   </div>

@@ -104,38 +104,49 @@ export default function Appoitments() {
             return <></>;
           })}
 
-          {userAppointements.map((i, idx) => {
-            return (
-              <React.Fragment key={idx}>
-                <div className="flex items-center justify-center gap-10 my-9 border-b-[1px] border-zinc-700">
-                  <div className="flex flex-col items-center justify-center gap-2.5 text-slate-300">
-                    <h1 className="text-[10px]">{i.date}</h1>
-                    <p className="text-[10px]">{i.day}</p>
+          {isloading ? (
+            <div className="flex flex-col items-center justify-center mt-5 space-y-4">
+              <Bar width={72} />
+              <Bar width={72} />
+              <Bar width={72} />
+              <Bar width={72} />
+              <Bar width={72} />
+              <Bar width={72} />
+            </div>
+          ) : (
+            userAppointements.map((i, idx) => {
+              return (
+                <React.Fragment key={idx}>
+                  <div className="flex items-center justify-center gap-10 my-9 border-b-[1px] border-zinc-700">
+                    <div className="flex flex-col items-center justify-center gap-2.5 text-slate-300">
+                      <h1 className="text-[10px]">{i.date}</h1>
+                      <p className="text-[10px]">{i.day}</p>
+                    </div>
+                    <div className="duration-300 ease-in-out rounded-full bg-violet-300 hover:brightness-75">
+                      <h1 className="px-2 py-2 text-[10px] font-semibold cursor-pointer text-violet-800">
+                        {i.StartTime} - {i.EndTime}
+                      </h1>
+                    </div>
+                    <div>
+                      <h1 className="text-[10px] font-semibold cursor-pointer text-violet-200">
+                        {i.Slots === i.emails ? "Not Available" : "Available"}
+                      </h1>
+                    </div>
+                    <div
+                      onClick={() => {
+                        GoogleRegister(idx);
+                      }}
+                      className="duration-300 ease-in-out bg-purple-500 rounded-full hover:brightness-75"
+                    >
+                      <p className="px-5 py-2 text-[10px] font-semibold text-white cursor-pointer">
+                        Book
+                      </p>
+                    </div>
                   </div>
-                  <div className="duration-300 ease-in-out rounded-full bg-violet-300 hover:brightness-75">
-                    <h1 className="px-2 py-2 text-[10px] font-semibold cursor-pointer text-violet-800">
-                      {i.StartTime} - {i.EndTime}
-                    </h1>
-                  </div>
-                  <div>
-                    <h1 className="text-[10px] font-semibold cursor-pointer text-violet-200">
-                      {i.Slots === i.emails ? "Not Available" : "Available"}
-                    </h1>
-                  </div>
-                  <div
-                    onClick={() => {
-                      GoogleRegister(idx);
-                    }}
-                    className="duration-300 ease-in-out bg-purple-500 rounded-full hover:brightness-75"
-                  >
-                    <p className="px-5 py-2 text-[10px] font-semibold text-white cursor-pointer">
-                      Book
-                    </p>
-                  </div>
-                </div>
-              </React.Fragment>
-            );
-          })}
+                </React.Fragment>
+              );
+            })
+          )}
         </div>
       </div>
       {sucessmsg && toggle ? (

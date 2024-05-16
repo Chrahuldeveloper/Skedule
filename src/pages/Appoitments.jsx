@@ -106,18 +106,17 @@ export default function Appoitments() {
 
           {isloading ? (
             <div className="flex flex-col items-center justify-center mt-5 space-y-4">
-              <Bar width={72} />
-              <Bar width={72} />
-              <Bar width={72} />
-              <Bar width={72} />
-              <Bar width={72} />
-              <Bar width={72} />
+              <Bar width={"full"} height={8}/>
+              <Bar width={"full"} height={8}/>
+              <Bar width={"full"} height={8}/>
+              <Bar width={"full"} height={8}/>
+              <Bar width={"full"} height={8}/>
             </div>
           ) : (
             userAppointements.map((i, idx) => {
               return (
                 <React.Fragment key={idx}>
-                  <div className="flex items-center justify-center gap-10 my-9 border-b-[1px] border-zinc-700">
+                  <div className="flex  items-center justify-center gap-10 my-9 border-b-[1px] border-zinc-700">
                     <div className="flex flex-col items-center justify-center gap-2.5 text-slate-300">
                       <h1 className="text-[10px]">{i.date}</h1>
                       <p className="text-[10px]">{i.day}</p>

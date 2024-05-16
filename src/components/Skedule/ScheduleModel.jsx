@@ -121,7 +121,7 @@ export default function Schedule({ setispopup, day, setuserAppointements }) {
             onClick={saveScheduleAppointment}
             className="w-full py-2 text-sm font-semibold rounded-full text-slate-300 bg-violet-600"
           >
-            Share URL
+            Schedule
           </button>
         </div>
       </div>

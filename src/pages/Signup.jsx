@@ -11,7 +11,7 @@ import { addDoc, doc, setDoc } from "firebase/firestore";
 import sendNotification from "../features/Notification";
 export default function Signup() {
   const navigate = useNavigate();
-
+  const jwt = sessionStorage.getItem("jwt");
   const [user, setuser] = useState({
     email: "",
     Pass: "",
@@ -25,7 +25,7 @@ export default function Signup() {
   };
 
   const GoogleSignIn = async () => {
-    if (sessionStorage.getItem("jwt")) {
+    if (jwt) {
       navigate("/userProfile");
     } else {
       try {
@@ -40,7 +40,7 @@ export default function Signup() {
             photo: res.user.photoURL,
           });
           sessionStorage.setItem("jwt", res.user.uid);
-          await sendNotification(sessionStorage.getItem("jwt"), notification);
+          await sendNotification(jwt, notification);
           navigate("/userProfile");
         }
       } catch (error) {
@@ -50,7 +50,7 @@ export default function Signup() {
   };
 
   const emailPassSignIn = async () => {
-    if (sessionStorage.getItem("jwt")) {
+    if (jwt) {
       navigate("/userProfile");
     } else {
       try {

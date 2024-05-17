@@ -47,8 +47,7 @@ export default function Appoitments() {
     getUserAppointments();
   }, [getUserAppointments]);
 
-  const sendEmail = async (userEmail, userName) => {
-    console.log(userEmail, userName)
+  const sendEmail = async (userEmail, userName, link) => {
     try {
       const res = await emailjs.send(
         "service_v85ekfn",
@@ -58,6 +57,7 @@ export default function Appoitments() {
           to_name: userName,
           from_email: "saasstudiosindia@gmail.com",
           to_email: userEmail,
+          message: `Appointment Link is ${link}  `,
         },
         "3mxv1JKPFdt7xkk3a"
       );
@@ -87,7 +87,7 @@ export default function Appoitments() {
           user,
         ];
         await updateDoc(docRef, { Appointments: appointments });
-        await sendEmail(user, res.user.displayName);
+        await sendEmail(user, res.user.displayName, filteredAppointment.Link);
         setsucessmsg(true);
       }
     } catch (error) {

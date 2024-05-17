@@ -13,8 +13,6 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
     navigate("/signup");
   };
 
-  console.log(user);
-
   return (
     <>
       <div className="fixed inset-0 flex items-center justify-center h-full bg-black bg-opacity-75 backdrop-blur-md lg:bg-opacity-0 lg:backdrop-blur-0 ">

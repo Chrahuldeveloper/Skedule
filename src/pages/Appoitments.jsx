@@ -47,8 +47,29 @@ export default function Appoitments() {
     getUserAppointments();
   }, [getUserAppointments]);
 
-  const sendEmail = async (userEmail, userName, link) => {
+  const sendEmail = async (
+    userEmail,
+    userName,
+    link,
+    creatorEmail,
+    creatorName,
+    time
+  ) => {
     try {
+      const rescreator = await emailjs.send(
+        "service_v85ekfn",
+        "template_q8bxqkv",
+        {
+          from_name: "Skedule",
+          to_name: creatorName,
+          from_email: "saasstudiosindia@gmail.com",
+          to_email: creatorEmail,
+          message: `${userEmail} has Booked your Appointment at ${time}`,
+        },
+        "3mxv1JKPFdt7xkk3a"
+      );
+
+      console.log(rescreator);
       const res = await emailjs.send(
         "service_v85ekfn",
         "template_q8bxqkv",
@@ -61,8 +82,7 @@ export default function Appoitments() {
         },
         "3mxv1JKPFdt7xkk3a"
       );
-      const msg = res.text;
-      console.log(msg);
+      console.log(res.text);
     } catch (error) {
       console.log(error);
     }
@@ -87,7 +107,14 @@ export default function Appoitments() {
           user,
         ];
         await updateDoc(docRef, { Appointments: appointments });
-        await sendEmail(user, res.user.displayName, filteredAppointment.Link);
+        await sendEmail(
+          user,
+          res.user.displayName,
+          filteredAppointment.Link,
+          userData.Email,
+          userData.Name,
+          filteredAppointment.StartTime
+        );
         setsucessmsg(true);
       }
     } catch (error) {

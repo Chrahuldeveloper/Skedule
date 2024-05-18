@@ -3,6 +3,7 @@ import { Footer, Model, Navbar } from "../components";
 import data from "../data/Features";
 import imagedata from "../data/Images";
 import img1 from "../images/img1.png";
+import img2 from "../images/img2.png";
 export default function LandingPage() {
   const [ismodel, setismodel] = useState(false);
 
@@ -11,10 +12,10 @@ export default function LandingPage() {
       <Navbar />
       {/*   Banner  */}
       <div
-        data-aos="fade-up"
-        data-aos-delay="50"
-        data-aos-duration="1000"
-        data-aos-easing="ease-in-out"
+        // data-aos="fade-up"
+        // data-aos-delay="50"
+        // data-aos-duration="1000"
+        // data-aos-easing="ease-in-out"
         className="items-start px-5 justify-evenly md:flex"
       >
         <div className="space-y-5 md:space-y-10">
@@ -31,8 +32,8 @@ export default function LandingPage() {
         </div>
         <div className="mt-20">
           <img
-            className="hidden max-w-xl cursor-pointer md:block rotate-6 "
-            src={img1}
+            className="hidden max-w-xl cursor-pointer md:block rotate-12 "
+            src={img2}
             alt=""
           />
           <img
@@ -41,10 +42,14 @@ export default function LandingPage() {
             alt=""
           />
           <div className="flex flex-col items-center duration-300 ease-in-out cursor-pointer md:hidden">
-            <img className="max-w-sm hover:brightness-75" src={img1} alt="" />
             <img
-              className="max-w-sm duration-300 ease-in-out cursor-pointer hover:brightness-75"
+              className="max-w-md cursor-pointer rotate-6"
               src={img1}
+              alt=""
+            />
+            <img
+              className="max-w-md cursor-pointer mt-1.5 rotate-6"
+              src={img2}
               alt=""
             />
           </div>
@@ -52,11 +57,11 @@ export default function LandingPage() {
       </div>
       {/*   Banner  */}
       <div
-        className="space-y-6 mt-28 text-slate-300"
-        data-aos="fade-up"
-        data-aos-delay="50"
-        data-aos-duration="2000"
-        data-aos-easing="ease-in-out"
+        className="mt-12 space-y-6 text-slate-300"
+        // data-aos="fade-up"
+        // data-aos-delay="50"
+        // data-aos-duration="2000"
+        // data-aos-easing="ease-in-out"
       >
         <h1 className="max-w-sm mx-auto text-2xl font-semibold leading-8 text-center md:text-3xl lg:text-4xl md:max-w-lg">
           The all-in-one point of sale for booking, payments, and more.

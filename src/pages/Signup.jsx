@@ -40,7 +40,7 @@ export default function Signup() {
             photo: res.user.photoURL,
           });
           sessionStorage.setItem("jwt", res.user.uid);
-          await sendNotification(jwt, notification);
+          await sendNotification(res.user.uid, notification);
           navigate("/userProfile");
         }
       } catch (error) {

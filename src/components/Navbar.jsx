@@ -45,6 +45,7 @@ export default function Navbar() {
               }}
               size={20}
               cursor={"pointer"}
+              color="white"
             />
           ) : (
             <FaAngleDown
@@ -53,6 +54,7 @@ export default function Navbar() {
               }}
               size={20}
               cursor={"pointer"}
+              color="white"
             />
           )}
         </div>

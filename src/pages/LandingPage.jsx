@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Footer, Model, Navbar } from "../components";
 import data from "../data/Features";
 import imagedata from "../data/Images";
+import img1 from "../images/img1.png";
 export default function LandingPage() {
   const [ismodel, setismodel] = useState(false);
 
@@ -10,14 +11,14 @@ export default function LandingPage() {
       <Navbar />
       {/*   Banner  */}
       <div
-        // data-aos="fade-up"
-        // data-aos-delay="50"
-        // data-aos-duration="1000"
-        // data-aos-easing="ease-in-out"
-        className="items-start px-5 mt-10 justify-evenly md:items-center md:flex"
+        data-aos="fade-up"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+        data-aos-easing="ease-in-out"
+        className="items-start px-5 justify-evenly md:flex"
       >
         <div className="space-y-5 md:space-y-10">
-          <h1 className="text-3xl font-bold leading-10 lg:max-w-xl md:leading-10 lg:text-5xl text-slate-300">
+          <h1 className="mt-3 text-3xl font-bold leading-10 md:mt-32 lg:max-w-xl md:leading-10 lg:text-5xl text-slate-300">
             Get Peace of Mind with Workforce Analytics for Fully Remote Teams
           </h1>
           <p className="text-sm leading-6 text-gray-300 lg:max-w-md md:text-xl md:leading-8">
@@ -28,21 +29,22 @@ export default function LandingPage() {
             Get Started
           </button>
         </div>
-        <div className="lg:my-5">
+        <div className="mt-20">
           <img
-            className="hidden max-w-md md:block"
-            src="https://www.timedoctor.com/_next/image?url=https%3A%2F%2Fa-us.storyblok.com%2Ff%2F1016472%2F510x531%2F5dbf35edfb%2Fwork-section-img.png%2Fm%2Ffilters%3Aquality(80)&w=640&q=100"
+            className="hidden max-w-xl cursor-pointer md:block rotate-6 "
+            src={img1}
             alt=""
           />
-          <div className="flex flex-col items-center -mt-2 md:hidden">
+          <img
+            className="hidden max-w-xl -translate-y-64 cursor-pointer md:block rotate-10"
+            src={img1}
+            alt=""
+          />
+          <div className="flex flex-col items-center duration-300 ease-in-out cursor-pointer md:hidden">
+            <img className="max-w-sm hover:brightness-75" src={img1} alt="" />
             <img
-              className="max-w-sm"
-              src="https://www.timedoctor.com/_next/image?url=https%3A%2F%2Fa-us.storyblok.com%2Ff%2F1016472%2F461x313%2Fc4b97daf1f%2Fline-graph.svg%2Fm%2Ffilters%3Aquality(80)&w=640&q=100"
-              alt=""
-            />
-            <img
-              className="max-w-sm mt-10 duration-300 ease-in-out hover:brightness-75"
-              src="https://www.timedoctor.com/_next/image?url=https%3A%2F%2Fa-us.storyblok.com%2Ff%2F1016472%2F510x531%2F5dbf35edfb%2Fwork-section-img.png%2Fm%2Ffilters%3Aquality(80)&w=640&q=100"
+              className="max-w-sm duration-300 ease-in-out cursor-pointer hover:brightness-75"
+              src={img1}
               alt=""
             />
           </div>
@@ -50,10 +52,10 @@ export default function LandingPage() {
       </div>
       {/*   Banner  */}
       <div
-        className="mt-20 space-y-6 text-slate-300"
-        // data-aos="fade-up"
-        // data-aos-delay="50"
-        // data-aos-duration="1000"
+        className="space-y-6 mt-28 text-slate-300"
+        data-aos="fade-up"
+        data-aos-delay="50"
+        data-aos-duration="2000"
         data-aos-easing="ease-in-out"
       >
         <h1 className="max-w-sm mx-auto text-2xl font-semibold leading-8 text-center md:text-3xl lg:text-4xl md:max-w-lg">
@@ -68,9 +70,9 @@ export default function LandingPage() {
           return (
             <React.Fragment key={index}>
               <div
-                // data-aos="fade-up"
-                // data-aos-delay="50"
-                // data-aos-easing="ease-in-out"
+                data-aos="fade-up"
+                data-aos-delay="50"
+                data-aos-easing="ease-in-out"
                 className="max-w-xs md:max-w-md space-y-4 p-5 border-[1px] cursor-pointer text-center rounded-lg text-slate-300 border-zinc-800"
               >
                 <h1 className="text-lg font-semibold md:text-xl">{i.Tittle}</h1>
@@ -82,9 +84,9 @@ export default function LandingPage() {
       </div>
 
       <div
-        // data-aos="fade-up"
-        // data-aos-delay="50"
-        // data-aos-easing="ease-in-out"
+        data-aos="fade-up"
+        data-aos-delay="50"
+        data-aos-easing="ease-in-out"
         className="my-12 space-y-5 text-slate-300"
       >
         <h1 className="text-2xl font-semibold text-center md:text-3xl lg:text-4xl">
@@ -103,9 +105,9 @@ export default function LandingPage() {
             return (
               <React.Fragment key={index}>
                 <img
-                  // data-aos="fade-up"
-                  // data-aos-delay="50"
-                  // data-aos-easing="ease-in-out"
+                  data-aos="fade-up"
+                  data-aos-delay="50"
+                  data-aos-easing="ease-in-out"
                   onClick={() => {
                     setismodel(true);
                   }}
@@ -124,9 +126,9 @@ export default function LandingPage() {
       {/* <Subscription /> */}
 
       <div
-        // data-aos="fade-up"
-        // data-aos-delay="50"
-        // data-aos-easing="ease-in-out"
+        data-aos="fade-up"
+        data-aos-delay="50"
+        data-aos-easing="ease-in-out"
         className="flex flex-col items-center justify-center my-16 space-y-5 text-slate-300"
       >
         <h1 className="text-2xl font-semibold text-center md:text-3xl lg:text-4xl">
@@ -146,7 +148,6 @@ export default function LandingPage() {
           </button>
         </div>
       </div>
-
       <Footer />
     </body>
   );

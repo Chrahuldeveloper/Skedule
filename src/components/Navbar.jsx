@@ -61,23 +61,23 @@ export default function Navbar() {
       </div>
 
       <ul
-        className={`flex flex-col justify-start items-start p-4 px-5 pt-4 space-y-4 md:hidden border-t-[1px] border-b-[1px] border-gray-200 bg-gray-50 ${
+        className={`flex flex-col justify-start items-start p-4 px-5 pt-4 space-y-4 md:hidden border-t-[1px] border-b-[1px] border-zinc-900 bg-zinc-900 ${
           istoggle ? "block" : "hidden"
         } `}
       >
-        <li className="duration-500 ease-in-out cursor-pointer text-slate-500 hover:text-black">
+        <li className="duration-500 ease-in-out cursor-pointer text-slate-300 ">
           Home
         </li>
-        <li className="duration-500 ease-in-out cursor-pointer text-slate-500 hover:text-black">
+        <li className="duration-500 ease-in-out cursor-pointer text-slate-300 ">
           Home
         </li>
-        <li className="duration-500 ease-in-out cursor-pointer text-slate-500 hover:text-black">
+        <li className="duration-500 ease-in-out cursor-pointer text-slate-300 ">
           Home
         </li>
-        <li className="duration-500 ease-in-out cursor-pointer text-slate-500 hover:text-black">
+        <li className="duration-500 ease-in-out cursor-pointer text-slate-300 ">
           Home
         </li>
-        <li className="font-semibold text-center text-blue-600 rounded-md cursor-pointer ">
+        <li className="font-semibold text-center rounded-md cursor-pointer text-violet-600 ">
           Signup
         </li>
       </ul>

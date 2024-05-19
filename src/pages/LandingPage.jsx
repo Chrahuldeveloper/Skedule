@@ -75,14 +75,13 @@ export default function LandingPage() {
         ))}
       </div>
 
-
-      
       <div className="mt-48 space-y-6 text-slate-300">
         <h1 className="max-w-sm mx-auto text-2xl font-semibold leading-8 text-center md:text-3xl lg:text-4xl md:max-w-lg">
-          Discover the Powerful Features of Our SaaS Booking System
+          Time-Saving Appointments at Your Fingertips{" "}
         </h1>
-        <p className="max-w-sm mx-auto text-center md:text-xl">
-          We handle the admin while you do more of what you love.
+        <p className="max-w-md mx-auto text-center md:text-xl">
+          Whether you're a busy professional, a small business owner,our
+          platform offers seamless and hassle-free appointment.
         </p>
       </div>
       <div className="md:px-7 ml-8 w-[100vw] mx-auto my-36 rounded-lg">

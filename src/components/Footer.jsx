@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Footer() {
+export default function Footer({ scrollTosection1, scrollTosection2 }) {
   return (
     <div className="items-center justify-between w-screen p-10 border-t-[1px] border-zinc-800 lg:flex bg-[#090a0e]">
       <div className="space-y-3 lg:pl-20 text-slate-300">
@@ -11,17 +11,28 @@ export default function Footer() {
         </p>
       </div>
       <div className="flex flex-col gap-8 pl-8 my-8 lg:gap-20 lg:flex-row lg:pr-28 lg:justify-center text-slate-300">
-      <ul className="space-y-3.5 ">
+        <ul className="space-y-3.5 ">
           <h1 className="text-lg font-semibold text-zinc-200">Contact Us</h1>
           <li className="font-semibold cursor-pointer">Email</li>
         </ul>
         <ul className="space-y-3.5  ">
           <h1 className="text-lg font-semibold text-zinc-200">About Us</h1>
-          <li className="font-semibold cursor-pointer">Home</li>
-          <li className="font-semibold cursor-pointer">Home</li>
-          <li className="font-semibold cursor-pointer">Home</li>
+          <li className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400">
+            Home
+          </li>
+          <li
+            onClick={scrollTosection1}
+            className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400"
+          >
+            Features
+          </li>
+          <li
+            onClick={scrollTosection2}
+            className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400"
+          >
+            Services
+          </li>
         </ul>
-      
       </div>
     </div>
   );

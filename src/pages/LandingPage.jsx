@@ -71,8 +71,9 @@ export default function LandingPage() {
       </div>
       {/* Banner */}
       <div ref={section1} className="mt-20 space-y-6 text-slate-300">
-        <h1 className="max-w-sm mx-auto text-2xl font-semibold leading-8 text-center md:text-3xl lg:text-4xl md:max-w-lg">
-          Discover the Powerful Features of Our SaaS Booking System
+        <h1 className="max-w-sm mx-auto text-2xl font-semibold leading-10 text-center md:text-3xl lg:text-4xl md:max-w-lg">
+          Discover the <span className=" text-violet-600">Powerful</span>{" "}
+          Features of Our SaaS Booking System
         </h1>
         <p className="max-w-sm mx-auto text-center md:text-xl">
           We handle the admin while you do more of what you love.
@@ -95,7 +96,8 @@ export default function LandingPage() {
 
       <div ref={section2} className="mt-48 space-y-6 text-slate-300">
         <h1 className="max-w-sm mx-auto text-2xl font-semibold leading-8 text-center md:text-3xl lg:text-4xl md:max-w-lg">
-          Time-Saving Appointments at Your Fingertips{" "}
+          Time-Saving Appointments at Your{" "}
+          <span className=" text-violet-600">Fingertips</span>{" "}
         </h1>
         <p className="max-w-md mx-auto text-center md:text-xl">
           Whether you're a busy professional, a small business owner,our
@@ -147,7 +149,14 @@ export default function LandingPage() {
           </button>
         </div>
       </div>
-      <Footer />
+      <Footer
+        scrollTosection1={() => {
+          scrollToSection(section1);
+        }}
+        scrollTosection2={() => {
+          scrollToSection(section2);
+        }}
+      />
     </body>
   );
 }

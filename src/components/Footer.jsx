@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer({ scrollTosection1, scrollTosection2 }) {
   return (
-    <div className="items-center justify-between w-screen p-10 border-t-[1px] border-zinc-800 lg:flex bg-[#090a0e]">
+    <div className="items-center justify-between w-screen p-10 border-t-2 border-zinc-900 lg:flex bg-[#0a0b11]">
       <div className="space-y-3 lg:pl-20 text-slate-300">
         <h1 className="text-2xl font-semibold lg:text-3xl">Skedule</h1>
         <p className="max-w-md">
@@ -13,7 +13,9 @@ export default function Footer({ scrollTosection1, scrollTosection2 }) {
       <div className="flex flex-col gap-8 pl-8 my-8 lg:gap-20 lg:flex-row lg:pr-28 lg:justify-center text-slate-300">
         <ul className="space-y-3.5 ">
           <h1 className="text-lg font-semibold text-zinc-200">Contact Us</h1>
-          <li className="font-semibold cursor-pointer">Email</li>
+          <li className="text-sm font-semibold cursor-pointer">
+            saasstudiosindia@gmail.com
+          </li>
         </ul>
         <ul className="space-y-3.5  ">
           <h1 className="text-lg font-semibold text-zinc-200">About Us</h1>

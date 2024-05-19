@@ -18,26 +18,23 @@ export default function Model({ setismodel, imagedata }) {
             color="white"
           />
         </div>
-        <div className="space-y-3">
-          <h1 className="text-xl font-semibold text-slate-300">
+        <div className="mt-2 space-y-3">
+          <h1 className="text-lg font-semibold text-slate-300">
             {imagedata.Tittle}
           </h1>
         </div>
-        <div className="border-b-[1px]  my-6 border-violet-300 w-full"></div>
         {imagedata.Points.map((i, index) => {
           return (
             <React.Fragment key={index}>
               <ul className=" w-[70vw] sm:w-[50vw] md:w-[50vw] lg:w-[30vw] xl:w-[30vw]  text-slate-300">
-                <li className="flex items-center gap-4 pl-4 my-5">
-                  <TiTickOutline size={40} color="violet" />
+                <li className="flex items-center gap-4 pl-4 my-6">
+                  <TiTickOutline size={45} color="#7c3aed" />
                   <h1 className="text-xs">{i}</h1>
                 </li>
               </ul>
             </React.Fragment>
           );
         })}
-
-        <div className="border-b-[1px] w-full my-6 border-blue-300"></div>
       </div>
     </div>
   );

@@ -126,29 +126,6 @@ export default function LandingPage() {
 
       {ismodel && <Model setismodel={setismodel} imagedata={selectedImage} />}
 
-      <div
-        data-aos="fade-up"
-        data-aos-delay="50"
-        data-aos-easing="ease-in-out"
-        className="flex flex-col items-center justify-center space-y-5 my-28 text-slate-300"
-      >
-        <h1 className="text-2xl font-semibold text-center md:text-3xl lg:text-4xl">
-          Stay up to date
-        </h1>
-        <p className="text-center">
-          Get tips on industry trends, tools and updated features.
-        </p>
-        <div className="space-x-4">
-          <input
-            type="text"
-            placeholder="Email Address"
-            className="border-[1px] outline-none w-[55vw] md:w-[40vw] lg:w-[30vw] py-3 px-5 bg-zinc-800 border-zinc-900 rounded-full"
-          />
-          <button className="px-5 py-3 text-white border-[1px] border-zinc-800  rounded-full bg-violet-600">
-            Submit
-          </button>
-        </div>
-      </div>
       <Footer
         scrollTosection1={() => {
           scrollToSection(section1);

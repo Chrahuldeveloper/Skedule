@@ -4,19 +4,36 @@ import data from "../data/Features";
 import imagedata from "../data/Images";
 import img1 from "../images/img1.png";
 import img2 from "../images/img2.png";
+import { useRef } from "react";
 
 export default function LandingPage() {
   const [ismodel, setismodel] = useState(false);
   const [selectedImage, setSelectedImage] = useState();
 
+  const section1 = useRef(null);
+  const section2 = useRef(null);
+
+  const scrollToSection = (section) => {
+    section.current.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   return (
     <body className="overflow-x-clip bg-[#08090d]">
-      <Navbar />
+      <Navbar
+        scrollTosection1={() => {
+          scrollToSection(section1);
+        }}
+        scrollTosection2={() => {
+          scrollToSection(section2);
+        }}
+      />
       {/* Banner */}
       <div className="items-start px-5 justify-evenly md:flex">
         <div className="space-y-5 md:space-y-10">
           <h1 className="mt-5 text-3xl font-bold leading-10 md:mt-32 lg:max-w-xl md:leading-10 lg:text-5xl text-slate-300">
-          Simplify Scheduling with Our SaaS Booking System{" "}
+            Simplify Scheduling with Our SaaS Booking System{" "}
             <span className="border-b-4 border-violet-600">Skedule</span>
           </h1>
           <p className="text-sm leading-6 text-gray-300 lg:max-w-md md:text-xl md:leading-8">
@@ -53,7 +70,7 @@ export default function LandingPage() {
         </div>
       </div>
       {/* Banner */}
-      <div className="mt-20 space-y-6 text-slate-300">
+      <div ref={section1} className="mt-20 space-y-6 text-slate-300">
         <h1 className="max-w-sm mx-auto text-2xl font-semibold leading-8 text-center md:text-3xl lg:text-4xl md:max-w-lg">
           Discover the Powerful Features of Our SaaS Booking System
         </h1>
@@ -76,7 +93,7 @@ export default function LandingPage() {
         ))}
       </div>
 
-      <div className="mt-48 space-y-6 text-slate-300">
+      <div ref={section2} className="mt-48 space-y-6 text-slate-300">
         <h1 className="max-w-sm mx-auto text-2xl font-semibold leading-8 text-center md:text-3xl lg:text-4xl md:max-w-lg">
           Time-Saving Appointments at Your Fingertips{" "}
         </h1>

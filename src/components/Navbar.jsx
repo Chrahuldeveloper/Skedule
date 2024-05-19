@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({ scrollTosection1, scrollTosection2 }) {
   const [istoggle, setistoggle] = useState(false);
 
   const jwt = sessionStorage.getItem("jwt");
@@ -20,10 +20,16 @@ export default function Navbar() {
           <li className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400">
             Home
           </li>
-          <li className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400">
+          <li
+            onClick={scrollTosection1}
+            className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400"
+          >
             Features
           </li>
-          <li className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400">
+          <li
+            onClick={scrollTosection2}
+            className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400"
+          >
             Services
           </li>
 
@@ -65,10 +71,16 @@ export default function Navbar() {
         <li className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400">
           Home
         </li>
-        <li className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400">
+        <li
+          onClick={scrollTosection1}
+          className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400"
+        >
           Features
         </li>
-        <li className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400">
+        <li
+          onClick={scrollTosection2}
+          className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400"
+        >
           Services
         </li>
         <Link to={`${jwt ? "/userProfile" : "/signup"}`}>

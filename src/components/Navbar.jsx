@@ -21,13 +21,10 @@ export default function Navbar() {
             Home
           </li>
           <li className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400">
-            Home
+            Features
           </li>
           <li className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400">
-            Home
-          </li>
-          <li className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400">
-            Home
+            Services
           </li>
 
           <Link to={`${jwt ? "/userProfile" : "/signup"}`}>
@@ -65,21 +62,20 @@ export default function Navbar() {
           istoggle ? "block" : "hidden"
         } `}
       >
-        <li className="duration-500 ease-in-out cursor-pointer text-slate-300 ">
+        <li className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400">
           Home
         </li>
-        <li className="duration-500 ease-in-out cursor-pointer text-slate-300 ">
-          Home
+        <li className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400">
+          Features
         </li>
-        <li className="duration-500 ease-in-out cursor-pointer text-slate-300 ">
-          Home
+        <li className="duration-500 ease-in-out cursor-pointer text-slate-300 hover:text-slate-400">
+          Services
         </li>
-        <li className="duration-500 ease-in-out cursor-pointer text-slate-300 ">
-          Home
-        </li>
-        <li className="font-semibold text-center rounded-md cursor-pointer text-violet-600 ">
-          Signup
-        </li>
+        <Link to={`${jwt ? "/userProfile" : "/signup"}`}>
+          <li className=" text-violet-600 duration-500 ease-in-out font-semibold  rounded-full cursor-pointer py-1.5 text-sm hover:brightness-75">
+            {jwt ? "Your Account" : "Signup"}
+          </li>
+        </Link>
       </ul>
     </nav>
   );

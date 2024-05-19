@@ -10,43 +10,18 @@ export default function Footer() {
           dolor sit amet consectetur adipisicing elit.
         </p>
       </div>
-      <div className="flex flex-col gap-8 pl-8 my-8 lg:gap-20 lg:flex-row lg:pr-28 lg:justify-center lg:items-center text-slate-300">
-        <ul className="space-y-3.5  ">
-          <h1 className="text-lg font-semibold text-zinc-200">About Us</h1>
-          <li className="font-semibold cursor-pointer">Home</li>
-          <li className="font-semibold cursor-pointer">Home</li>
-          <li className="font-semibold cursor-pointer ">Home</li>
-          <li className="font-semibold cursor-pointer">Home</li>
-          <li className="font-semibold cursor-pointer">Home</li>
-          <li className="font-semibold cursor-pointer ">Home</li>
+      <div className="flex flex-col gap-8 pl-8 my-8 lg:gap-20 lg:flex-row lg:pr-28 lg:justify-center text-slate-300">
+      <ul className="space-y-3.5 ">
+          <h1 className="text-lg font-semibold text-zinc-200">Contact Us</h1>
+          <li className="font-semibold cursor-pointer">Email</li>
         </ul>
         <ul className="space-y-3.5  ">
           <h1 className="text-lg font-semibold text-zinc-200">About Us</h1>
           <li className="font-semibold cursor-pointer">Home</li>
           <li className="font-semibold cursor-pointer">Home</li>
-          <li className="font-semibold cursor-pointer ">Home</li>
           <li className="font-semibold cursor-pointer">Home</li>
-          <li className="font-semibold cursor-pointer">Home</li>
-          <li className="font-semibold cursor-pointer ">Home</li>
         </ul>
-        <ul className="space-y-3.5  ">
-          <h1 className="text-lg font-semibold text-zinc-200">About Us</h1>
-          <li className="font-semibold cursor-pointer">Home</li>
-          <li className="font-semibold cursor-pointer">Home</li>
-          <li className="font-semibold cursor-pointer ">Home</li>
-          <li className="font-semibold cursor-pointer">Home</li>
-          <li className="font-semibold cursor-pointer ">Home</li>
-          <li className="font-semibold cursor-pointer ">Home</li>
-        </ul>
-        <ul className="space-y-3.5 ">
-          <h1 className="text-lg font-semibold text-zinc-200">About Us</h1>
-          <li className="font-semibold cursor-pointer">Home</li>
-          <li className="font-semibold cursor-pointer">Home</li>
-          <li className="font-semibold cursor-pointer ">Home</li>
-          <li className="font-semibold cursor-pointer">Home</li>
-          <li className="font-semibold cursor-pointer">Home</li>
-          <li className="font-semibold cursor-pointer ">Home</li>
-        </ul>
+      
       </div>
     </div>
   );

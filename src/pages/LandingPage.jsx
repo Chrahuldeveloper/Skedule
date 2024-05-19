@@ -16,7 +16,8 @@ export default function LandingPage() {
       <div className="items-start px-5 justify-evenly md:flex">
         <div className="space-y-5 md:space-y-10">
           <h1 className="mt-5 text-3xl font-bold leading-10 md:mt-32 lg:max-w-xl md:leading-10 lg:text-5xl text-slate-300">
-            Simplify Scheduling with Our SaaS Booking System Skedule
+          Simplify Scheduling with Our SaaS Booking System{" "}
+            <span className="border-b-4 border-violet-600">Skedule</span>
           </h1>
           <p className="text-sm leading-6 text-gray-300 lg:max-w-md md:text-xl md:leading-8">
             Enjoy seamless integration, real-time updates, and automated

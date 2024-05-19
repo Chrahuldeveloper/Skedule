@@ -9,7 +9,6 @@ import { MdOutlineNotificationsActive } from "react-icons/md";
 
 export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
   const navigate = useNavigate();
-
   const jwt = sessionStorage.getItem("jwt");
 
   const handleLogout = () => {

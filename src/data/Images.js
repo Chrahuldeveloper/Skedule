@@ -1,6 +1,6 @@
 const imagedata = [
   {
-    img: "https://images.ctfassets.net/2d5q1td6cyxq/76n9UufQtDunVlHR2KdQ4b/e19e9b393e27c493b6968de657ebb888/PD01920-tutoring-music.jpg?w=755&h=490&fm=avif&q=85&fit=scale",
+    img: "https://images.pexels.com/photos/4491461/pexels-photo-4491461.jpeg?auto=compress&cs=tinysrgb&w=600",
     Tittle: "Tutors and Coaches",
     Points: [
       "Easily manage tutoring or coaching sessions with a centralized booking calendar. Avoid scheduling conflicts and ensure a smooth workflow",
@@ -9,7 +9,7 @@ const imagedata = [
     ],
   },
   {
-    img: "https://images.ctfassets.net/2d5q1td6cyxq/76n9UufQtDunVlHR2KdQ4b/e19e9b393e27c493b6968de657ebb888/PD01920-tutoring-music.jpg?w=755&h=490&fm=avif&q=85&fit=scale",
+    img: "https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg?auto=compress&cs=tinysrgb&w=600",
     Tittle: "Therapists and Counselors",
     Points: [
       "Keep track of client appointments and sessions in one place. Manage your schedule effectively and ensure you provide timely care to your clients",
@@ -18,7 +18,7 @@ const imagedata = [
     ],
   },
   {
-    img: "https://images.ctfassets.net/2d5q1td6cyxq/76n9UufQtDunVlHR2KdQ4b/e19e9b393e27c493b6968de657ebb888/PD01920-tutoring-music.jpg?w=755&h=490&fm=avif&q=85&fit=scale",
+    img: "https://images.pexels.com/photos/6455818/pexels-photo-6455818.jpeg?auto=compress&cs=tinysrgb&w=600",
     Tittle: "Personal Trainers and Fitness Instructors",
     Points: [
       "Schedule and manage one-on-one or group fitness sessions effortlessly. Keep track of client progress and sessions effectively",
@@ -27,7 +27,7 @@ const imagedata = [
     ],
   },
   {
-    img: "https://images.ctfassets.net/2d5q1td6cyxq/76n9UufQtDunVlHR2KdQ4b/e19e9b393e27c493b6968de657ebb888/PD01920-tutoring-music.jpg?w=755&h=490&fm=avif&q=85&fit=scale",
+    img: "https://images.pexels.com/photos/5412148/pexels-photo-5412148.jpeg?auto=compress&cs=tinysrgb&w=600",
     Tittle: "Consultants and Freelancers",
     Points: [
       "Schedule client consultations or meetings with ease. Manage your availability and ensure efficient time management",
@@ -36,7 +36,7 @@ const imagedata = [
     ],
   },
   {
-    img: "https://images.ctfassets.net/2d5q1td6cyxq/76n9UufQtDunVlHR2KdQ4b/e19e9b393e27c493b6968de657ebb888/PD01920-tutoring-music.jpg?w=755&h=490&fm=avif&q=85&fit=scale",
+    img: "https://images.pexels.com/photos/16418576/pexels-photo-16418576/free-photo-of-photographers-standing-together.jpeg?auto=compress&cs=tinysrgb&w=600",
     Tittle: "Photographers and Videographers",
     Points: [
       "Manage photo shoot or video session bookings efficiently. Coordinate with clients and assistants easily using our intuitive system.",
@@ -45,7 +45,7 @@ const imagedata = [
     ],
   },
   {
-    img: "https://images.ctfassets.net/2d5q1td6cyxq/76n9UufQtDunVlHR2KdQ4b/e19e9b393e27c493b6968de657ebb888/PD01920-tutoring-music.jpg?w=755&h=490&fm=avif&q=85&fit=scale",
+    img: "https://images.pexels.com/photos/7648474/pexels-photo-7648474.jpeg?auto=compress&cs=tinysrgb&w=600",
     Tittle: "Event Planners and Coordinators",
     Points: [
       "Schedule and manage event bookings, consultations, and site visits efficiently. Coordinate with clients and vendors seamlessly",

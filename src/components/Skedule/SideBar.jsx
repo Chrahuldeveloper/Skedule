@@ -1,7 +1,11 @@
 import React from "react";
-import { CiHome } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
+import { MdOutlineDashboard } from "react-icons/md";
+import { IoIosLogOut } from "react-icons/io";
+import { SlCalender } from "react-icons/sl";
+import { MdOutlineSpeakerNotes } from "react-icons/md";
+import { MdOutlineNotificationsActive } from "react-icons/md";
 
 export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
   const navigate = useNavigate();
@@ -69,7 +73,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                       : null
                   }`}
                 >
-                  <CiHome size={23} />
+                  <MdOutlineDashboard size={23} />
                   <h1 className="text-sm">Dashboard</h1>
                 </li>
                 <li
@@ -82,7 +86,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                       : null
                   }`}
                 >
-                  <CiHome size={23} />
+                  <SlCalender size={23} />
                   <h1 className="text-sm">Schedule</h1>
                 </li>
                 {/* <li
@@ -109,7 +113,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                       : null
                   }`}
                 >
-                  <CiHome size={23} />
+                  <MdOutlineSpeakerNotes size={23} />
                   <h1 className="text-sm">Appotiments</h1>
                 </li>
                 <li
@@ -122,7 +126,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                       : null
                   }`}
                 >
-                  <CiHome size={23} />
+                  <MdOutlineNotificationsActive size={23} />
                   <h1 className="text-sm">Notifications</h1>
                 </li>
                 <li
@@ -136,7 +140,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                       : null
                   }`}
                 >
-                  <CiHome size={23} />
+                  <IoIosLogOut size={23} />
                   <h1 className="text-sm">Logout</h1>
                 </li>
               </ul>

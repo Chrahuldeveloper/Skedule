@@ -54,7 +54,7 @@ export default function NotificationsBoard({ jwt }) {
           return (
             <>
               <div className="w-full px-3 space-y-5 my-7">
-                <div className="  border-[0.9px] py-6 px-3.5 cursor-pointer rounded-lg flex items-center justify-between border-zinc-800">
+                <div className="  border-[0.9px] py-6 px-3.5 md:px-5 cursor-pointer rounded-lg flex items-center justify-between border-zinc-800">
                   <div className="space-y-2.5">
                     <h1 className="text-sm font-semibold text-slate-300">
                       {item.Name}

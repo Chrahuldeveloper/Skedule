@@ -15,7 +15,7 @@ export default function Schedule({ setispopup, day, setuserAppointements }) {
 
   const [isloading, setisloading] = useState(false);
 
-  const jwt = sessionStorage.getItem("jwt");
+  const jwt = localStorage.getItem("jwt");
 
   const saveScheduleAppointment = async () => {
     setisloading(true);

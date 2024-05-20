@@ -7,7 +7,7 @@ import { Loader, ScheduleModel } from "..";
 export default function CalenderBoard({setuserAppointements}) {
   const [isloading, setisloading] = useState(false);
   const [user, setuser] = useState();
-  const jwt = sessionStorage.getItem("jwt");
+  const jwt = localStorage.getItem("jwt");
 
   const fetchUser = useCallback(async () => {
     try {

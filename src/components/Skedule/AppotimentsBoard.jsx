@@ -45,15 +45,15 @@ export default function AppotimentsBoard({
     <>
       <div className="bg-zinc-900 p-5 my-6 border-[1.2px] rounded-md  border-zinc-800 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh]  z-50">
         {isloading ? <Loader /> : null}
-        <div className="flex items-center justify-between px-3 md:px-5">
-          <h1 className="text-xl font-semibold md:text-2xl text-slate-300">
+        <div className="flex items-center justify-between px-1.5 md:px-5">
+          <h1 className="text-sm font-semibold md:text-2xl text-slate-300">
             Your Appotiments
           </h1>
           <button
             onClick={() => {
               copyAppointmentURL();
             }}
-            className=" px-7 text-white border-[1px] text-xs rounded-full border-violet-600 font-semibold py-2.5 hover:bg-violet-600 ease-in-out duration-300"
+            className="text-xs px-5 text-white border-[1px]  rounded-full border-violet-600 font-semibold py-2.5 hover:bg-violet-600 ease-in-out duration-300"
           >
             {copy}
           </button>
@@ -63,15 +63,15 @@ export default function AppotimentsBoard({
           <thead className="divide-y-2">
             <tr className="text-slate-300">
               <th className="pt-10 text-xs lg:pl-3">Slotes</th>
-              <th className="pt-10 pl-8 text-xs lg:pl-28 lg:text-sm">
+              <th className="pt-10 pl-5 text-xs lg:pl-28 lg:text-sm">
                 StartTime
               </th>
               <th className="pt-10 pl-8 text-xs lg:pl-24 lg:text-sm">
                 EndTime
               </th>
-              <th className="pt-10 pl-8 text-xs lg:pl-28 lg:text-sm">date</th>
-              <th className="pt-10 pl-8 text-xs lg:pl-28 lg:text-sm">Link</th>
-              <th className="pt-10 pl-8 text-xs lg:pl-28 lg:text-sm">Delete</th>
+              <th className="pt-10 pl-5 text-xs lg:pl-28 lg:text-sm">date</th>
+              <th className="pt-10 pl-5 text-xs lg:pl-28 lg:text-sm">Link</th>
+              <th className="pt-10 pl-5 text-xs lg:pl-28 lg:text-sm">Delete</th>
             </tr>
           </thead>
           {userAppointements.map((i, index) => {
@@ -83,19 +83,19 @@ export default function AppotimentsBoard({
                       {i.emails?.length || i.Slots}
                     </h1>
                   </th>
-                  <th className="pt-10 pl-8 lg:pl-28 lg:text-sm">
+                  <th className="pt-10 pl-5 lg:pl-28 lg:text-sm">
                     <p className="text-xs cursor-pointer">{i.StartTime}</p>
                   </th>
-                  <th className="pt-10 pl-8 lg:pl-28 lg:text-sm">
+                  <th className="pt-10 pl-5 lg:pl-28 lg:text-sm">
                     <p className="text-xs cursor-pointer">{i.EndTime}</p>
                   </th>
-                  <th className="pt-10 pl-8 lg:pl-28 lg:text-sm">
+                  <th className="pt-10 pl-5 lg:pl-28 lg:text-sm">
                     <p className="text-xs cursor-pointer">{i.date}</p>
                   </th>
-                  <th className="pt-10 pl-8 lg:pl-28 lg:text-sm">
+                  <th className="pt-10 pl-5 lg:pl-28 lg:text-sm">
                     <p className="text-xs cursor-pointer">{"Join"}</p>
                   </th>
-                  <th className="pt-10 pl-8 lg:pl-28 lg:text-sm">
+                  <th className="pt-10 pl-5 lg:pl-28 lg:text-sm">
                     <p
                       className="text-xs text-red-500 cursor-pointer"
                       onClick={() => {

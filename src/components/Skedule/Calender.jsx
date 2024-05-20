@@ -5,7 +5,6 @@ const Calendar = ({ user, setispopup, day, setday }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
 
-  
   const daysInMonth = (date) => {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
   };
@@ -58,7 +57,7 @@ const Calendar = ({ user, setispopup, day, setday }) => {
   };
 
   return (
-    <div className="bg-zinc-900 px-6 border-[1px] border-zinc-800 max-w-sm shadow-md mx-auto rounded-md my-16 py-6 z-50">
+    <div className="bg-zinc-900 px-6  border-[1px] border-zinc-800 max-w-sm shadow-md mx-auto rounded-md my-16 py-6 z-50">
       <div className="flex items-center justify-between px-2">
         <h1 className="text-xl font-bold text-slate-300">
           {currentDate.toLocaleString("default", {

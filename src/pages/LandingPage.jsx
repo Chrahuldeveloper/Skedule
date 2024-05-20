@@ -55,7 +55,7 @@ export default function LandingPage() {
             src={img1}
             alt=""
           />
-          <div className="flex flex-col items-center justify-center duration-300 ease-in-out cursor-pointer md:hidden">
+          <div className="flex flex-col items-center justify-center -mt-5 duration-300 ease-in-out cursor-pointer md:hidden">
             <img
               className="max-w-xs cursor-pointer rotate-6"
               src={img1}

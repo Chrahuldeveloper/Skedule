@@ -43,23 +43,23 @@ export default function NotificationsBoard({ jwt }) {
 
   return (
     <>
-      <div className="bg-zinc-900 p-5 my-6 border-[1px] rounded-md  border-zinc-800 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh] z-50 ">
+      <div className="bg-zinc-900 my-6  py-5 border-[1px] rounded-md  border-zinc-800 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh] z-50 ">
         {isloading ? <Loader /> : null}
         <div>
-          <h1 className="text-2xl font-semibold text-slate-300">
+          <h1 className="px-4 text-2xl font-semibold text-slate-300">
             Your Notifications
           </h1>
         </div>
         {userNotifications?.map((item, i) => {
           return (
             <>
-              <div className="px-5 space-y-5 my-7">
-                <div className=" border-[0.9px] p-6 cursor-pointer rounded-lg flex items-center justify-between border-zinc-800">
-                  <div className="space-y-2">
-                    <h1 className="text-lg font-semibold text-slate-300">
+              <div className="w-full px-3 space-y-5 my-7">
+                <div className="  border-[0.9px] py-6 px-3.5 cursor-pointer rounded-lg flex items-center justify-between border-zinc-800">
+                  <div className="space-y-2.5">
+                    <h1 className="text-sm font-semibold text-slate-300">
                       {item.Name}
                     </h1>
-                    <p className="text-sm w-72 text-slate-300">{item.Para}</p>
+                    <p className="text-xs w-52 text-slate-300">{item.Para}</p>
                   </div>
                   <AiOutlineDelete
                     onClick={() => {

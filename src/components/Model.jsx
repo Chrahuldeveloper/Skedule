@@ -26,7 +26,7 @@ export default function Model({ setismodel, imagedata }) {
         {imagedata.Points.map((i, index) => {
           return (
             <React.Fragment key={index}>
-              <ul className=" w-[70vw] sm:w-[50vw] md:w-[50vw] lg:w-[30vw] xl:w-[30vw]  text-slate-300">
+              <ul className=" w-[80vw] sm:w-[50vw] md:w-[50vw] lg:w-[30vw] xl:w-[30vw]  text-slate-300">
                 <li className="flex items-center gap-4 pl-4 my-6">
                   <TiTickOutline size={45} color="#7c3aed" />
                   <h1 className="text-xs">{i}</h1>

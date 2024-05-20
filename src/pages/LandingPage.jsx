@@ -55,14 +55,14 @@ export default function LandingPage() {
             src={img1}
             alt=""
           />
-          <div className="flex flex-col items-center duration-300 ease-in-out cursor-pointer md:hidden">
+          <div className="flex flex-col items-center justify-center duration-300 ease-in-out cursor-pointer md:hidden">
             <img
-              className="max-w-md cursor-pointer rotate-6"
+              className="max-w-xs cursor-pointer rotate-6"
               src={img1}
               alt=""
             />
             <img
-              className="max-w-md cursor-pointer mt-1.5 rotate-6"
+              className="max-w-xs cursor-pointer mt-1.5 rotate-6"
               src={img2}
               alt=""
             />
@@ -104,8 +104,8 @@ export default function LandingPage() {
           platform offers seamless and hassle-free appointment.
         </p>
       </div>
-      <div className="md:px-7 ml-8 w-[100vw] mx-auto my-36 rounded-lg">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8">
+      <div className="rounded-lg md:px-7 my-36">
+        <div className="grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 place-items-center">
           {imagedata.map((image, index) => (
             <img
               key={index}

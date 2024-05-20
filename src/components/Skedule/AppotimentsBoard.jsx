@@ -7,7 +7,7 @@ export default function AppotimentsBoard({
   userAppointements,
   setuserAppointements,
 }) {
-  const jwt = sessionStorage.getItem("jwt");
+  const jwt = localStorage.getItem("jwt");
   const docref = useMemo(() => doc(db, "USERS", jwt), [jwt]);
   const [isloading, setisloading] = useState(false);
 

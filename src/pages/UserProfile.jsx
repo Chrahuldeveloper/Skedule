@@ -17,7 +17,7 @@ export default function UserProfile() {
   const [isshow, setisshow] = useState(false);
   const [isedit, setisedit] = useState(false);
   const [isloading, setisloading] = useState(false);
-  const jwt = sessionStorage.getItem("jwt");
+  const jwt = localStorage.getItem("jwt");
   const [user, setuser] = useState();
   const [cat, setcat] = useState("Dashboard");
 

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Navbar({ scrollTosection1, scrollTosection2 }) {
   const [istoggle, setistoggle] = useState(false);
 
-  const jwt = sessionStorage.getItem("jwt");
+  const jwt = localStorage.getItem("jwt");
 
   return (
     <nav>

@@ -5,7 +5,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { doc, updateDoc } from "firebase/firestore";
 
 export default function Editimage({ setisedit, user, setisloading, setuser }) {
-  const jwt = sessionStorage.getItem("jwt");
+  const jwt = localStorage.getItem("jwt");
 
   const [editdata, seteditdata] = useState({
     photo: user.photo,

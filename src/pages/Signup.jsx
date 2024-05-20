@@ -76,9 +76,6 @@ export default function Signup() {
     <div className="w-screen h-screen bg-[#08090d]">
       <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 ">
         <div className="z-50 bg-zinc-900 rounded-md w-[95vw] sm:w-[60vw] md:w-[50vw] lg:w-[40vw] xl:w-[30vw] py-10 flex flex-col justify-center items-center gap-6 px-10 ">
-          <div className="space-y-3 lg:text-center">
-            <h1 className="text-2xl font-semibold text-slate-300">Sign up </h1>
-          </div>
           <input
             type="text"
             placeholder="Email"
@@ -86,7 +83,7 @@ export default function Signup() {
             onChange={(e) => {
               setuser({ ...user, email: e.target.value });
             }}
-            className="border-[1px] border-zinc-800 px-3 py-2.5 outline-none bg-transparent text-slate-300 w-[80vw]"
+            className="border-[1px] rounded-full border-zinc-800 px-5 py-3 outline-none bg-transparent text-slate-300 w-[80vw]"
           />
           <input
             type="password"
@@ -95,7 +92,7 @@ export default function Signup() {
             onChange={(e) => {
               setuser({ ...user, Pass: e.target.value });
             }}
-            className="border-[1px] border-zinc-800 px-3 py-2.5 outline-none bg-transparent text-slate-300 w-[80vw]"
+            className="border-[1px] rounded-full border-zinc-800 px-5 py-3 outline-none bg-transparent text-slate-300 w-[80vw]"
           />
           <button
             onClick={emailPassSignIn}

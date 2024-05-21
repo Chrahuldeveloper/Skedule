@@ -3,7 +3,6 @@ import { RxCross2 } from "react-icons/rx";
 import { TiTickOutline } from "react-icons/ti";
 
 export default function Model({ setismodel, imagedata }) {
-  console.log(imagedata);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center h-full bg-black bg-opacity-60 backdrop-blur-md">

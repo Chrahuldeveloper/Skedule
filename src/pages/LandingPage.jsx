@@ -5,6 +5,7 @@ import imagedata from "../data/Images";
 import img1 from "../images/img1.png";
 import img2 from "../images/img2.png";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 export default function LandingPage() {
   const [ismodel, setismodel] = useState(false);
@@ -12,6 +13,8 @@ export default function LandingPage() {
 
   const section1 = useRef(null);
   const section2 = useRef(null);
+
+  const jwt = localStorage.getItem("jwt");
 
   const scrollToSection = (section) => {
     section.current.scrollIntoView({
@@ -40,9 +43,11 @@ export default function LandingPage() {
             Enjoy seamless integration, real-time updates, and automated
             reminders, ensuring you never miss a booking.
           </p>
-          <button className="text-sm text-white px-14 py-2.5 font-semibold duration-300 ease-in bg-violet-600 rounded-full hover:brightness-90 cursor-pointer z-50">
-            Get Started
-          </button>
+          <Link to={`${jwt ? "/userProfile" : "/signup"}`}>
+            <button className="text-sm text-white px-14 py-2.5 font-semibold duration-300 ease-in bg-violet-600 rounded-full hover:brightness-90 cursor-pointer z-50">
+              Get Started
+            </button>
+          </Link>
         </div>
         <div className="mt-28">
           <img

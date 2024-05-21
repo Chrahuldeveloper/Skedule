@@ -36,7 +36,7 @@ export default function Schedule({ setispopup, day, setuserAppointements }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center h-full bg-black bg-opacity-75 backdrop-blur-md">
-      <div className="p-5 bg-zinc-900  w-[90vw] md:W-[70vw] lg:w-[60vw] xl:w-[30vw]">
+      <div className="p-5 bg-zinc-900  w-[95vw] md:W-[70vw] lg:w-[60vw] xl:w-[30vw]">
         <div className="flex items-center justify-between">
           <div className="max-w-md mx-auto my-1.5">
             <h1 className="text-xl font-semibold text-slate-300">
@@ -60,7 +60,7 @@ export default function Schedule({ setispopup, day, setuserAppointements }) {
               onChange={(e) => {
                 setschedule({ ...schedule, StartTime: e.target.value });
               }}
-              className="cursor-pointer outline-none border-[1px] px-3 py-2 bg-transparent border-zinc-800 text-white w-[70vw] md:W-[50vw] lg:w-[30vw] xl:w-[20vw]"
+              className="cursor-pointer outline-none border-[1px] px-3 py-2 bg-transparent border-zinc-800 text-white "
             />
           </div>
           <p className="font-semibold text-slate-300">To</p>
@@ -71,7 +71,7 @@ export default function Schedule({ setispopup, day, setuserAppointements }) {
               onChange={(e) => {
                 setschedule({ ...schedule, EndTime: e.target.value });
               }}
-              className="cursor-pointer outline-none border-[1px] px-3 py-2 bg-transparent border-zinc-800 text-white  w-[70vw] md:W-[50vw] lg:w-[30vw] xl:w-[20vw]"
+              className="cursor-pointer outline-none border-[1px] px-3 py-2 bg-transparent border-zinc-800 text-white  "
             />
           </div>
         </div>
@@ -104,7 +104,7 @@ export default function Schedule({ setispopup, day, setuserAppointements }) {
         </div>
 
         <div className="space-y-3.5 my-5">
-          <h1 className="text-sm font-semibold text-slate-300">Link</h1>
+          <h1 className="text-sm font-semibold text-slate-300">Meet Link</h1>
           <input
             type="text"
             placeholder="Link"

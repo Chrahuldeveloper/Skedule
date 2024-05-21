@@ -44,7 +44,7 @@ export default function LandingPage() {
             reminders, ensuring you never miss a booking.
           </p>
           <Link to={`${jwt ? "/userProfile" : "/signup"}`}>
-            <button className="text-sm text-white px-14 py-2.5 font-semibold duration-300 ease-in bg-violet-600 rounded-full hover:brightness-90 cursor-pointer z-50">
+            <button className="text-sm text-white px-14 mt-5 py-2.5 font-semibold duration-300 ease-in bg-violet-600 rounded-full hover:brightness-90 cursor-pointer z-50">
               Get Started
             </button>
           </Link>

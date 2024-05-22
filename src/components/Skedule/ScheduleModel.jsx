@@ -6,7 +6,9 @@ import Loader from "../Loader";
 export default function Schedule({ setispopup, day, setuserAppointements }) {
   const [schedule, setschedule] = useState({
     StartTime: "",
+    StartPeriod: "AM",
     EndTime: "",
+    EndPeriod: "AM",
     Slots: "0",
     Link: "",
     day: day.Day,
@@ -78,22 +80,32 @@ export default function Schedule({ setispopup, day, setuserAppointements }) {
 
         <div className="flex items-center justify-around mt-3">
           <div>
-            <select className="w-32 py-1.5 px-2.5 border-[1px] rounded-md bg-transparent text-slate-300 outline-none border-zinc-800">
-              <option value="" className="text-slate-300 bg-zinc-900">
+            <select
+              onChange={(e) => {
+                setschedule({ ...schedule, StartPeriod: e.target.value });
+              }}
+              className="w-32 py-1.5 px-2.5 border-[1px] rounded-md bg-transparent text-slate-300 outline-none border-zinc-800"
+            >
+              <option value="AM" className="text-slate-300 bg-zinc-900">
                 AM
               </option>
-              <option value="" className="text-slate-300 bg-zinc-900">
+              <option value="PM" className="text-slate-300 bg-zinc-900">
                 PM
               </option>
             </select>
           </div>
           <p className="text-zinc-900">or</p>
           <div>
-            <select className="w-32 py-1.5 px-2.5 border-[1px] rounded-md bg-transparent text-slate-300 outline-none border-zinc-800">
-              <option value="" className="text-slate-300 bg-zinc-900">
+            <select
+              onChange={(e) => {
+                setschedule({ ...schedule, EndPeriod: e.target.value });
+              }}
+              className="w-32 py-1.5 px-2.5 border-[1px] rounded-md bg-transparent text-slate-300 outline-none border-zinc-800"
+            >
+              <option value="AM" className="text-slate-300 bg-zinc-900">
                 AM
               </option>
-              <option value="" className="text-slate-300 bg-zinc-900">
+              <option value="PM" className="text-slate-300 bg-zinc-900">
                 PM
               </option>
             </select>

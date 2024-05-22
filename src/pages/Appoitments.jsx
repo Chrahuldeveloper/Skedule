@@ -53,7 +53,8 @@ export default function Appoitments() {
     link,
     creatorEmail,
     creatorName,
-    time
+    time,
+    StartPeriod
   ) => {
     try {
       const rescreator = await emailjs.send(
@@ -64,7 +65,9 @@ export default function Appoitments() {
           to_name: creatorName,
           from_email: "saasstudiosindia@gmail.com",
           to_email: creatorEmail,
-          message: `${userEmail} has Booked your Appointment at ${time}`,
+          message: `${userEmail} has Booked your Appointment at ${
+            time + StartPeriod
+          }`,
         },
         "3mxv1JKPFdt7xkk3a"
       );
@@ -113,7 +116,8 @@ export default function Appoitments() {
           filteredAppointment.Link,
           userData.Email,
           userData.Name,
-          filteredAppointment.StartTime
+          filteredAppointment.StartTime,
+          filteredAppointment.StartPeriod
         );
         setsucessmsg(true);
       }

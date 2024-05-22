@@ -84,10 +84,14 @@ export default function AppotimentsBoard({
                     </h1>
                   </th>
                   <th className="pt-10 pl-5 lg:pl-28 lg:text-sm">
-                    <p className="text-xs cursor-pointer">{i.StartTime}</p>
+                    <p className="text-xs cursor-pointer">
+                      {i.StartTime + i.StartPeriod}
+                    </p>
                   </th>
                   <th className="pt-10 pl-5 lg:pl-28 lg:text-sm">
-                    <p className="text-xs cursor-pointer">{i.EndTime}</p>
+                    <p className="text-xs cursor-pointer">
+                      {i.EndTime + i.EndPeriod}
+                    </p>
                   </th>
                   <th className="pt-10 pl-5 lg:pl-28 lg:text-sm">
                     <p className="text-xs cursor-pointer">{i.date}</p>

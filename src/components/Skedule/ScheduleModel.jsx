@@ -60,7 +60,7 @@ export default function Schedule({ setispopup, day, setuserAppointements }) {
               onChange={(e) => {
                 setschedule({ ...schedule, StartTime: e.target.value });
               }}
-              className="cursor-pointer outline-none border-[1px] px-3 py-2 bg-transparent border-zinc-800 text-white w-32"
+              className="cursor-pointer outline-none border-[1px] px-3 py-2 bg-transparent border-zinc-800 text-white w-32 rounded-md"
             />
           </div>
           <p className="font-semibold text-slate-300">To</p>
@@ -71,7 +71,7 @@ export default function Schedule({ setispopup, day, setuserAppointements }) {
               onChange={(e) => {
                 setschedule({ ...schedule, EndTime: e.target.value });
               }}
-              className="cursor-pointer outline-none border-[1px] px-3 py-2 bg-transparent border-zinc-800 text-white  w-32"
+              className="cursor-pointer outline-none border-[1px] px-3 py-2 bg-transparent border-zinc-800 text-white  w-32 rounded-md"
             />
           </div>
         </div>

@@ -76,6 +76,30 @@ export default function Schedule({ setispopup, day, setuserAppointements }) {
           </div>
         </div>
 
+        <div className="flex items-center justify-around mt-3">
+          <div>
+            <select className="w-32 py-1.5 px-2.5 border-[1px] rounded-md bg-transparent text-slate-300 outline-none border-zinc-800">
+              <option value="" className="text-slate-300 bg-zinc-900">
+                AM
+              </option>
+              <option value="" className="text-slate-300 bg-zinc-900">
+                PM
+              </option>
+            </select>
+          </div>
+          <p className="text-zinc-900">or</p>
+          <div>
+            <select className="w-32 py-1.5 px-2.5 border-[1px] rounded-md bg-transparent text-slate-300 outline-none border-zinc-800">
+              <option value="" className="text-slate-300 bg-zinc-900">
+                AM
+              </option>
+              <option value="" className="text-slate-300 bg-zinc-900">
+                PM
+              </option>
+            </select>
+          </div>
+        </div>
+
         <div className="flex flex-col justify-center my-5 space-y-3.5">
           <h1 className="text-sm font-semibold text-slate-300">
             Number of Slots

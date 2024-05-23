@@ -5,6 +5,12 @@ const Calendar = ({ user, setispopup, day, setday }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
 
+  const scheduledDates = user?.Appointments?.map((appoint, i) => {
+    return appoint.date;
+  });
+
+  console.log(scheduledDates);
+
   const daysInMonth = (date) => {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
   };

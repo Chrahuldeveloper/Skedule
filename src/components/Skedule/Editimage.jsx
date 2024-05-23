@@ -62,7 +62,7 @@ export default function Editimage({ setisedit, user, setisloading, setuser }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center h-full bg-black bg-opacity-75 backdrop-blur-md">
-      <div className="bg-zinc-900 w-[80vw] md:w-[60vw] lg:w-[40vw] xl:w-[30vw] p-5 rounded-md">
+      <div className="bg-zinc-900 w-[85vw] md:w-[60vw] lg:w-[40vw] xl:w-[30vw] p-5 rounded-md">
         <div className="flex justify-end ">
           <RxCross2
             onClick={() => {
@@ -109,7 +109,7 @@ export default function Editimage({ setisedit, user, setisloading, setuser }) {
             onChange={(e) => {
               seteditdata({ ...editdata, Name: e.target.value });
             }}
-            className="border-[1px] border-zinc-800 px-3 py-2.5 outline-none bg-transparent text-slate-300"
+            className="border-[1px] border-zinc-800 px-3 py-2.5 outline-none bg-transparent text-slate-300 "
           />
           <input
             type="text"
@@ -118,7 +118,7 @@ export default function Editimage({ setisedit, user, setisloading, setuser }) {
             onChange={(e) => {
               seteditdata({ ...editdata, work: e.target.value });
             }}
-            className="border-[1px] border-zinc-800 px-3 py-2.5 outline-none bg-transparent text-slate-300"
+            className="border-[1px] border-zinc-800 px-3 py-2.5 outline-none bg-transparent text-slate-300 "
           />
           <input
             type="text"
@@ -127,7 +127,7 @@ export default function Editimage({ setisedit, user, setisloading, setuser }) {
             onChange={(e) => {
               seteditdata({ ...editdata, Bio: e.target.value });
             }}
-            className="border-[1px] border-zinc-800 px-3 py-2.5 outline-none bg-transparent text-slate-300"
+            className="border-[1px] border-zinc-800 px-3 py-2.5 outline-none bg-transparent text-slate-300 "
           />
           {error && (
             <p className="text-sm font-semibold text-center text-red-500">

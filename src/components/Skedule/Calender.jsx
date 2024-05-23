@@ -5,11 +5,9 @@ const Calendar = ({ user, setispopup, day, setday }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const scheduledDates = user?.Appointments?.map((appoint, i) => {
-    return appoint.date;
-  });
-
-  console.log(scheduledDates);
+  const scheduledDates = new Set(
+    user?.Appointments?.map((appoint) => appoint.date)
+  );
 
   const daysInMonth = (date) => {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
@@ -62,8 +60,14 @@ const Calendar = ({ user, setispopup, day, setday }) => {
     setSelectedDate(date);
   };
 
+  const formatDate = (date) => {
+    return `${date.getFullYear()}-${(date.getMonth() + 1)
+      .toString()
+      .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
+  };
+
   return (
-    <div className="bg-zinc-900 px-6  border-[1px] border-zinc-800 max-w-sm shadow-md mx-auto rounded-md my-16 py-6 z-50">
+    <div className="bg-zinc-900 px-6 border-[1px] border-zinc-800 max-w-sm shadow-md mx-auto rounded-md my-16 py-6 z-50">
       <div className="flex items-center justify-between px-2">
         <h1 className="text-xl font-bold text-slate-300">
           {currentDate.toLocaleString("default", {
@@ -98,41 +102,43 @@ const Calendar = ({ user, setispopup, day, setday }) => {
         </ul>
       </div>
       <div className="grid justify-center grid-cols-7 my-4 place-items-center">
-        {getMonthData().map((date, index) => (
-          <p
-            key={index}
-            className={`px-3 py-2 rounded-full cursor-pointer text-slate-300 ${
-              date && date.getMonth() === currentDate.getMonth()
-                ? date.getDate() === selectedDate?.getDate() &&
-                  date.getMonth() === selectedDate?.getMonth() &&
-                  date.getFullYear() === selectedDate?.getFullYear()
-                  ? ""
-                  : date.getDate() === new Date().getDate() &&
-                    date.getMonth() === new Date().getMonth() &&
-                    date.getFullYear() === new Date().getFullYear()
-                  ? "bg-violet-500 text-white"
-                  : ""
-                : "opacity-0"
-            }`}
-            onClick={() => {
-              handleDateClick(date);
-              setispopup(true);
-              const fullDate = `${date.getFullYear()}-${(date.getMonth() + 1)
-                .toString()
-                .padStart(2, "0")}-${date
-                .getDate()
-                .toString()
-                .padStart(2, "0")}`;
-              setday({
-                ...day,
-                Day: date.toLocaleDateString("en-US", { weekday: "short" }),
-                date: fullDate,
-              });
-            }}
-          >
-            {date ? date.getDate() : ""}
-          </p>
-        ))}
+        {getMonthData().map((date, index) => {
+          const isScheduled = date && scheduledDates.has(formatDate(date));
+          return (
+            <p
+              key={index}
+              className={`px-3 py-2 rounded-full cursor-pointer text-slate-300 ${
+                date && date.getMonth() === currentDate.getMonth()
+                  ? date.getDate() === selectedDate?.getDate() &&
+                    date.getMonth() === selectedDate?.getMonth() &&
+                    date.getFullYear() === selectedDate?.getFullYear()
+                    ? "bg-violet-500 text-white"
+                    : date.getDate() === new Date().getDate() &&
+                      date.getMonth() === new Date().getMonth() &&
+                      date.getFullYear() === new Date().getFullYear()
+                    ? "bg-violet-500 text-white"
+                    : isScheduled
+                    ? "bg-violet-500 text-white rounded-lg"
+                    : ""
+                  : "opacity-0"
+              }`}
+              onClick={() => {
+                if (date) {
+                  handleDateClick(date);
+                  setispopup(true);
+                  const fullDate = formatDate(date);
+                  setday({
+                    ...day,
+                    Day: date.toLocaleDateString("en-US", { weekday: "short" }),
+                    date: fullDate,
+                  });
+                }
+              }}
+            >
+              {date ? date.getDate() : ""}
+            </p>
+          );
+        })}
       </div>
     </div>
   );

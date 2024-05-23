@@ -181,7 +181,7 @@ export default function Appoitments() {
                       </h1>
                     </div>
                     <div>
-                      <h1 className="text-[5px] font-semibold cursor-pointer text-violet-200">
+                      <h1 className="text-[5px] sm:text-[10px] font-semibold cursor-pointer text-violet-200">
                         {i.Slots === i.emails ? "Not Available" : "Available"}
                       </h1>
                     </div>

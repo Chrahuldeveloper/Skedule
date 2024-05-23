@@ -168,13 +168,13 @@ export default function Appoitments() {
             userAppointements.map((i, idx) => {
               return (
                 <React.Fragment key={idx}>
-                  <div className="flex  items-center justify-center gap-10 my-9 border-b-[1px] border-zinc-700">
+                  <div className="flex  items-center justify-center gap-8 my-9 border-b-[1px] border-zinc-700">
                     <div className="flex flex-col items-center justify-center gap-2.5 text-slate-300">
                       <h1 className="text-[5px]">{i.date}</h1>
                       <p className="text-[5px]">{i.day}</p>
                     </div>
                     <div className="duration-300 ease-in-out rounded-full bg-violet-300 hover:brightness-75">
-                      <h1 className="px-1  py-2 text-[5px] font-semibold cursor-pointer text-violet-800">
+                      <h1 className="px-1 py-2 text-[5px] font-semibold cursor-pointer text-violet-800">
                         {i.StartTime}
                         {i.StartPeriod} - {i.EndTime}
                         {i.EndPeriod}

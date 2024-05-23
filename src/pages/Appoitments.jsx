@@ -170,16 +170,18 @@ export default function Appoitments() {
                 <React.Fragment key={idx}>
                   <div className="flex  items-center justify-center gap-10 my-9 border-b-[1px] border-zinc-700">
                     <div className="flex flex-col items-center justify-center gap-2.5 text-slate-300">
-                      <h1 className="text-[6px]">{i.date}</h1>
-                      <p className="text-[6px]">{i.day}</p>
+                      <h1 className="text-[5px]">{i.date}</h1>
+                      <p className="text-[5px]">{i.day}</p>
                     </div>
                     <div className="duration-300 ease-in-out rounded-full bg-violet-300 hover:brightness-75">
-                      <h1 className="px-2 py-2 text-[6px] font-semibold cursor-pointer text-violet-800">
-                        {i.StartTime}{i.StartPeriod} - {i.EndTime}{i.EndPeriod}
+                      <h1 className="px-1  py-2 text-[5px] font-semibold cursor-pointer text-violet-800">
+                        {i.StartTime}
+                        {i.StartPeriod} - {i.EndTime}
+                        {i.EndPeriod}
                       </h1>
                     </div>
                     <div>
-                      <h1 className="text-[7px] font-semibold cursor-pointer text-violet-200">
+                      <h1 className="text-[5px] font-semibold cursor-pointer text-violet-200">
                         {i.Slots === i.emails ? "Not Available" : "Available"}
                       </h1>
                     </div>
@@ -189,7 +191,7 @@ export default function Appoitments() {
                       }}
                       className="duration-300 ease-in-out bg-purple-500 rounded-full hover:brightness-75"
                     >
-                      <p className="px-5 py-2 text-[10px] font-semibold text-white cursor-pointer">
+                      <p className="px-5 py-2 text-[5.3px] font-semibold text-white cursor-pointer">
                         Book
                       </p>
                     </div>

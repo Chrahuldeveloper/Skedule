@@ -52,6 +52,8 @@ export default function UserProfile() {
     fetchUser();
   }, [fetchUser]);
 
+  
+
   return (
     <div className="w-screen h-screen bg-[#08090d]">
       <div>

@@ -8,7 +8,7 @@ import {
 import { CiMenuFries } from "react-icons/ci";
 import { Editimage } from "../components/index";
 import { IoNotificationsOutline } from "react-icons/io5";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../Firebase";
 import { CgProfile } from "react-icons/cg";
 import { CalenderBoard } from "../components/index";
@@ -23,10 +23,25 @@ export default function UserProfile() {
 
   const [userAppointements, setuserAppointements] = useState([]);
 
+
+  const isPastDate = (date) => {
+    const currentdate = new Date();
+    const appointmentDate = new Date(date);
+    return appointmentDate < currentdate;
+  };
+
+
+
   const getuserAppointements = useCallback(async () => {
     try {
       const docref = doc(db, "USERS", jwt);
       const UserData = await getDoc(docref);
+      const validAppointments = UserData.data()?.Appointments.filter(
+        (appt) => !isPastDate(appt.date)
+      );
+      if (validAppointments.length !== UserData.data()?.Appointments.length) {
+        await updateDoc(docref, { Appointments: validAppointments });
+      }
       setuserAppointements(UserData.data().Appointments || []);
     } catch (error) {
       console.log(error);

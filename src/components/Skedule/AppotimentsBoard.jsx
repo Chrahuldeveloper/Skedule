@@ -13,6 +13,7 @@ export default function AppotimentsBoard({
 
   const [copy, setcopy] = useState("ShareURL");
 
+  
   const deleteAppointment = async (idx) => {
     setisloading(true);
 

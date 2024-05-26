@@ -23,6 +23,12 @@ export default function Appoitments() {
 
   const [toggle, settoggle] = useState(true);
 
+  const isPastDate = (date) => {
+    const currentdate = new Date();
+    const appointmentDate = new Date(date);
+    return appointmentDate < currentdate;
+  };
+
   const getUserAppointments = useCallback(async () => {
     if (!id) return;
     try {
@@ -30,6 +36,12 @@ export default function Appoitments() {
       const docRef = doc(db, "USERS", id);
       const userData = await getDoc(docRef);
       const data = userData.data();
+      const validAppointments = data?.Appointments.filter(
+        (appt) => !isPastDate(appt.date)
+      );
+      if (validAppointments.length !== data?.Appointments.length) {
+        await updateDoc(docRef, { Appointments: validAppointments });
+      }
       setuserAppointements(data?.Appointments || []);
       setuser({
         Pic: data?.photo,

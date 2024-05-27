@@ -30,8 +30,6 @@ export default function UserProfile() {
     return appointmentDate < currentdate;
   };
 
-
-
   const getuserAppointements = useCallback(async () => {
     try {
       const docref = doc(db, "USERS", jwt);

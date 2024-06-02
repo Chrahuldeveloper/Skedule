@@ -6,8 +6,7 @@ export default function Footer({ scrollTosection1, scrollTosection2 }) {
       <div className="space-y-3 lg:pl-20 text-slate-300">
         <h1 className="text-2xl font-semibold lg:text-3xl">Skedule</h1>
         <p className="max-w-md">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum
-          dolor sit amet consectetur adipisicing elit.
+        Simplify your scheduling with Skedule. Our user-friendly app helps you manage appointments effortlessly, send reminders, and keep your clients happy. Focus on growing your business while we take care of the rest
         </p>
       </div>
       <div className="flex flex-col gap-8 pl-8 my-8 lg:gap-20 lg:flex-row lg:pr-28 lg:justify-center text-slate-300">

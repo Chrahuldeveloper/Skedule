@@ -91,7 +91,7 @@ export default function LandingPage() {
             data-aos="fade-up"
             data-aos-delay="50"
             data-aos-easing="ease-in-out"
-            className="max-w-xs md:max-w-md space-y-4 p-5 border-[1px] cursor-pointer text-center rounded-lg text-slate-300 border-zinc-800"
+            className="max-w-sm md:max-w-md space-y-4 p-5 border-[1px] cursor-pointer text-center rounded-lg text-slate-300 border-zinc-800"
           >
             <h1 className="text-lg font-semibold md:text-xl">{i.Tittle}</h1>
             <p className="text-xs leading-7">{i.Para}</p>

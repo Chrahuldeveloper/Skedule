@@ -3,7 +3,12 @@ import { RxCross2 } from "react-icons/rx";
 import { db } from "../../Firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import Loader from "../Loader";
-export default function Schedule({ setispopup, day, setuserAppointements }) {
+export default function Schedule({
+  setispopup,
+  day,
+  setuserAppointements,
+  setcat,
+}) {
   const [schedule, setschedule] = useState({
     StartTime: "",
     StartPeriod: "AM",
@@ -31,9 +36,8 @@ export default function Schedule({ setispopup, day, setuserAppointements }) {
     await updateDoc(userRef, { Appointments: updatedAppointments });
 
     setuserAppointements(updatedAppointments);
-
-    console.log("Saved");
     setisloading(false);
+    setcat("Dashboard");
   };
 
   return (

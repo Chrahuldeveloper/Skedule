@@ -107,7 +107,7 @@ const Calendar = ({ user, setispopup, day, setday }) => {
           return (
             <p
               key={index}
-              className={`px-3 py-2 rounded-full cursor-pointer text-slate-300 ${
+              className={`px-5 py-3 rounded-full cursor-pointer text-slate-300 ${
                 date && date.getMonth() === currentDate.getMonth()
                   ? date.getDate() === selectedDate?.getDate() &&
                     date.getMonth() === selectedDate?.getMonth() &&
@@ -118,7 +118,7 @@ const Calendar = ({ user, setispopup, day, setday }) => {
                       date.getFullYear() === new Date().getFullYear()
                     ? "bg-violet-500 text-white"
                     : isScheduled
-                    ? "bg-violet-500 text-white rounded-lg"
+                    ? "bg-violet-500 text-white rounded-full"
                     : ""
                   : "opacity-0"
               }`}

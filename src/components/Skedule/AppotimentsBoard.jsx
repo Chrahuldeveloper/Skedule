@@ -2,7 +2,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import React, { useMemo, useState } from "react";
 import { db } from "../../Firebase";
 import Loader from "../Loader";
-
+import { Link } from "react-router-dom";
 export default function AppotimentsBoard({
   userAppointements,
   setuserAppointements,
@@ -13,7 +13,6 @@ export default function AppotimentsBoard({
 
   const [copy, setcopy] = useState("ShareURL");
 
-  
   const deleteAppointment = async (idx) => {
     setisloading(true);
 
@@ -98,7 +97,9 @@ export default function AppotimentsBoard({
                     <p className="text-xs cursor-pointer">{i.date}</p>
                   </th>
                   <th className="pt-10 pl-5 lg:pl-28 lg:text-sm">
-                    <p className="text-xs cursor-pointer">{"Join"}</p>
+                    <Link to={i.Link}>
+                      <p className="text-xs cursor-pointer">{"join"}</p>
+                    </Link>
                   </th>
                   <th className="pt-10 pl-5 lg:pl-28 lg:text-sm">
                     <p

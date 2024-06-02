@@ -23,7 +23,6 @@ export default function UserProfile() {
 
   const [userAppointements, setuserAppointements] = useState([]);
 
-
   const isPastDate = (date) => {
     const currentdate = new Date();
     const appointmentDate = new Date(date);
@@ -64,8 +63,6 @@ export default function UserProfile() {
   useEffect(() => {
     fetchUser();
   }, [fetchUser]);
-
-  
 
   return (
     <div className="w-screen h-screen bg-[#08090d]">
@@ -123,6 +120,7 @@ export default function UserProfile() {
                 <CalenderBoard
                   userAppointements={userAppointements}
                   setuserAppointements={setuserAppointements}
+                  setcat={setcat}
                 />
               ) : cat === "Notifications" ? (
                 <NotificationsBoard jwt={jwt} />

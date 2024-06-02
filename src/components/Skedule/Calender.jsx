@@ -107,7 +107,7 @@ const Calendar = ({ user, setispopup, day, setday }) => {
           return (
             <p
               key={index}
-              className={`px-5 py-3 rounded-full cursor-pointer text-slate-300 ${
+              className={`px-4 py-2  rounded-full cursor-pointer text-slate-300 ${
                 date && date.getMonth() === currentDate.getMonth()
                   ? date.getDate() === selectedDate?.getDate() &&
                     date.getMonth() === selectedDate?.getMonth() &&

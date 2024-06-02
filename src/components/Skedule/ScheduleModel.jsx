@@ -159,7 +159,7 @@ export default function Schedule({
         <div className="my-2">
           <button
             onClick={saveScheduleAppointment}
-            className="w-full py-2 text-sm font-semibold rounded-full text-slate-300 bg-violet-600"
+            className="w-full py-2.5 text-sm font-semibold rounded-xl text-slate-300 bg-violet-600"
           >
             Schedule
           </button>

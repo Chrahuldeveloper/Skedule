@@ -5,6 +5,7 @@ import { Circle, Bar, Sucess } from "../components/index";
 import emailjs from "@emailjs/browser";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useParams } from "react-router-dom";
+import Calendar from "../components/Skedule/Calender";
 export default function Appoitments() {
   const [userAppointements, setuserAppointements] = useState([]);
   const [isloading, setisloading] = useState(false);
@@ -58,7 +59,6 @@ export default function Appoitments() {
   useEffect(() => {
     getUserAppointments();
   }, [getUserAppointments]);
-
 
   const sendEmail = async (
     userEmail,
@@ -142,9 +142,23 @@ export default function Appoitments() {
   return (
     <div className="w-screen h-screen bg-[#08090d] overflow-y-scroll">
       <div className="px-3 py-8">
-        <div className="p-6  border-[1px] border-zinc-800 bg-zinc-900  mx-auto rounded-md max-w-xl">
-          <div className="flex flex-col items-center space-y-2.5 text-slate-300">
-            {isloading ? (
+        <div className="p-6  border-[1px] border-zinc-800 bg-zinc-900  mx-auto rounded-md max-w-5xl">
+          <div className="flex md:justify-evenly items-center  flex-col md:flex-row gap-10 md:gap-0">
+            <div className=" space-y-3 flex flex-col items-center justify-center md:pl-28">
+              <img
+                src={user?.Pic}
+                className="object-cover duration-300 ease-in-out rounded-full cursor-pointer h-32 w-32 hover:brightness-75 border-[1px] border-zinc-800"
+                alt=""
+              />
+              <h1 className="text-lg font-bold text-slate-300">{user?.Name}</h1>
+              <p className="max-w-sm text-sm text-center font-semibold text-slate-300 leading-7">
+                {user.Bio}
+              </p>
+            </div>
+
+            <Calendar page="user" />
+
+            {/* {isloading ? (
               <Circle />
             ) : (
               <img
@@ -162,7 +176,7 @@ export default function Appoitments() {
               <Bar width={36} />
             ) : (
               <p className="max-w-xs text-xs text-center">{user?.Bio}</p>
-            )}
+            )} */}
           </div>
 
           {[1, 2, 3, 4, 5].map((i) => {

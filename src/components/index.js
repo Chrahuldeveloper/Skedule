@@ -13,8 +13,10 @@ import ScheduleModel from "./Skedule/ScheduleModel";
 import Circle from "./loaders/Circle";
 import Bar from "./loaders/Bar";
 import Sucess from "./Notifcations/Sucess";
+import UserCalender from "./UserCalender";
 
 export {
+  UserCalender,
   Sucess,
   Bar,
   ScheduleModel,

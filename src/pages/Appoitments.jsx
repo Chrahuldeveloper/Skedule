@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { db, auth } from "../Firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { Circle, Bar, Sucess } from "../components/index";
+import {  Bar, Sucess } from "../components/index";
 import emailjs from "@emailjs/browser";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useParams } from "react-router-dom";
-import Calendar from "../components/Skedule/Calender";
+import UserCalendar from "../components/UserCalender";
 export default function Appoitments() {
   const [userAppointements, setuserAppointements] = useState([]);
   const [isloading, setisloading] = useState(false);
@@ -143,20 +143,20 @@ export default function Appoitments() {
     <div className="w-screen h-screen bg-[#08090d] overflow-y-scroll">
       <div className="px-3 py-8">
         <div className="p-6  border-[1px] border-zinc-800 bg-zinc-900  mx-auto rounded-md max-w-5xl">
-          <div className="flex md:justify-evenly items-center  flex-col md:flex-row gap-10 md:gap-0">
-            <div className=" space-y-3 flex flex-col items-center justify-center md:pl-28">
+          <div className="flex flex-col items-center gap-10 md:justify-evenly md:flex-row md:gap-0">
+            <div className="flex flex-col items-center justify-center space-y-3 md:pl-28">
               <img
                 src={user?.Pic}
                 className="object-cover duration-300 ease-in-out rounded-full cursor-pointer h-32 w-32 hover:brightness-75 border-[1px] border-zinc-800"
                 alt=""
               />
               <h1 className="text-lg font-bold text-slate-300">{user?.Name}</h1>
-              <p className="max-w-sm text-sm text-center font-semibold text-slate-300 leading-7">
+              <p className="max-w-sm text-sm font-semibold leading-7 text-center text-slate-300">
                 {user.Bio}
               </p>
             </div>
 
-            <Calendar page="user" />
+            <UserCalendar page="user" userId={id} />
 
             {/* {isloading ? (
               <Circle />

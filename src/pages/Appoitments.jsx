@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { db, auth } from "../Firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import {  Bar, Sucess } from "../components/index";
+import { Sucess } from "../components/index";
 import emailjs from "@emailjs/browser";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useParams } from "react-router-dom";
@@ -155,78 +155,8 @@ export default function Appoitments() {
                 {user.Bio}
               </p>
             </div>
-
             <UserCalendar page="user" userId={id} />
-
-            {/* {isloading ? (
-              <Circle />
-            ) : (
-              <img
-                src={user?.Pic}
-                className="object-cover duration-300 ease-in-out rounded-full cursor-pointer h-32 w-32 hover:brightness-75 border-[1px] border-zinc-800"
-                alt=""
-              />
-            )}
-            {isloading ? (
-              <Bar width={28} />
-            ) : (
-              <h1 className="text-lg font-bold">{user?.Name}</h1>
-            )}
-            {isloading ? (
-              <Bar width={36} />
-            ) : (
-              <p className="max-w-xs text-xs text-center">{user?.Bio}</p>
-            )} */}
           </div>
-
-          {[1, 2, 3, 4, 5].map((i) => {
-            return <></>;
-          })}
-
-          {isloading ? (
-            <div className="flex flex-col items-center justify-center mt-5 space-y-4">
-              <Bar width={"full"} height={8} />
-              <Bar width={"full"} height={8} />
-              <Bar width={"full"} height={8} />
-              <Bar width={"full"} height={8} />
-              <Bar width={"full"} height={8} />
-            </div>
-          ) : (
-            userAppointements.map((i, idx) => {
-              return (
-                <React.Fragment key={idx}>
-                  <div className="flex  items-center justify-center gap-8 my-9 border-b-[1px] border-zinc-700">
-                    <div className="flex flex-col items-center justify-center gap-2.5 text-slate-300">
-                      <h1 className="text-[5.5px] sm:text-[10px]">{i.date}</h1>
-                      <p className="text-[5.5px] sm:text-[10px]">{i.day}</p>
-                    </div>
-                    <div className="duration-300 ease-in-out rounded-full bg-violet-300 hover:brightness-75">
-                      <h1 className="px-1 py-2 text-[5px] sm:text-[10px] font-semibold cursor-pointer text-violet-800">
-                        {i.StartTime}
-                        {i.StartPeriod} - {i.EndTime}
-                        {i.EndPeriod}
-                      </h1>
-                    </div>
-                    <div>
-                      <h1 className="text-[5.5px] sm:text-[10px] font-semibold cursor-pointer text-violet-200">
-                        {i.Slots === i.emails ? "Not Available" : "Available"}
-                      </h1>
-                    </div>
-                    <div
-                      onClick={() => {
-                        GoogleRegister(idx);
-                      }}
-                      className="duration-300 ease-in-out bg-purple-500 rounded-full hover:brightness-75"
-                    >
-                      <p className="px-5 py-2 text-[5.8px] sm:text-[10px] font-semibold text-white cursor-pointer">
-                        Book
-                      </p>
-                    </div>
-                  </div>
-                </React.Fragment>
-              );
-            })
-          )}
         </div>
       </div>
       {sucessmsg && toggle ? (

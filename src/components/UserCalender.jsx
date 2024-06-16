@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
-import {
-  getDoc,
-  doc,
-} from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 import { db } from "../Firebase";
 
 const UserCalendar = ({ page, userId }) => {
@@ -20,7 +17,8 @@ const UserCalendar = ({ page, userId }) => {
         const docRef = doc(db, "USERS", userId);
         const userData = await getDoc(docRef);
         const data = userData.data();
-        console.log(data);
+        const appointmentDates = data?.Appointments.map((i) => i.date) || [];
+        setAppointments(appointmentDates);
       } catch (error) {
         console.error("Error fetching appointments: ", error);
       } finally {
@@ -31,7 +29,7 @@ const UserCalendar = ({ page, userId }) => {
     fetchAppointments();
   }, [userId]);
 
-  const scheduledDates = new Set(appointments.map((appoint) => appoint.date));
+  const scheduledDates = new Set(appointments);
 
   const daysInMonth = (date) => {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
@@ -143,10 +141,6 @@ const UserCalendar = ({ page, userId }) => {
                     ? date.getDate() === selectedDate?.getDate() &&
                       date.getMonth() === selectedDate?.getMonth() &&
                       date.getFullYear() === selectedDate?.getFullYear()
-                      ? "bg-violet-500 text-white"
-                      : date.getDate() === new Date().getDate() &&
-                        date.getMonth() === new Date().getMonth() &&
-                        date.getFullYear() === new Date().getFullYear()
                       ? "bg-violet-500 text-white"
                       : isScheduled
                       ? "bg-violet-500 text-white rounded-full"

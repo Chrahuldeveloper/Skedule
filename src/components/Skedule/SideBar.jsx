@@ -65,7 +65,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                 <li
                   onClick={() => {
                     setcat("Dashboard");
-                    setisshow(false)
+                    setisshow(false);
                   }}
                   className={`px-3 w-56 py-2.5 text-center cursor-pointer text-sm text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-full  ${
                     cat === "Dashboard"
@@ -79,7 +79,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                 <li
                   onClick={() => {
                     setcat("Schedule");
-                    setisshow(false)
+                    setisshow(false);
                   }}
                   className={`px-3 w-56 py-2.5 cursor-pointer text-sm text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-full  ${
                     cat === "Schedule"
@@ -95,7 +95,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                   onClick={() => {
                     setcat("Appotiments");
                     navigate(`/user/${jwt}`);
-                    setisshow(false)
+                    setisshow(false);
                   }}
                   className={`px-3 w-56 py-2.5 cursor-pointer text-sm text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-full  ${
                     cat === "Appotiments"
@@ -109,7 +109,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                 <li
                   onClick={() => {
                     setcat("Notifications");
-                    setisshow(false)
+                    setisshow(false);
                   }}
                   className={`px-3 w-56  py-2.5 cursor-pointer text-sm text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-full  ${
                     cat === "Notifications"

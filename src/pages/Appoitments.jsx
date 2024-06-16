@@ -36,10 +36,10 @@ export default function Appoitments() {
       const docRef = doc(db, "USERS", id);
       const userData = await getDoc(docRef);
       const data = userData.data();
-      const validAppointments = data?.Appointments.filter(
+      const validAppointments = data?.Appointments?.filter(
         (appt) => !isPastDate(appt.date)
       );
-      if (validAppointments.length !== data?.Appointments.length) {
+      if (validAppointments?.length !== data?.Appointments?.length) {
         await updateDoc(docRef, { Appointments: validAppointments });
       }
       setuserAppointements(data?.Appointments || []);
@@ -58,6 +58,7 @@ export default function Appoitments() {
   useEffect(() => {
     getUserAppointments();
   }, [getUserAppointments]);
+
 
   const sendEmail = async (
     userEmail,

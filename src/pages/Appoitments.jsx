@@ -155,7 +155,7 @@ export default function Appoitments() {
                 {user.Bio}
               </p>
             </div>
-            <UserCalendar page="user" userId={id} />
+            <UserCalendar page="user" userId={id} GoogleRegister={GoogleRegister}/>
           </div>
         </div>
       </div>

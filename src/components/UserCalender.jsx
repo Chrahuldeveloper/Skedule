@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "../Firebase";
+import Loader from "./Loader";
 
-const UserCalendar = ({ page, userId }) => {
+const UserCalendar = ({ page, userId, GoogleRegister }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(null);
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -68,18 +68,19 @@ const UserCalendar = ({ page, userId }) => {
     setCurrentDate(
       new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1)
     );
-    setSelectedDate(null);
   };
 
   const goToNextMonth = () => {
     setCurrentDate(
       new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)
     );
-    setSelectedDate(null);
   };
 
   const handleDateClick = (date) => {
-    setSelectedDate(date);
+    const formattedDate = formatDate(date);
+    if (scheduledDates.has(formattedDate)) {
+      GoogleRegister(formattedDate);
+    }
   };
 
   const formatDate = (date) => {
@@ -129,7 +130,7 @@ const UserCalendar = ({ page, userId }) => {
       </div>
       <div className="grid justify-center grid-cols-7 my-4 place-items-center">
         {loading ? (
-          <p>Loading...</p>
+          <Loader />
         ) : (
           getMonthData().map((date, index) => {
             const isScheduled = date && scheduledDates.has(formatDate(date));
@@ -138,11 +139,7 @@ const UserCalendar = ({ page, userId }) => {
                 key={index}
                 className={`px-3 py-2 my-1.5 text-xs rounded-full cursor-pointer text-slate-300 ${
                   date && date.getMonth() === currentDate.getMonth()
-                    ? date.getDate() === selectedDate?.getDate() &&
-                      date.getMonth() === selectedDate?.getMonth() &&
-                      date.getFullYear() === selectedDate?.getFullYear()
-                      ? "bg-violet-500 text-white"
-                      : isScheduled
+                    ? isScheduled
                       ? "bg-violet-500 text-white rounded-full"
                       : ""
                     : "opacity-0"

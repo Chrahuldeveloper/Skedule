@@ -24,8 +24,14 @@ export default function Schedule({
 
   const jwt = localStorage.getItem("jwt");
 
+  const currentDate = day.date;
+  const date = new Date(currentDate);
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const lastDate = new Date(year, month, 0);
+
   const userRef = useMemo(() => {
-    doc(db, "USERS", jwt);
+    return doc(db, "USERS", jwt);
   }, [jwt]);
 
   const saveScheduleAppointment = async () => {
@@ -49,6 +55,34 @@ export default function Schedule({
 
   const scheduleEveryday = async () => {
     try {
+      setisloading(true);
+      const userdata = await getDoc(userRef);
+      const currentAppointments = (await userdata.data().Appointments) || [];
+
+      const newAppointments = [];
+      let tempDate = new Date(currentDate);
+      const endDate = new Date(lastDate.getTime());
+
+      while (tempDate <= endDate) {
+        newAppointments.push({
+          StartTime: schedule.StartTime,
+          StartPeriod: schedule.StartPeriod,
+          EndTime: schedule.EndTime,
+          EndPeriod: schedule.EndPeriod,
+          Slots: schedule.Slots,
+          Link: schedule.Link,
+          date: tempDate.toISOString().split("T")[0],
+        });
+        tempDate.setDate(tempDate.getDate() + 1);
+      }
+
+      const updatedAppointments = [...currentAppointments, ...newAppointments];
+
+      await updateDoc(userRef, { Appointments: updatedAppointments });
+
+      setuserAppointements(updatedAppointments);
+      setisloading(false);
+      setcat("Dashboard");
     } catch (error) {
       console.log(error);
     }
@@ -181,9 +215,9 @@ export default function Schedule({
         <div className="my-5">
           <button
             onClick={scheduleEveryday}
-            className="w-full py-2.5 text-sm font-semibold rounded-lg text-slate-300 hover:bg-violet-600 ease-in duration-300"
+            className="w-full py-2.5 text-sm font-semibold rounded-lg text-slate-300 bg-violet-600"
           >
-            Schedule for everyday from {day.date}
+            Schedule for Month
           </button>
         </div>
       </div>

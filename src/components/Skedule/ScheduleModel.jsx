@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { db } from "../../Firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
@@ -24,20 +24,34 @@ export default function Schedule({
 
   const jwt = localStorage.getItem("jwt");
 
+  const userRef = useMemo(() => {
+    doc(db, "USERS", jwt);
+  }, [jwt]);
+
   const saveScheduleAppointment = async () => {
-    setisloading(true);
-    const userRef = doc(db, "USERS", jwt);
+    try {
+      setisloading(true);
 
-    const userdata = await getDoc(userRef);
-    const currentAppointments = userdata.data().Appointments || [];
+      const userdata = await getDoc(userRef);
+      const currentAppointments = (await userdata.data().Appointments) || [];
 
-    const updatedAppointments = [...currentAppointments, schedule];
+      const updatedAppointments = [...currentAppointments, schedule];
 
-    await updateDoc(userRef, { Appointments: updatedAppointments });
+      await updateDoc(userRef, { Appointments: updatedAppointments });
 
-    setuserAppointements(updatedAppointments);
-    setisloading(false);
-    setcat("Dashboard");
+      setuserAppointements(updatedAppointments);
+      setisloading(false);
+      setcat("Dashboard");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const scheduleEveryday = async () => {
+    try {
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -159,9 +173,17 @@ export default function Schedule({
         <div className="my-2">
           <button
             onClick={saveScheduleAppointment}
-            className="w-full py-2.5 text-sm font-semibold rounded-xl text-slate-300 bg-violet-600"
+            className="w-full py-2.5 text-sm font-semibold rounded-lg text-slate-300 bg-violet-600"
           >
             Schedule
+          </button>
+        </div>
+        <div className="my-5">
+          <button
+            onClick={scheduleEveryday}
+            className="w-full py-2.5 text-sm font-semibold rounded-lg text-slate-300 hover:bg-violet-600 ease-in duration-300"
+          >
+            Schedule for everyday from {day.date}
           </button>
         </div>
       </div>

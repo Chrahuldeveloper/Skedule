@@ -139,6 +139,8 @@ export default function Appoitments() {
     }
   };
 
+  console.log(isloading, userAppointements);
+
   return (
     <div className="w-screen h-screen bg-[#08090d] overflow-y-scroll">
       <div className="px-3 py-8">
@@ -155,7 +157,11 @@ export default function Appoitments() {
                 {user.Bio}
               </p>
             </div>
-            <UserCalendar page="user" userId={id} GoogleRegister={GoogleRegister}/>
+            <UserCalendar
+              page="user"
+              userId={id}
+              GoogleRegister={GoogleRegister}
+            />
           </div>
         </div>
       </div>

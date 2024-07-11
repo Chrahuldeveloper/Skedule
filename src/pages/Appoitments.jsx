@@ -115,22 +115,24 @@ export default function Appoitments() {
       const filteredAppointment = await appointments.find(
         (itm, i) => i === index
       );
-      if (filteredAppointment.emails?.includes(user)) {
+      if (filteredAppointment?.emails?.includes(user)) {
         return seterrormsg(true);
       } else {
-        filteredAppointment.emails = [
-          ...(filteredAppointment.emails || []),
-          user,
-        ];
+        if (filteredAppointment) {
+          filteredAppointment.emails = [
+            ...(filteredAppointment.emails || []),
+            user,
+          ];
+        }
         await updateDoc(docRef, { Appointments: appointments });
         await sendEmail(
           user,
-          res.user.displayName,
-          filteredAppointment.Link,
-          userData.Email,
-          userData.Name,
-          filteredAppointment.StartTime,
-          filteredAppointment.StartPeriod
+          res?.user?.displayName,
+          filteredAppointment?.Link,
+          userData?.Email,
+          userData?.Name,
+          filteredAppointment?.StartTime,
+          filteredAppointment?.StartPeriod
         );
         setsucessmsg(true);
       }

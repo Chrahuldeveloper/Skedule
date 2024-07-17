@@ -167,9 +167,9 @@ export default function Appoitments() {
           </div>
         </div>
       </div>
-      {sucessmsg && toggle ? (
-        <Sucess msg={"Registration Done"} settoggle={settoggle} />
-      ) : null}
+      <Sucess settoggle={settoggle} />
+      {/* {sucessmsg && toggle ? (
+      ) : null} */}
       {errormsg && toggle ? (
         <Sucess msg={"Already Registrated"} settoggle={settoggle} />
       ) : null}

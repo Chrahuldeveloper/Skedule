@@ -23,7 +23,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
           data-aos="slide-right"
           data-aos-delay="20"
           data-aos-easing="ease-in-out"
-          className="bg-zinc-900 w-[80vw] lg:w-[20vw] border-r-[1px] border-zinc-800 px-10 py-5 h-screen  fixed left-0 top-0 bottom-0 -z-40"
+          className="bg-zinc-900 w-[80vw] lg:w-[17vw] border-r-[1px] border-zinc-800 px-10 py-5 h-screen  fixed left-0 top-0 bottom-0 -z-40"
         >
           <nav>
             <div className="flex justify-end lg:justify-center">
@@ -47,7 +47,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                     setisshow(false);
                   }}
                   src={user?.photo}
-                  className="object-cover w-32 h-32 duration-300 ease-in-out rounded-full cursor-pointer hover:brightness-75 border-zinc-800 border-[1px]"
+                  className="object-cover w-28 h-28 duration-300 ease-in-out rounded-full cursor-pointer hover:brightness-75 border-zinc-800 border-[1px]"
                   alt=""
                 />
                 <div className="space-y-2.5 text-center">
@@ -72,13 +72,13 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                     setcat("Dashboard");
                     setisshow(false);
                   }}
-                  className={`px-3 w-56 py-2.5 text-center cursor-pointer text-sm text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-full  ${
+                  className={`px-3 w-44 py-2.5 text-center cursor-pointer text-xs text-slate-300 font-semibold flex items-center gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-lg  ${
                     cat === "Dashboard"
-                      ? "bg-violet-600 text-white rounded-full"
+                      ? "bg-violet-600 text-white rounded-lg"
                       : null
                   }`}
                 >
-                  <MdOutlineDashboard size={23} />
+                  <MdOutlineDashboard size={18} />
                   <h1 className="text-sm">Dashboard</h1>
                 </li>
                 <li
@@ -86,13 +86,13 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                     setcat("Schedule");
                     setisshow(false);
                   }}
-                  className={`px-3 w-56 py-2.5 cursor-pointer text-sm text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-full  ${
+                  className={`px-3 w-44 py-2.5 cursor-pointer text-xs text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-lg  ${
                     cat === "Schedule"
-                      ? "bg-violet-600 text-white rounded-full"
+                      ? "bg-violet-600 text-white rounded-lg"
                       : null
                   }`}
                 >
-                  <SlCalender size={23} />
+                  <SlCalender size={18} />
                   <h1 className="text-sm">Schedule</h1>
                 </li>
 
@@ -102,13 +102,13 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                     navigate(`/user/${jwt}`);
                     setisshow(false);
                   }}
-                  className={`px-3 w-56 py-2.5 cursor-pointer text-sm text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-full  ${
+                  className={`px-3 w-44 py-2.5 cursor-pointer text-xs text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-lg  ${
                     cat === "Appotiments"
-                      ? "bg-violet-600 text-white rounded-full"
+                      ? "bg-violet-600 text-white rounded-lg"
                       : null
                   }`}
                 >
-                  <MdOutlineSpeakerNotes size={23} />
+                  <MdOutlineSpeakerNotes size={18} />
                   <h1 className="text-sm">Appotiments</h1>
                 </li>
                 <li
@@ -116,13 +116,13 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                     setcat("Notifications");
                     setisshow(false);
                   }}
-                  className={`px-3 w-56  py-2.5 cursor-pointer text-sm text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-full  ${
+                  className={`px-3 w-44  py-2.5 cursor-pointer text-xs text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-lg  ${
                     cat === "Notifications"
-                      ? "bg-violet-600 text-white rounded-full"
+                      ? "bg-violet-600 text-white rounded-lg"
                       : null
                   }`}
                 >
-                  <MdOutlineNotificationsActive size={23} />
+                  <MdOutlineNotificationsActive size={18} />
                   <h1 className="text-sm">Notifications</h1>
                 </li>
                 <li
@@ -130,9 +130,9 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                     setcat("Logout");
                     handleLogout();
                   }}
-                  className={`px-3 w-56 py-2.5 cursor-pointer text-sm text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-full  ${
+                  className={`px-3 w-44 py-2.5 cursor-pointer text-xs text-slate-300 font-semibold flex items-center  gap-4 hover:text-white hover:bg-violet-600 duration-300 ease-in-out hover:rounded-lg  ${
                     cat === "Logout"
-                      ? "bg-blue-600 text-white rounded-full"
+                      ? "bg-blue-600 text-white rounded-lg"
                       : null
                   }`}
                 >

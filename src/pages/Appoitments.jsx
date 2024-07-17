@@ -70,7 +70,7 @@ export default function Appoitments() {
     StartPeriod
   ) => {
     try {
-      const rescreator = await emailjs.send(
+      await emailjs.send(
         "service_v85ekfn",
         "template_q8bxqkv",
         {
@@ -85,20 +85,18 @@ export default function Appoitments() {
         "3mxv1JKPFdt7xkk3a"
       );
 
-      console.log(rescreator);
-      const res = await emailjs.send(
+      await emailjs.send(
         "service_v85ekfn",
         "template_q8bxqkv",
         {
           from_name: "Skedule",
           to_name: userName,
-          from_email: "saasstudiosindia@gmail.com",
+          from_email: creatorEmail,
           to_email: userEmail,
-          message: `Appointment Link is ${link}  `,
+          message: `Your Appointment Link is ${link}`,
         },
         "3mxv1JKPFdt7xkk3a"
       );
-      console.log(res.text);
     } catch (error) {
       console.log(error);
     }
@@ -155,7 +153,7 @@ export default function Appoitments() {
                 alt=""
               />
               <h1 className="text-lg font-bold text-slate-300">{user?.Name}</h1>
-              <p className="max-w-sm text-sm font-semibold leading-7 text-center text-slate-300">
+              <p className="max-w-sm text-sm leading-7 text-center text-slate-300">
                 {user.Bio}
               </p>
             </div>
@@ -166,6 +164,7 @@ export default function Appoitments() {
             />
           </div>
         </div>
+        <div></div>
       </div>
       {sucessmsg && toggle ? <Sucess settoggle={settoggle} /> : null}
       {errormsg && toggle ? (

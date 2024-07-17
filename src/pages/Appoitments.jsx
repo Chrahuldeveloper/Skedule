@@ -1,15 +1,16 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { db, auth } from "../Firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { Sucess } from "../components/index";
+import { Loader, Sucess } from "../components/index";
 import emailjs from "@emailjs/browser";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useParams } from "react-router-dom";
 import UserCalendar from "../components/UserCalender";
-export default function Appoitments() {
-  const [userAppointements, setuserAppointements] = useState([]);
-  const [isloading, setisloading] = useState(false);
-  const [user, setuser] = useState({
+
+export default function Appointments() {
+  const [userAppointments, setUserAppointments] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState({
     Pic: "",
     Name: "",
     Bio: "",
@@ -17,23 +18,23 @@ export default function Appoitments() {
 
   const provider = new GoogleAuthProvider();
 
-  const [sucessmsg, setsucessmsg] = useState(false);
-  const [errormsg, seterrormsg] = useState(false);
+  const [successMsg, setSuccessMsg] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(false);
 
   const { id } = useParams();
 
-  const [toggle, settoggle] = useState(true);
+  const [toggle, setToggle] = useState(true);
 
   const isPastDate = (date) => {
-    const currentdate = new Date();
+    const currentDate = new Date();
     const appointmentDate = new Date(date);
-    return appointmentDate < currentdate;
+    return appointmentDate < currentDate;
   };
 
   const getUserAppointments = useCallback(async () => {
     if (!id) return;
     try {
-      setisloading(true);
+      setIsLoading(true);
       const docRef = doc(db, "USERS", id);
       const userData = await getDoc(docRef);
       const data = userData.data();
@@ -43,8 +44,8 @@ export default function Appoitments() {
       if (validAppointments?.length !== data?.Appointments?.length) {
         await updateDoc(docRef, { Appointments: validAppointments });
       }
-      setuserAppointements(data?.Appointments || []);
-      setuser({
+      setUserAppointments(data?.Appointments || []);
+      setUser({
         Pic: data?.photo,
         Name: data?.Name,
         Bio: data?.Bio,
@@ -52,7 +53,7 @@ export default function Appoitments() {
     } catch (error) {
       console.log(error);
     } finally {
-      setisloading(false);
+      setIsLoading(false);
     }
   }, [id]);
 
@@ -67,7 +68,7 @@ export default function Appoitments() {
     creatorEmail,
     creatorName,
     time,
-    StartPeriod
+    startPeriod
   ) => {
     try {
       await emailjs.send(
@@ -79,7 +80,7 @@ export default function Appoitments() {
           from_email: "saasstudiosindia@gmail.com",
           to_email: creatorEmail,
           message: `${userEmail} has Booked your Appointment at ${
-            time + StartPeriod
+            time + startPeriod
           }`,
         },
         "3mxv1JKPFdt7xkk3a"
@@ -110,41 +111,40 @@ export default function Appoitments() {
       const docSnap = await getDoc(docRef);
       const userData = docSnap.data();
       const appointments = (await userData.Appointments) || [];
-      const filteredAppointment = await appointments.find(
-        (itm, i) => i === index
-      );
-      if (filteredAppointment?.emails?.includes(user)) {
-        return seterrormsg(true);
-      } else {
-        if (filteredAppointment) {
-          filteredAppointment.emails = [
-            ...(filteredAppointment.emails || []),
-            user,
-          ];
+      const filterAppointments = appointments.filter((i) => {
+        return i.date === index;
+      });
+      console.log(filterAppointments);
+      const updatedAppointments = filterAppointments.map((appointment) => {
+        if (!appointment.emails) {
+          appointment.emails = [];
         }
-        await updateDoc(docRef, { Appointments: appointments });
-        await sendEmail(
-          user,
-          res?.user?.displayName,
-          filteredAppointment?.Link,
-          userData?.Email,
-          userData?.Name,
-          filteredAppointment?.StartTime,
-          filteredAppointment?.StartPeriod
-        );
-        setsucessmsg(true);
-      }
+        if (!appointment.emails.includes(user)) {
+          appointment.emails.push(user);
+        }
+        return appointment;
+      });
+      await updateDoc(docRef, { Appointments: updatedAppointments });
+      await sendEmail(
+        user,
+        res?.user?.displayName,
+        userData?.Email,
+        userData?.Name,
+        updatedAppointments?.Link,
+        updatedAppointments?.StartTime,
+        updatedAppointments?.StartPeriod
+      );
+      setSuccessMsg(true);
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(isloading, userAppointements);
-
   return (
     <div className="w-screen h-screen bg-[#08090d] overflow-y-scroll">
+      {isLoading ? <Loader /> : null}
       <div className="px-3 py-8">
-        <div className="p-6  border-[1px] border-zinc-800 bg-zinc-900  mx-auto rounded-md max-w-5xl">
+        <div className="p-6 border-[1px] border-zinc-800 bg-zinc-900 mx-auto rounded-md max-w-5xl">
           <div className="flex flex-col items-center gap-10 md:justify-evenly md:flex-row md:gap-0">
             <div className="flex flex-col items-center justify-center space-y-3 md:pl-28">
               <img
@@ -164,12 +164,17 @@ export default function Appoitments() {
             />
           </div>
         </div>
-        <div></div>
       </div>
-      {sucessmsg && toggle ? <Sucess settoggle={settoggle} /> : null}
-      {errormsg && toggle ? (
-        <Sucess msg={"Already Registrated"} settoggle={settoggle} />
+      {successMsg && toggle ? <Sucess setToggle={setToggle} /> : null}
+      {errorMsg && toggle ? (
+        <Sucess msg={"Already Registered"} setToggle={setToggle} />
       ) : null}
+
+      <footer className="flex justify-center">
+        <div className="absolute bottom-0 mx-auto mb-3 font-bold text-center text-stone-700">
+          Built in Skedule
+        </div>
+      </footer>
     </div>
   );
 }

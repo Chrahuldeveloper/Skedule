@@ -12,6 +12,8 @@ export default function AppotimentsBoard({
   const [isloading, setisloading] = useState(false);
 
   const [copy, setcopy] = useState("ShareURL");
+  const [userEmails, setuserEmails] = useState();
+  const [toggle, settoggle] = useState(false);
 
   const deleteAppointment = async (idx) => {
     setisloading(true);
@@ -79,7 +81,13 @@ export default function AppotimentsBoard({
               <React.Fragment key={index}>
                 <tbody className=" text-slate-300">
                   <th className="pt-10 lg:pl-3">
-                    <h1 className="text-xs cursor-pointer">
+                    <h1
+                      className="text-xs cursor-pointer"
+                      onClick={() => {
+                        setuserEmails(i.emails);
+                        settoggle(true);
+                      }}
+                    >
                       {i.emails?.length || i.Slots}
                     </h1>
                   </th>
@@ -117,6 +125,26 @@ export default function AppotimentsBoard({
           })}
         </table>
       </div>
+      {toggle ? (
+        <>
+          <div className="fixed inset-0 z-50 flex items-center justify-center h-full bg-opacity-75 backdrop-blur-md">
+            <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 ">
+              <div className="bg-[#0b0d12] p-5 rounded-lg w-[85vw] md:w-[50vw] lg:w-[30vw]">
+                <h1>Users</h1>
+                <ul>
+                  {userEmails?.map((i) => {
+                    return (
+                      <>
+                        <li className="text-sm text-white">{i}</li>
+                      </>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : null}
     </>
   );
 }

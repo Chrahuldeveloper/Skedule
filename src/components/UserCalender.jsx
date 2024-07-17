@@ -91,7 +91,7 @@ const UserCalendar = ({ page, userId, GoogleRegister }) => {
 
   return (
     <div
-      className={`bg-zinc-900 px-6 border-[1px] border-zinc-800 max-w-sx shadow-md mx-auto rounded-md ${
+      className={`bg-zinc-900 -z-50 px-6 border-[1px] border-zinc-800 max-w-sx shadow-md mx-auto rounded-md ${
         page === "user" ? "my-0" : "my-10"
       } py-6 z-50`}
     >

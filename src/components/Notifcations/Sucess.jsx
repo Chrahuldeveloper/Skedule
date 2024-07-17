@@ -1,7 +1,7 @@
 import React from "react";
 import { RxCross2 } from "react-icons/rx";
 import tick from "../../images/tick.png";
-export default function Sucess({ settoggle }) {
+export default function Sucess({ setToggle }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center h-full bg-opacity-75 backdrop-blur-md">
       <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 ">
@@ -12,7 +12,7 @@ export default function Sucess({ settoggle }) {
               size={23}
               className="cursor-pointer"
               onClick={() => {
-                settoggle(false);
+                setToggle(false);
               }}
             />
           </div>

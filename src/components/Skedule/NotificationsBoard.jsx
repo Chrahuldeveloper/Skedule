@@ -45,7 +45,7 @@ export default function NotificationsBoard({ jwt }) {
     <>
       <div className="bg-[#111111] my-6  py-5 border-[1px] rounded-md  border-zinc-900 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh] z-50 ">
         {isloading ? <Loader /> : null}
-        <div>
+        <div className="px-1.5 md:px-5 py-1">
           <h1 className="px-4 text-sm font-semibold md:text-2xl text-slate-300">
             Your Notifications
           </h1>

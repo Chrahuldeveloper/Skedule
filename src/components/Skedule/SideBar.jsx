@@ -46,7 +46,9 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                     setisedit(true);
                     setisshow(false);
                   }}
-                  src={user?.photo}
+                  src={
+                    user?.photo
+                  }
                   className="object-cover w-28 h-28 duration-300 ease-in-out rounded-full cursor-pointer hover:brightness-75 border-zinc-900 border-[1px]"
                   alt=""
                 />
@@ -84,8 +86,8 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                     }}
                     className={`py-2.5 px-3 cursor-pointer text-xs text-slate-300 font-semibold flex items-center  justify-start gap-2 hover:text-white hover:bg-[#6746ed] duration-300 ease-in-out hover:rounded-lg 
                      ${
-                      cat === item ? "bg-[#6746ed] text-white rounded-lg" : ""
-                    }`}
+                       cat === item ? "bg-[#6746ed] text-white rounded-lg" : ""
+                     }`}
                   >
                     <div className="flex items-center justify-center">
                       {item === "Dashboard" && <MdOutlineDashboard size={18} />}

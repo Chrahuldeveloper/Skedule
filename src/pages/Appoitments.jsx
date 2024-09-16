@@ -14,7 +14,7 @@ export default function Appointments() {
   const [userAppointments, setUserAppointments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState({
-    Pic: "",
+    photo: "",
     Name: "",
     Bio: "",
   });
@@ -49,7 +49,7 @@ export default function Appointments() {
       }
       setUserAppointments(data?.Appointments || []);
       setUser({
-        Pic: data?.photo,
+        photo: data?.photo,
         Name: data?.Name,
         Bio: data?.Bio,
       });
@@ -150,16 +150,15 @@ export default function Appointments() {
           <div className="flex flex-col items-center gap-7 md:justify-evenly md:flex-row md:gap-0">
             <div className="flex flex-col justify-center space-y-2.5 md:pl-28">
               <img
-                src={user?.Pic}
+                src={user?.photo}
                 className="object-cover duration-300 ease-in-out rounded-full cursor-pointer h-24 w-24 hover:brightness-75 border-[1px] border-zinc-800"
                 alt=""
               />
-              <h1 className="font-bold cursor-pointer text-slate-300">
-                {user?.Name} Rahul
+              <h1 className="text-lg font-bold cursor-pointer text-slate-300 ">
+                {user?.Name}
               </h1>
               <p className="w-64 text-xs leading-6 cursor-pointer text-slate-300">
-                {user.Bio} Lorem ipsum dolor sit amet consectetur, adipisicing
-                elit. Ab, magnam?
+                {user.Bio}
               </p>
               <div className="flex items-center space-x-3 cursor-pointer">
                 <IoEarthOutline size={19} color="white" />

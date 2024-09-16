@@ -114,7 +114,6 @@ export default function Appointments() {
       const filterAppointments = appointments.filter((i) => {
         return i.date === index;
       });
-      console.log(filterAppointments);
       const updatedAppointments = filterAppointments.map((appointment) => {
         if (!appointment.emails) {
           appointment.emails = [];
@@ -141,7 +140,7 @@ export default function Appointments() {
   };
 
   return (
-    <div className="w-screen h-screen bg-[#08090d] overflow-y-scroll">
+    <div className="w-screen h-screen bg-[#1e1f22] overflow-y-scroll">
       {isLoading ? <Loader /> : null}
       <div className="px-3 py-8">
         <div className="p-6 border-[1px] border-zinc-800 bg-zinc-900 mx-auto rounded-md max-w-5xl">
@@ -169,12 +168,6 @@ export default function Appointments() {
       {errorMsg && toggle ? (
         <Sucess msg={"Already Registered"} setToggle={setToggle} />
       ) : null}
-
-      <footer className="flex justify-center">
-        <div className="absolute bottom-0 mx-auto mb-3 font-bold text-center text-stone-700">
-          Built in Skedule
-        </div>
-      </footer>
     </div>
   );
 }

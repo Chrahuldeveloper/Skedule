@@ -55,7 +55,7 @@ export default function AppotimentsBoard({
             onClick={() => {
               copyAppointmentURL();
             }}
-            className="text-xs px-5 text-white border-[1px]  rounded-full border-violet-600 font-semibold py-2.5 hover:bg-violet-600 ease-in-out duration-300"
+            className="text-xs px-5 text-white border-[1px] rounded-full border-[#6746ed] font-semibold py-2.5 hover:bg-[#6746ed] ease-in-out duration-300"
           >
             {copy}
           </button>

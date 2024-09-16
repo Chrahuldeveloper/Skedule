@@ -104,13 +104,13 @@ const UserCalendar = ({ page, userId, GoogleRegister }) => {
         </h1>
         <div className="flex items-center gap-1">
           <FaAngleLeft
-            className="px-3 rounded-full py-1.5 cursor-pointer hover:bg-violet-600 hover:fill-[#cbd5e1]"
+            className="px-3 rounded-full py-1.5 cursor-pointer hover:bg-[#6746ed] hover:fill-[#cbd5e1]"
             size={33}
             onClick={goToPrevMonth}
             color="#cbd5e1"
           />
           <FaAngleRight
-            className="px-3 rounded-full py-1.5 cursor-pointer hover:bg-violet-600 hover:fill-[#cbd5e1]"
+            className="px-3 rounded-full py-1.5 cursor-pointer hover:bg-[#6746ed] hover:fill-[#cbd5e1]"
             size={33}
             onClick={goToNextMonth}
             color="#cbd5e1"
@@ -140,7 +140,7 @@ const UserCalendar = ({ page, userId, GoogleRegister }) => {
                 className={`px-3 py-2 my-1.5 text-xs rounded-full cursor-pointer text-slate-300 ${
                   date && date.getMonth() === currentDate.getMonth()
                     ? isScheduled
-                      ? "bg-violet-500 text-white rounded-full"
+                      ? "bg-[#6746ed] text-white rounded-full"
                       : ""
                     : "opacity-0"
                 }`}

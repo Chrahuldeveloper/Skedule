@@ -36,10 +36,10 @@ export default function UserProfile() {
       const validAppointments = UserData.data()?.Appointments.filter(
         (appt) => !isPastDate(appt.date)
       );
-      if (validAppointments.length !== UserData.data()?.Appointments.length) {
+      if (validAppointments?.length !== UserData.data()?.Appointments?.length) {
         await updateDoc(docref, { Appointments: validAppointments });
       }
-      setuserAppointements(UserData.data().Appointments || []);
+      setuserAppointements(UserData.data()?.Appointments || []);
     } catch (error) {
       console.log(error);
     }
@@ -65,7 +65,7 @@ export default function UserProfile() {
   }, [fetchUser]);
 
   return (
-    <div className="w-screen h-screen bg-[#08090d]">
+    <div className="w-screen h-screen bg-[#1e1f22]">
       <div>
         {isloading ? (
           <Loader />

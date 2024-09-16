@@ -25,7 +25,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
           data-aos="slide-right"
           data-aos-delay="20"
           data-aos-easing="ease-in-out"
-          className="bg-[#151618] w-[80vw] lg:w-[17vw] border-r-[1px] border-zinc-900 px-10 py-5 h-screen fixed left-0 top-0 bottom-0 -z-40"
+          className="bg-[#111111] w-[80vw] lg:w-[17vw] border-r-[1px] border-zinc-900 px-10 py-5 h-screen fixed left-0 top-0 bottom-0 -z-40"
         >
           <nav>
             <div className="flex justify-end lg:justify-center">

@@ -143,10 +143,10 @@ export default function Appointments() {
   };
 
   return (
-    <div className="w-screen h-screen bg-[#1e1f22] overflow-y-scroll">
+    <div className="w-screen h-screen bg-[#121415] overflow-y-scroll">
       {isLoading ? <Loader /> : null}
       <div className="px-3 py-8 mt-10">
-        <div className="p-4 border-[1px] border-zinc-800 bg-zinc-900 mx-auto rounded-md max-w-5xl">
+        <div className="p-4 border-[1px] border-zinc-900 bg-[#111111] mx-auto rounded-md max-w-5xl">
           <div className="flex flex-col items-center gap-7 md:justify-evenly md:flex-row md:gap-0">
             <div className="flex flex-col justify-center space-y-2.5 md:pl-28">
               <img
@@ -154,22 +154,22 @@ export default function Appointments() {
                 className="object-cover duration-300 ease-in-out rounded-full cursor-pointer h-24 w-24 hover:brightness-75 border-[1px] border-zinc-800"
                 alt=""
               />
-              <h1 className="font-bold text-slate-300">
+              <h1 className="font-bold cursor-pointer text-slate-300">
                 {user?.Name} Rahul
               </h1>
-              <p className="w-64 text-xs leading-6 text-slate-300">
+              <p className="w-64 text-xs leading-6 cursor-pointer text-slate-300">
                 {user.Bio} Lorem ipsum dolor sit amet consectetur, adipisicing
                 elit. Ab, magnam?
               </p>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 cursor-pointer">
                 <IoEarthOutline size={19} color="white" />
                 <h1 className="text-sm text-slate-300">India</h1>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 cursor-pointer">
                 <FaLink size={19} color="white" />
                 <h1 className="text-sm text-slate-300">Zoom</h1>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 cursor-pointer">
                 <IoMdTime size={19} color="white" />
                 <h1 className="text-sm text-slate-300">30 min</h1>
               </div>

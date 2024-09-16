@@ -91,8 +91,8 @@ const UserCalendar = ({ page, userId, GoogleRegister }) => {
 
   return (
     <div
-      className={`bg-[#1e1f22] -z-50 px-6 border-[1px] border-zinc-900 max-w-sx shadow-md mx-auto rounded-md ${
-        page === "user" ? "my-0" : "my-10"
+      className={`bg-[#111111] -z-50 px-6 border-[1px] border-zinc-900 max-w-sx shadow-md mx-auto rounded-md ${
+        page === "user" ? "my-0" : "my-12"
       } py-6 z-50`}
     >
       <div className="flex items-center justify-between px-2">

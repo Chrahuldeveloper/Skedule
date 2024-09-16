@@ -6,6 +6,9 @@ import emailjs from "@emailjs/browser";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useParams } from "react-router-dom";
 import UserCalendar from "../components/UserCalender";
+import { IoEarthOutline } from "react-icons/io5";
+import { FaLink } from "react-icons/fa6";
+import { IoMdTime } from "react-icons/io";
 
 export default function Appointments() {
   const [userAppointments, setUserAppointments] = useState([]);
@@ -142,19 +145,34 @@ export default function Appointments() {
   return (
     <div className="w-screen h-screen bg-[#1e1f22] overflow-y-scroll">
       {isLoading ? <Loader /> : null}
-      <div className="px-3 py-8">
-        <div className="p-6 border-[1px] border-zinc-800 bg-zinc-900 mx-auto rounded-md max-w-5xl">
-          <div className="flex flex-col items-center gap-10 md:justify-evenly md:flex-row md:gap-0">
-            <div className="flex flex-col items-center justify-center space-y-3 md:pl-28">
+      <div className="px-3 py-8 mt-10">
+        <div className="p-4 border-[1px] border-zinc-800 bg-zinc-900 mx-auto rounded-md max-w-5xl">
+          <div className="flex flex-col items-center gap-7 md:justify-evenly md:flex-row md:gap-0">
+            <div className="flex flex-col justify-center space-y-2.5 md:pl-28">
               <img
                 src={user?.Pic}
-                className="object-cover duration-300 ease-in-out rounded-full cursor-pointer h-32 w-32 hover:brightness-75 border-[1px] border-zinc-800"
+                className="object-cover duration-300 ease-in-out rounded-full cursor-pointer h-24 w-24 hover:brightness-75 border-[1px] border-zinc-800"
                 alt=""
               />
-              <h1 className="text-lg font-bold text-slate-300">{user?.Name}</h1>
-              <p className="max-w-sm text-sm leading-7 text-center text-slate-300">
-                {user.Bio}
+              <h1 className="font-bold text-slate-300">
+                {user?.Name} Rahul
+              </h1>
+              <p className="w-64 text-xs leading-6 text-slate-300">
+                {user.Bio} Lorem ipsum dolor sit amet consectetur, adipisicing
+                elit. Ab, magnam?
               </p>
+              <div className="flex items-center space-x-3">
+                <IoEarthOutline size={19} color="white" />
+                <h1 className="text-sm text-slate-300">India</h1>
+              </div>
+              <div className="flex items-center space-x-3">
+                <FaLink size={19} color="white" />
+                <h1 className="text-sm text-slate-300">Zoom</h1>
+              </div>
+              <div className="flex items-center space-x-3">
+                <IoMdTime size={19} color="white" />
+                <h1 className="text-sm text-slate-300">30 min</h1>
+              </div>
             </div>
             <UserCalendar
               page="user"

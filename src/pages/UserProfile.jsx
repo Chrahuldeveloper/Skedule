@@ -66,14 +66,16 @@ export default function UserProfile() {
   }, [fetchUser]);
 
   return (
-    <div className="w-screen bg-[#121415] ">
+    <div className="w-screen bg-[#121415] min-h-screen">
       <div>
         {isloading ? (
           <Loader />
         ) : (
           <>
             <div className="z-20 flex items-center justify-between px-10 py-5 lg:flex-none">
-              <h1 className="text-xl font-semibold lg:opacity-0">Skedule</h1>
+              <h1 className="text-xl font-semibold lg:opacity-0 text-slate-300">
+                Skedule
+              </h1>
               <div className="flex items-center justify-end gap-6 ">
                 <div className="flex items-center gap-4">
                   <h1 className="hidden font-semibold lg:block text-slate-300">

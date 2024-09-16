@@ -20,21 +20,17 @@ ChartJS.register(
 );
 
 export default function Analytics() {
-  const CarCondition = {
+  const AppointmentAnalytics = {
     labels: [
-      "engine",
-      "seats",
-      "Radiator",
-      "Brakes",
-      "windows",
-      "motor",
-      "interior",
-      "Seat covers",
+      "Total Appointments",
+      "Completed Appointments",
+      "Cancelled Appointments",
+      "Upcoming Appointments",
     ],
     datasets: [
       {
         label: "Your Appointments",
-        data: [9, 3, 4, 8, 5, 7, 3, 8],
+        data: [50, 40, 5, 10],
         borderColor: "#6746ed",
         pointBackgroundColor: "#6746ed",
         pointBorderColor: "#fff",
@@ -46,7 +42,7 @@ export default function Analytics() {
 
   return (
     <div className="bg-[#111111] p-7 border-[1px] rounded-md border-zinc-900 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll">
-      <Line data={CarCondition} />
+      <Line data={AppointmentAnalytics} />
     </div>
   );
 }

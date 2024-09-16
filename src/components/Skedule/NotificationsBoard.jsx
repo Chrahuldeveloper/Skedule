@@ -4,8 +4,15 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { db } from "../../Firebase";
 import { useCallback } from "react";
 import { Loader } from "../index";
+import logo from "../../images/logo192.png";
 export default function NotificationsBoard({ jwt }) {
-  const [userNotifications, setuserNotifications] = useState([]);
+  const [userNotifications, setuserNotifications] = useState([
+    {
+      Name: "Welcome",
+      Para: "welcome to skedule",
+    },
+  ]);
+
   const docref = useMemo(() => doc(db, "USERS", jwt), [jwt]);
 
   const [isloading, setisloading] = useState(false);
@@ -54,12 +61,15 @@ export default function NotificationsBoard({ jwt }) {
           return (
             <>
               <div className="w-full px-3 space-y-5 my-7">
-                <div className="  border-[0.9px] py-6 px-3.5 md:px-5 cursor-pointer rounded-lg flex items-center justify-between border-zinc-800">
-                  <div className="space-y-2.5">
-                    <h1 className="text-sm font-semibold text-slate-300">
-                      {item.Name}
-                    </h1>
-                    <p className="text-xs w-52 text-slate-300">{item.Para}</p>
+                <div className="  border-[1px] py-8 px-5 md:px-5 cursor-pointer rounded-lg flex items-center justify-between border-zinc-900">
+                  <div className="flex gap-3">
+                    <img src={logo} alt="" className="w-10 h-10" />
+                    <div className="space-y-2.5">
+                      <h1 className="text-lg font-semibold text-slate-300">
+                        {item.Name}
+                      </h1>
+                      <p className="text-sm w-52 text-slate-300">{item.Para}</p>
+                    </div>
                   </div>
                   <AiOutlineDelete
                     onClick={() => {

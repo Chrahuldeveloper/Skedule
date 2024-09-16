@@ -3,6 +3,8 @@ import React, { useMemo, useState } from "react";
 import { db } from "../../Firebase";
 import Loader from "../Loader";
 import { Link } from "react-router-dom";
+import Analystics from "../Analystics";
+import NotificationsBoard from "./NotificationsBoard";
 export default function AppotimentsBoard({
   userAppointements,
   setuserAppointements,
@@ -44,7 +46,9 @@ export default function AppotimentsBoard({
   };
 
   return (
-    <>
+    <div className="flex flex-col">
+      <Analystics />
+
       <div className="bg-[#111111] p-5 my-6 border-[1.2px] rounded-md  border-zinc-900 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh]  z-50">
         {isloading ? <Loader /> : null}
         <div className="flex items-center justify-between px-1.5 md:px-5">
@@ -145,6 +149,8 @@ export default function AppotimentsBoard({
           </div>
         </>
       ) : null}
-    </>
+
+      <NotificationsBoard jwt={jwt} />
+    </div>
   );
 }

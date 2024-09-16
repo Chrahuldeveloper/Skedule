@@ -46,9 +46,7 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
                     setisedit(true);
                     setisshow(false);
                   }}
-                  src={
-                    user?.photo
-                  }
+                  src={user?.photo}
                   className="object-cover w-28 h-28 duration-300 ease-in-out rounded-full cursor-pointer hover:brightness-75 border-zinc-900 border-[1px]"
                   alt=""
                 />
@@ -69,40 +67,37 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
               </div>
               <div className="border-b-[1px] border-blue-200 my-4"></div>
               <ul className="space-y-2.5 text-center mt-7">
-                {[
-                  "Dashboard",
-                  "Schedule",
-                  "Appotiments",
-                  "Notifications",
-                  "Logout",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    onClick={() => {
-                      setcat(item);
-                      if (item === "Logout") handleLogout();
-                      else if (item === "Appotiments") navigate(`/user/${jwt}`);
-                      else setisshow(false);
-                    }}
-                    className={`py-2.5 px-3 cursor-pointer text-xs text-slate-300 font-semibold flex items-center  justify-start gap-2 hover:text-white hover:bg-[#6746ed] duration-300 ease-in-out hover:rounded-lg 
+                {["Dashboard", "Schedule", "Appotiments", "Logout"].map(
+                  (item) => (
+                    <li
+                      key={item}
+                      onClick={() => {
+                        setcat(item);
+                        if (item === "Logout") handleLogout();
+                        else if (item === "Appotiments")
+                          navigate(`/user/${jwt}`);
+                        else setisshow(false);
+                      }}
+                      className={`py-2.5 px-3 cursor-pointer text-xs text-slate-300 font-semibold flex items-center  justify-start gap-2 hover:text-white hover:bg-[#6746ed] duration-300 ease-in-out hover:rounded-lg 
                      ${
                        cat === item ? "bg-[#6746ed] text-white rounded-lg" : ""
                      }`}
-                  >
-                    <div className="flex items-center justify-center">
-                      {item === "Dashboard" && <MdOutlineDashboard size={18} />}
-                      {item === "Schedule" && <SlCalender size={18} />}
-                      {item === "Appotiments" && (
-                        <MdOutlineSpeakerNotes size={18} />
-                      )}
-                      {item === "Notifications" && (
-                        <MdOutlineNotificationsActive size={18} />
-                      )}
-                      {item === "Logout" && <IoIosLogOut size={23} />}
-                    </div>
-                    <h1 className="text-sm">{item}</h1>
-                  </li>
-                ))}
+                    >
+                      <div className="flex items-center justify-center">
+                        {item === "Dashboard" && (
+                          <MdOutlineDashboard size={18} />
+                        )}
+                        {item === "Schedule" && <SlCalender size={18} />}
+                        {item === "Appotiments" && (
+                          <MdOutlineSpeakerNotes size={18} />
+                        )}
+
+                        {item === "Logout" && <IoIosLogOut size={23} />}
+                      </div>
+                      <h1 className="text-sm">{item}</h1>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
           </nav>

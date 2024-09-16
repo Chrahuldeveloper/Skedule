@@ -12,6 +12,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../Firebase";
 import { CgProfile } from "react-icons/cg";
 import { CalenderBoard } from "../components/index";
+import Analystics from "../components/Analystics";
 
 export default function UserProfile() {
   const [isshow, setisshow] = useState(false);
@@ -65,7 +66,7 @@ export default function UserProfile() {
   }, [fetchUser]);
 
   return (
-    <div className="w-screen h-screen bg-[#121415]">
+    <div className="w-screen bg-[#121415] ">
       <div>
         {isloading ? (
           <Loader />
@@ -122,14 +123,14 @@ export default function UserProfile() {
                   setuserAppointements={setuserAppointements}
                   setcat={setcat}
                 />
-              ) : cat === "Notifications" ? (
-                <NotificationsBoard jwt={jwt} />
               ) : cat === "Dashboard" ? (
-                <AppotimentsBoard
-                  user={user}
-                  userAppointements={userAppointements}
-                  setuserAppointements={setuserAppointements}
-                />
+                <>
+                  <AppotimentsBoard
+                    user={user}
+                    userAppointements={userAppointements}
+                    setuserAppointements={setuserAppointements}
+                  />
+                </>
               ) : null}
             </div>
           </>

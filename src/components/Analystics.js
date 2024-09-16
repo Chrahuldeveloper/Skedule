@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -20,8 +20,6 @@ ChartJS.register(
 );
 
 export default function Analytics() {
-  const chartRef = useRef(null);
-
   const CarCondition = {
     labels: [
       "engine",
@@ -48,7 +46,7 @@ export default function Analytics() {
 
   return (
     <div className="bg-[#111111] p-7 border-[1px] rounded-md border-zinc-900 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll">
-      <Line data={CarCondition} ref={chartRef} />
+      <Line data={CarCondition} />
     </div>
   );
 }

@@ -20,12 +20,12 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
 
   return (
     <>
-      <div className="fixed inset-0 flex items-center justify-center h-full bg-black bg-opacity-75 backdrop-blur-md lg:bg-opacity-0 lg:backdrop-blur-0">
+      <div className="fixed inset-0 z-10 flex items-center justify-center h-full bg-black bg-opacity-75 backdrop-blur-md lg:bg-opacity-0 lg:backdrop-blur-0">
         <aside
           data-aos="slide-right"
           data-aos-delay="20"
           data-aos-easing="ease-in-out"
-          className="bg-[#111111] w-[80vw] lg:w-[17vw] border-r-[1px] border-zinc-900 px-10 py-5 h-screen fixed left-0 top-0 bottom-0 -z-40"
+          className="bg-[#111111] w-[80vw] lg:w-[17vw] border-r-[1px] border-zinc-900 px-10 py-5 h-screen fixed left-0 top-0 bottom-0 "
         >
           <nav>
             <div className="flex justify-end lg:justify-center">

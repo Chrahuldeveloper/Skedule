@@ -109,7 +109,7 @@ export default function UserProfile() {
                 </button>
               </div>
             </div>
-            <div className="items-start  md:flex">
+            <div className="items-start md:flex">
               {isshow ? (
                 <SideBar
                   setcat={setcat}

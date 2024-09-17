@@ -4,10 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { MdOutlineDashboard } from "react-icons/md";
 import { IoIosLogOut } from "react-icons/io";
 import { SlCalender } from "react-icons/sl";
-import {
-  MdOutlineSpeakerNotes,
-  MdOutlineNotificationsActive,
-} from "react-icons/md";
+import { MdOutlineSpeakerNotes } from "react-icons/md";
 
 export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
   const navigate = useNavigate();
@@ -19,13 +16,13 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
   };
 
   return (
-    <>
-      <div className="fixed inset-0 z-10 flex items-center justify-center h-full bg-black bg-opacity-75 backdrop-blur-md lg:bg-opacity-0 lg:backdrop-blur-0">
+    <div>
+      <div className="fixed top-0 left-0 z-50 w-full h-full bg-opacity-75 backdrop-blur-md md:w-auto md:h-auto md:bg-opacity-0 md:backdrop-blur-0">
         <aside
           data-aos="slide-right"
           data-aos-delay="20"
           data-aos-easing="ease-in-out"
-          className="bg-[#111111] w-[80vw] lg:w-[17vw] border-r-[1px] border-zinc-900 px-10 py-5 h-screen fixed left-0 top-0 bottom-0 "
+          className="bg-[#111111] w-[80vw] lg:w-[17vw] border-r-[1px] border-zinc-900 px-10 py-5 h-screen fixed left-0 top-0 bottom-0 z-20"
         >
           <nav>
             <div className="flex justify-end lg:justify-center">
@@ -103,6 +100,6 @@ export default function SideBar({ setcat, setisshow, setisedit, user, cat }) {
           </nav>
         </aside>
       </div>
-    </>
+    </div>
   );
 }

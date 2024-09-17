@@ -142,6 +142,8 @@ export default function Appointments() {
     }
   };
 
+
+
   return (
     <div className="w-screen h-screen bg-[#121415] overflow-y-scroll">
       {isLoading ? <Loader /> : null}

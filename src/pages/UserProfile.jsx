@@ -72,7 +72,7 @@ export default function UserProfile() {
           <Loader />
         ) : (
           <>
-            <div className="z-20 flex items-center justify-between px-10 py-5 lg:flex-none">
+            <div className="flex items-center justify-between px-10 py-5 lg:flex-none">
               <h1 className="text-xl font-semibold lg:opacity-0 text-slate-300">
                 Skedule
               </h1>
@@ -109,7 +109,7 @@ export default function UserProfile() {
                 </button>
               </div>
             </div>
-            <div className="items-start md:flex">
+            <div className="items-start  md:flex">
               {isshow ? (
                 <SideBar
                   setcat={setcat}

@@ -46,10 +46,9 @@ export default function AppotimentsBoard({
   };
 
   return (
-    <div className="flex flex-col -">
+    <div className="50 flex flex-col ">
       <Analystics />
-
-      <div className="bg-[#111111] p-5 my-6 border-[1.2px] rounded-md  border-zinc-900 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh]  ">
+      <div className="bg-[#111111] p-5 my-6 border-[1.2px] rounded-md  border-zinc-900 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh] ">
         {isloading ? <Loader /> : null}
         <div className="flex items-center justify-between px-1.5 md:px-5">
           <h1 className="text-sm font-semibold md:text-2xl text-slate-300">
@@ -77,7 +76,8 @@ export default function AppotimentsBoard({
               </th>
               <th className="pt-10 pl-5 text-xs lg:pl-28 lg:text-sm">date</th>
               <th className="pt-10 pl-5 text-xs lg:pl-28 lg:text-sm">Link</th>
-              <th className="pt-10 pl-5 text-xs lg:pl-28 lg:text-sm">Delete</th>
+              <th className="pt-10 pl-5 text-xs lg:pl-28 lg:text-sm">Cancel</th>
+              <th className="pt-10 pl-5 text-xs lg:pl-28 lg:text-sm"></th>
             </tr>
           </thead>
           {userAppointements.map((i, index) => {
@@ -120,7 +120,7 @@ export default function AppotimentsBoard({
                         deleteAppointment(index);
                       }}
                     >
-                      Delete
+                      Cancel
                     </p>
                   </th>
                 </tbody>
@@ -145,7 +145,6 @@ export default function AppotimentsBoard({
                   })}
                 </ul>
               </div>
-              
             </div>
           </div>
         </>

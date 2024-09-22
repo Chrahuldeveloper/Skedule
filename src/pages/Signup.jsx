@@ -14,7 +14,7 @@ export default function Signup() {
   const [data, setData] = useState({
     Name: "",
     Email: "",
-    Message: "",
+    Password: "",
   });
 
   const notification = {
@@ -55,14 +55,12 @@ export default function Signup() {
         const docRef = await addDoc(collection(db, "contacts"), {
           name: data.Name,
           email: data.Email,
-          message: data.Message,
+          Password: data.Password,
           timestamp: new Date(),
         });
-        await sendNotification(docRef.id, {
-          Name: "Contact Submitted",
-          Para: "Thank you for submitting your contact information.",
-        });
+        await sendNotification(docRef.id, notification);
         setData({ Name: "", Email: "", Message: "" });
+        navigate("/userProfile");
       } catch (error) {
         console.log(error);
       }
@@ -101,9 +99,9 @@ export default function Signup() {
         <div className="w-full">
           <input
             type="text"
-            placeholder={"Message"}
+            placeholder={"Password"}
             className="w-full py-3 px-2.5 outline-none bg-zinc-900 rounded-lg"
-            onChange={(e) => setData({ ...data, Message: e.target.value })}
+            onChange={(e) => setData({ ...data, Password: e.target.value })}
             value={data.Message}
           />
         </div>

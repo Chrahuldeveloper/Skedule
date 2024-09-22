@@ -1,5 +1,5 @@
-import { doc, updateDoc } from "firebase/firestore";
-import React, { useMemo, useState } from "react";
+import { doc, updateDoc, getDoc } from "firebase/firestore";
+import React, { useMemo, useState, useEffect } from "react";
 import { db } from "../../Firebase";
 import Loader from "../Loader";
 import { Link } from "react-router-dom";
@@ -18,6 +18,24 @@ export default function AppotimentsBoard({
   const [copy, setcopy] = useState("ShareURL");
   const [userEmails, setuserEmails] = useState();
   const [toggle, settoggle] = useState(false);
+  const [totalAppointments, setTotalAppointments] = useState(0);
+  const [deletedAppointments, setDeletedAppointments] = useState(0);
+
+  useEffect(() => {
+    const fetchAppointmentCounts = async () => {
+      try {
+        const userDoc = await getDoc(docref);
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          setTotalAppointments(userData.totalAppointments || 0);
+          setDeletedAppointments(userData.deletedAppointments || 0);
+        }
+      } catch (error) {
+        console.log("Error fetching appointment counts:", error);
+      }
+    };
+    fetchAppointmentCounts();
+  }, [docref]);
 
   const deleteAppointment = async (idx) => {
     setisloading(true);
@@ -26,35 +44,55 @@ export default function AppotimentsBoard({
       (i, id) => id !== idx
     );
 
-    await updateDoc(docref, { Appointments: updateUserAppointments });
+    await updateDoc(docref, {
+      Appointments: updateUserAppointments,
+      totalAppointments: totalAppointments,
+      deletedAppointments: deletedAppointments + 1,
+    });
+
     setuserAppointements(updateUserAppointments);
+    setDeletedAppointments(deletedAppointments + 1);
     setisloading(false);
   };
 
   const copyAppointmentURL = async () => {
     try {
-      console.log("clicked");
       const port = window.location.port ? `:${window.location.port}` : "";
       const userURL = new URL(
         `http://${window.location.hostname}${port}/user/${jwt}`
       );
-      console.log(userURL.href);
       await navigator.clipboard.writeText(userURL.href);
-      console.log("textCopied");
       setcopy("Copied");
     } catch (error) {
       console.log(error);
     }
   };
 
+  useEffect(() => {
+    const updateTotalAppointments = async () => {
+      try {
+        await updateDoc(docref, {
+          totalAppointments: userAppointements.length,
+        });
+        setTotalAppointments(userAppointements.length);
+      } catch (error) {
+        console.log("Error updating total appointments:", error);
+      }
+    };
+
+    updateTotalAppointments();
+  }, [userAppointements, docref]);
+
+
+
   return (
     <div className="flex flex-col 50 ">
-      <Analystics />
+      <Analystics totalAppointments={totalAppointments} deletedAppointments={deletedAppointments}/>
       <div className="bg-[#111111] p-5 my-6 border-[1.2px] rounded-md  border-zinc-900 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh] ">
         {isloading ? <Loader /> : null}
         <div className="flex items-center justify-between px-1.5 md:px-5">
           <h1 className="text-sm font-semibold md:text-2xl text-slate-300">
-            Your Appotiments
+            Your Appointments
           </h1>
           <button
             onClick={() => {
@@ -65,17 +103,18 @@ export default function AppotimentsBoard({
             {copy}
           </button>
         </div>
+       
         <table>
           <thead className="divide-y-2">
             <tr className="text-slate-300">
-              <th className="pt-10 text-xs lg:pl-3">Slotes</th>
+              <th className="pt-10 text-xs lg:pl-3">Slots</th>
               <th className="pt-10 pl-5 text-xs lg:pl-28 lg:text-sm">
                 StartTime
               </th>
               <th className="pt-10 pl-8 text-xs lg:pl-24 lg:text-sm">
                 EndTime
               </th>
-              <th className="pt-10 pl-5 text-xs lg:pl-28 lg:text-sm">date</th>
+              <th className="pt-10 pl-5 text-xs lg:pl-28 lg:text-sm">Date</th>
               <th className="pt-10 pl-5 text-xs lg:pl-28 lg:text-sm">Link</th>
               <th className="pt-10 pl-5 text-xs lg:pl-28 lg:text-sm">Cancel</th>
               <th className="pt-10 pl-5 text-xs lg:pl-28 lg:text-sm"></th>

@@ -19,13 +19,13 @@ ChartJS.register(
   Legend
 );
 
-export default function Analytics() {
+export default function Analytics({ totalAppointments, deletedAppointments }) {
   const AppointmentAnalytics = {
-    labels: ["Total ", "Completed ", "Cancelled ", "Upcoming "],
+    labels: ["Total ", "Cancelled "],
     datasets: [
       {
         label: "Your Appointments",
-        data: [50, 40, 5, 10],
+        data: [totalAppointments, deletedAppointments],
         borderColor: "#6746ed",
         pointBackgroundColor: "#6746ed",
         pointBorderColor: "#fff",

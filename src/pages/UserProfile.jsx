@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import {
   AppotimentsBoard,
   Loader,
-  NotificationsBoard,
   SideBar,
 } from "../components";
 import { CiMenuFries } from "react-icons/ci";
@@ -12,7 +11,6 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../Firebase";
 import { CgProfile } from "react-icons/cg";
 import { CalenderBoard } from "../components/index";
-import Analystics from "../components/Analystics";
 
 export default function UserProfile() {
   const [isshow, setisshow] = useState(false);

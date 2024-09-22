@@ -5,6 +5,8 @@ import Loader from "../Loader";
 import { Link } from "react-router-dom";
 import Analystics from "../Analystics";
 import NotificationsBoard from "./NotificationsBoard";
+import { RxCross2 } from "react-icons/rx";
+
 export default function AppotimentsBoard({
   userAppointements,
   setuserAppointements,
@@ -46,7 +48,7 @@ export default function AppotimentsBoard({
   };
 
   return (
-    <div className="50 flex flex-col ">
+    <div className="flex flex-col 50 ">
       <Analystics />
       <div className="bg-[#111111] p-5 my-6 border-[1.2px] rounded-md  border-zinc-900 lg:ml-96 w-[95vw] sm:w-[60vw] mx-auto lg:mx-0 overflow-y-scroll h-[80vh] ">
         {isloading ? <Loader /> : null}
@@ -63,7 +65,6 @@ export default function AppotimentsBoard({
             {copy}
           </button>
         </div>
-
         <table>
           <thead className="divide-y-2">
             <tr className="text-slate-300">
@@ -131,11 +132,21 @@ export default function AppotimentsBoard({
       </div>
       {toggle ? (
         <>
-          <div className="fixed inset-0 z-50 flex items-center justify-center h-full bg-opacity-75 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center w-screen h-full bg-opacity-75 backdrop-blur-xl">
             <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 ">
-              <div className="bg-[#0b0d12] p-5 rounded-lg w-[85vw] md:w-[50vw] lg:w-[30vw]">
-                <h1>Users</h1>
-                <ul>
+              <div className="bg-[#111111] p-5 rounded-lg w-[85vw] md:w-[50vw] lg:w-[30vw] border-[1px] border-stone-900">
+                <div className="flex justify-end">
+                  <RxCross2
+                    size={23}
+                    color={"white"}
+                    cursor={"pointer"}
+                    onClick={() => {
+                      settoggle(false);
+                    }}
+                  />
+                </div>
+                <h1 className="text-xl font-bold text-slate-300">Users</h1>
+                <ul className="my-4 space-y-3">
                   {userEmails?.map((i) => {
                     return (
                       <>
